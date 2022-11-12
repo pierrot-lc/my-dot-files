@@ -12,6 +12,7 @@ require("neodev").setup()
 local lspconfig = require("lspconfig")
 lspconfig["pyright"].setup({})
 lspconfig["sumneko_lua"].setup({})
+lspconfig["marksman"].setup({})
 -- lspconfig["rust_analyzer"].setup({})
 require("lsp_signature").setup({
 	bind = true,
@@ -25,10 +26,12 @@ local null_ls = require("null-ls")
 local sources = {
 	null_ls.builtins.diagnostics.codespell,
 	null_ls.builtins.code_actions.proselint,
-	null_ls.builtins.formatting.stylua, -- Lua formatting
-	null_ls.builtins.formatting.black, -- Python formatting
-	null_ls.builtins.diagnostics.flake8, -- Python diagnostics
+	null_ls.builtins.formatting.stylua,
+	null_ls.builtins.formatting.black,
+	null_ls.builtins.diagnostics.flake8,
 	null_ls.builtins.formatting.isort,
+	null_ls.builtins.diagnostics.markdownlint,
+	null_ls.builtins.formatting.markdownlint,
 }
 
 null_ls.setup({
