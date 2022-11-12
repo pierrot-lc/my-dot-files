@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 vim.api.nvim_create_autocmd("BufWritePre", {
 	group = augroup,
-	desc = "Write on save",
+	desc = "Format on save",
 	callback = function(event)
 		vim.lsp.buf.format()
 	end,
