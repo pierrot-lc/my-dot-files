@@ -20,3 +20,4 @@ Packages can be installed using `mason` (see `:MasonInstall`).
 * black, flake8, isort, pyright
 * lua\_language\_server, stylua
 * markdownlint, marksman
+* bashls
