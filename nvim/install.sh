@@ -7,13 +7,20 @@ rm -rf "$HOME/.config/nvim/init.lua" "$HOME/.config/nvim/lua/" "$HOME/.config/nv
 echo "Making symlinks for neovim"
 wd=$(pwd)
 
-ln -s "$wd/init.lua" "$wd/init.lua.link"
-mv "$wd/init.lua.link" "$HOME/.config/nvim/init.lua"
+ln -s "$wd/init.lua" "$HOME/.config/nvim/init.lua"
 
-ln -s "$wd/lua" "$wd/lua.link"
-mv "$wd/lua.link" "$HOME/.config/nvim/lua"
+mkdir "$HOME/.config/nvim/lua"
+for file in "$wd/lua/"*
+do
+    file=$(basename $file)
+	ln -s "$wd/lua/$file" "$HOME/.config/nvim/lua/$file"
+done
 
-ln -s "$wd/ftplugin" "$wd/ftplugin.link"
-mv "$wd/ftplugin.link" "$HOME/.config/nvim/ftplugin"
+mkdir "$HOME/.config/nvim/ftplugin"
+for file in "$wd/ftplugin/"*
+do
+    file=$(basename $file)
+	ln -s "$wd/ftplugin/$file" "$HOME/.config/nvim/ftplugin/$file"
+done
 
 echo "Done"
