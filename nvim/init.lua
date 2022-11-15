@@ -3,6 +3,7 @@
 -- ========================================================================== --
 vim.g.loaded_netrw = 1 -- Deactivate netrw file manager (handled by a plugin).
 vim.g.loaded_netrwPlugin = 1
+vim.opt.swapfile = false -- Deactivate swap file.
 vim.wo.number = true -- Show line numbers default.
 vim.wo.relativenumber = false
 vim.opt.mouse = "a" -- Enable mouse for all modes.
@@ -11,7 +12,7 @@ vim.opt.hlsearch = true -- Set highlight on search. Turning this off will remove
 vim.opt.ignorecase = true -- Case insensitive searching unless /C or capital in search.
 vim.opt.smartcase = true
 vim.opt.wrap = true -- Whether or not we want to wrap long lines.
-vim.opt.breakindent = true -- Enable break indent. Conserve indentation of virtual wrapped lines.
+vim.opt.breakindent = true -- Conserve indentation of virtual wrapped lines.
 vim.opt.cursorline = true -- Highlight cursor line.
 vim.opt.scrolloff = 5 -- Offset before scrolling.
 vim.wo.signcolumn = "yes" -- Always shows the sign column (where we put gitsigns and warnings).
