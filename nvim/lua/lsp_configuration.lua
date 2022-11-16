@@ -27,8 +27,12 @@ local sources = {
 	null_ls.builtins.diagnostics.codespell,
 	null_ls.builtins.code_actions.proselint,
 	null_ls.builtins.formatting.black,
-	null_ls.builtins.diagnostics.flake8,
-	null_ls.builtins.formatting.isort,
+	null_ls.builtins.diagnostics.flake8.with({
+		extra_args = { "--max-line-length=88", "--extend-ignore=E203" } -- Black configuration
+	}),
+	null_ls.builtins.formatting.isort.with({
+		extra_args = { "--profile=black" } -- Black configuration
+	}),
 	null_ls.builtins.formatting.stylua,
 	null_ls.builtins.code_actions.shellcheck,
 	null_ls.builtins.diagnostics.shellcheck,
