@@ -30,6 +30,7 @@ require("packer").startup(function(use)
 	use("nvim-tree/nvim-tree.lua") -- File explorer.
 	use("nvim-tree/nvim-web-devicons") -- File icons.
 	use("goolord/alpha-nvim") -- Startup screen.
+	use("farmergreg/vim-lastplace") -- Restore cursor.
 	use("nvim-telescope/telescope.nvim") -- Find and filter files.
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",

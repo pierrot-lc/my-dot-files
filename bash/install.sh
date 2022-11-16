@@ -1,0 +1,27 @@
+#!/bin/sh
+
+wd=$(pwd)
+
+echo "
+# >>>> My specific setup
+if [ -d ~/.bashrc.d ]; then
+	for rc in ~/.bashrc.d/.*; do
+		if [ -f \"\$rc\" ]; then
+			. \"\$rc\"
+		fi
+	done
+fi
+
+unset rc
+
+# <<<<" >> "$HOME/.bashrc"
+
+echo "Create .bashrc.d directory"
+rm -rf "$HOME/.bashrc.d/"
+mkdir -p "$HOME/.bashrc.d"
+
+echo "Create symlinks"
+for file in ./.bashrc.d/.*; do
+    file=$(basename "$file")
+    ln -s "$wd/.bashrc.d/$file" "$HOME/.bashrc.d/$file"
+done
