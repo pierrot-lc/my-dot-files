@@ -24,8 +24,16 @@ vim.keymap.set("n", "<leader>Ps", "<cmd>PackerSync<cr>", { desc = "Sync packer p
 vim.keymap.set("n", "<leader>Pi", "<cmd>PackerInstall<cr>", { desc = "Install packer packages" })
 
 -- LSP
+local show_diagnostic = true
 vim.keymap.set("n", "<leader>Ld", function()
-	vim.diagnostic.disable() -- TODO: find how to dynamically enable/disable diagnostics.
+	if not show_diagnostic then
+		vim.diagnostic.show()
+		print("Diagnostics showed.")
+	else
+		vim.diagnostic.hide()
+		print("Diagnostics hidden.")
+	end
+	show_diagnostic = not show_diagnostic
 end, { desc = "Toggle diagnostics" })
 
 -- DAP
