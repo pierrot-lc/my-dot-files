@@ -23,6 +23,11 @@ vim.keymap.set("n", "<leader>Vc", "<cmd>edit $MYVIMRC<cr>", { desc = "Edit the v
 vim.keymap.set("n", "<leader>Ps", "<cmd>PackerSync<cr>", { desc = "Sync packer packages" })
 vim.keymap.set("n", "<leader>Pi", "<cmd>PackerInstall<cr>", { desc = "Install packer packages" })
 
+-- LSP
+vim.keymap.set("n", "<leader>Ld", function()
+	vim.diagnostic.disable() -- TODO: find how to dynamically enable/disable diagnostics.
+end, { desc = "Toggle diagnostics" })
+
 -- DAP
 local dap = require("dap")
 local dapui = require("dapui")
@@ -44,4 +49,5 @@ require("which-key").register({
 	["<leader>V"] = { name = "+Neovim" },
 	["<leader>P"] = { name = "+Packer" },
 	["<leader>d"] = { name = "+Debugger" },
+	["<leader>L"] = { name = "+LSP" }
 })
