@@ -13,7 +13,7 @@ local lspconfig = require("lspconfig")
 lspconfig["pyright"].setup({})
 lspconfig["sumneko_lua"].setup({})
 lspconfig["marksman"].setup({})
--- lspconfig["rust_analyzer"].setup({})
+lspconfig["rust_analyzer"].setup({})
 require("lsp_signature").setup({
 	bind = true,
 	handler_opts = {
@@ -36,6 +36,7 @@ local sources = {
 	null_ls.builtins.formatting.stylua,
 	null_ls.builtins.code_actions.shellcheck,
 	null_ls.builtins.diagnostics.shellcheck,
+	null_ls.builtins.formatting.beautysh,
 	null_ls.builtins.diagnostics.markdownlint,
 	null_ls.builtins.formatting.markdownlint,
 }
