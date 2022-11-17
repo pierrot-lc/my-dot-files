@@ -22,6 +22,8 @@ mkdir -p "$HOME/.bashrc.d"
 
 echo "Create symlinks"
 for file in ./.bashrc.d/.*; do
-    file=$(basename "$file")
-    ln -s "$wd/.bashrc.d/$file" "$HOME/.bashrc.d/$file"
+    if [ -f "$file" ]; then
+        file=$(basename "$file")
+        ln -s "$wd/.bashrc.d/$file" "$HOME/.bashrc.d/$file"
+    fi
 done
