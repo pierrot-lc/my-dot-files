@@ -27,3 +27,5 @@ for file in ./.bashrc.d/.*; do
         ln -s "$wd/.bashrc.d/$file" "$HOME/.bashrc.d/$file"
     fi
 done
+
+source "$HOME/.bashrc"
