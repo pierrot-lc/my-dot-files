@@ -1,0 +1,3 @@
+[submodule "getnf"]
+	path = getnf
+	url = git@github.com:ronniedroid/getnf.git
