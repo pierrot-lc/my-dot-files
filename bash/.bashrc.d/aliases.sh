@@ -45,5 +45,7 @@ alias kk=ll
 # Bashrc
 alias bashrc="vim ~/.bashrc && source ~/.bashrc"
 
-# Monitor nvidia GPUs
-alias wn="watch -n 0.5 nvidia-smi"
+# Miscs
+alias meteo="curl wttr.in"  # Show meteo
+alias wn="watch -n 0.5 nvidia-smi"  # Monitor nvidia GPUs
+alias hsi="history | grep -i"  # Search in history

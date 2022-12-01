@@ -1,5 +1,6 @@
 #!/bin/sh
 
+export PATH="$PATH:~/.local/bin"
 export EDITOR=nvim
 
 # Load aliases
