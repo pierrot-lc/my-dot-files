@@ -9,7 +9,6 @@ vim.keymap.set("n", "x", '"_x', { desc = "Delete without changing internal clipb
 vim.keymap.set("n", "<leader>a", ":keepjumps normal! ggVG<cr>", { desc = "Select all text in current buffer" })
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Open/close file explorer" })
 vim.keymap.set("n", "<leader>f", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
-vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<cr>", { desc = "Show diagnostic" })
 
 -- Window jumps
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Quick move to bottom buffer" })
@@ -35,6 +34,9 @@ vim.keymap.set("n", "<leader>Ld", function()
 	end
 	show_diagnostic = not show_diagnostic
 end, { desc = "Toggle diagnostics" })
+vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<cr>", { desc = "Show diagnostic" })
+vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Go to definition" })
+vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { desc = "Show signature" })
 
 -- DAP
 local dap = require("dap")
