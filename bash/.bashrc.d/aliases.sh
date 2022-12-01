@@ -46,6 +46,7 @@ alias kk=ll
 alias bashrc="vim ~/.bashrc && source ~/.bashrc"
 
 # Miscs
-alias meteo="curl wttr.in"  # Show meteo
+alias forecast="curl wttr.in"  # Show meteo
 alias wn="watch -n 0.5 nvidia-smi"  # Monitor nvidia GPUs
 alias hsi="history | grep -i"  # Search in history
+alias env="env | sort"
