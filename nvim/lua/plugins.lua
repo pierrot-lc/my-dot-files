@@ -29,6 +29,7 @@ require("packer").startup(function(use)
 	use("windwp/nvim-autopairs") -- Smart autopairs.
 	use("nvim-tree/nvim-tree.lua") -- File explorer.
 	use("nvim-tree/nvim-web-devicons") -- File icons.
+	use("tpope/vim-characterize") -- More info when inspecting a character (`ga`).
 	use("goolord/alpha-nvim") -- Startup screen.
 	use("farmergreg/vim-lastplace") -- Restore cursor.
 	use("nvim-telescope/telescope.nvim") -- Find and filter files.
