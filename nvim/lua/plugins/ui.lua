@@ -21,7 +21,7 @@ return {
 	-- Dynamically show keybindings.
 	{
 		"folke/which-key.nvim",
-		lazy = false,
+		event = "VeryLazy",
 		config = function()
 			require("which-key").setup()
 			require("which-key").register({
@@ -29,6 +29,7 @@ return {
 				["<leader>P"] = { name = "+Panels" },
 				["<leader>D"] = { name = "+Debugger" },
 				["<leader>L"] = { name = "+LSP" },
+				["<leader>M"] = { name = "+Misc" },
 			})
 		end,
 	},
@@ -36,7 +37,7 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = { "nvim-tree/nvim-web-devicons" }, -- More icons.
 		config = function()
 			require("lualine").setup({
 				options = {
