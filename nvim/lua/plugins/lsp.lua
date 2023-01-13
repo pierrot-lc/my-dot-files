@@ -51,7 +51,7 @@ return {
 			})
 
 			-- Update diagnostics even in insert mode. Can slow nvim.
-			-- vim.diagnostic.config({ update_in_insert = true })
+			vim.diagnostic.config({ update_in_insert = false })
 		end,
 	},
 	-- Install LSP packages.

@@ -55,7 +55,7 @@ return {
 		keys = {
 			{ "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Find files" },
 			{ "<leader>Tf", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-			{ "<leader>Tg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
+			{ "<leader>Tg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" }, -- Requires `ripgrep` to be installed.
 			{ "<leader>Tb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
 			{ "<leader>Th", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 		},
