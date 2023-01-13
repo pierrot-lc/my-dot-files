@@ -54,10 +54,14 @@ return {
 		"nvim-telescope/telescope.nvim",
 		keys = {
 			{ "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+			{ "<leader>Tf", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+			{ "<leader>Tg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
+			{ "<leader>Tb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+			{ "<leader>Th", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
 		},
 		cmd = "Telescope",
 		dependencies = {
-			"nvim-lua/plenary.nvim",
+			"nvim-lua/plenary.nvim", -- Common lua functions.
 			"nvim-telescope/telescope-fzf-native.nvim",
 		},
 		config = function()
@@ -74,6 +78,7 @@ return {
 			require("telescope").load_extension("fzf")
 		end,
 	},
+	-- Fuzzy finder for `telescope.nvim`.
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",

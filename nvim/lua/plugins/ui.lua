@@ -27,6 +27,7 @@ return {
 			require("which-key").register({
 				["<leader>V"] = { name = "+Neovim" },
 				["<leader>P"] = { name = "+Panels" },
+				["<leader>T"] = { name = "+Telescope" },
 				["<leader>D"] = { name = "+Debugger" },
 				["<leader>L"] = { name = "+LSP" },
 				["<leader>M"] = { name = "+Misc" },
