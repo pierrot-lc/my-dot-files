@@ -102,6 +102,11 @@ return {
 					},
 				},
 			})
+
+			-- Use treesitter expressions for folds.
+			vim.opt.foldmethod = "expr"
+			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+			vim.opt.foldenable = false -- Disable folding by default
 		end,
 	},
 }
