@@ -7,7 +7,6 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-refactor", -- Refactor modules.
 			"nvim-treesitter/nvim-treesitter-textobjects", -- Syntax aware text-objects.
-			-- TODO: text-objects!
 		},
 		event = "BufReadPost",
 		config = function()
@@ -21,8 +20,20 @@ return {
 					"yaml",
 					"bash",
 				},
-				-- Highlight module.
+				-- Highlight based on treesitter.
 				highlight = { enable = true },
+				-- Indentation based on treesitter.
+				ident = { enable = true },
+				-- Incremental selection in the parsed tree.
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "gn",
+						node_incremental = "<tab>",
+						node_decremental = "<s-tab>",
+						scope_incremental = false,
+					},
+				},
 				-- Refactor modules.
 				refactor = {
 					highlight_definitions = {
@@ -43,7 +54,7 @@ return {
 					select = {
 						enable = true,
 						lookahead = true,
-						keys = {
+						keymaps = {
 							["af"] = { query = "@function.outer", desc = "Select outer part of a function region" },
 							["if"] = { query = "@function.inner", desc = "Select inner part of a function region" },
 							["ac"] = { query = "@class.outer", desc = "Select outer part of a class region" },
@@ -54,10 +65,10 @@ return {
 					swap = {
 						enable = true,
 						swap_next = {
-							["<leader>s"] = "@parameter.inner",
+							["<leader>Ls"] = { query = "@parameter.inner", desc = "Swap with the next parameter" },
 						},
 						swap_previous = {
-							["<leader>S"] = "@parameter.inner",
+							["<leader>LS"] = { query = "@parameter.inner", desc = "Swap with the previous parameter" },
 						},
 					},
 					-- Move around text-objects.
@@ -85,8 +96,8 @@ return {
 					lsp_interop = {
 						enable = true,
 						peek_definition_code = {
-							["<leader>df"] = "@function.outer",
-							["<leader>dF"] = "@class.outer",
+							["<leader>Lf"] = { query = "@function.outer", desc = "Show function definition" },
+							["<leader>Lc"] = { query = "@class.outer", desc = "Show class definition" },
 						},
 					},
 				},
