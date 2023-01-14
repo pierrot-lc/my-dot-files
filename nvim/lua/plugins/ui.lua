@@ -2,6 +2,8 @@ return {
 	-- Classic vim theme.
 	{
 		"sainnhe/gruvbox-material",
+		lazy = false,
+		priority = 1000,
 		config = function()
 			vim.opt.termguicolors = true -- Activate terminal colors.
 			vim.opt.background = "dark" -- Global theme.
@@ -9,8 +11,6 @@ return {
 			vim.g.gruvbox_material_better_performance = 1
 			vim.cmd("colorscheme gruvbox-material")
 		end,
-		lazy = false,
-		priority = 1000,
 	},
 	-- Show git signs.
 	{
@@ -23,6 +23,8 @@ return {
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		config = function()
+			vim.opt.timeout = true
+			vim.opt.timeoutlen = 100
 			require("which-key").setup()
 			require("which-key").register({
 				["<leader>V"] = { name = "+Neovim" },

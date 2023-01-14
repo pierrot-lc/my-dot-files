@@ -9,12 +9,13 @@ return {
 		},
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
-			{ "mfussenegger/nvim-dap-python", config = true, lazy = true }, -- DAP for Python.
+			{ "mfussenegger/nvim-dap-python", config = true }, -- DAP for Python.
 		},
 	},
 	-- DAP interface.
 	{
 		"rcarriga/nvim-dap-ui",
+		lazy = true,
 		config = function()
 			local dap = require("dap")
 			local dapui = require("dapui")
@@ -32,6 +33,5 @@ return {
 				dapui.close({})
 			end
 		end,
-		lazy = true,
 	},
 }

@@ -57,10 +57,10 @@ return {
 	-- Install LSP packages.
 	{
 		"williamboman/mason.nvim",
-		config = true,
+		cmd = "Mason",
 		keys = {
 			{ "<leader>Pm", "<cmd>Mason<cr>", "Mason" },
 		},
-		cmd = { "Mason" },
+		config = true,
 	},
 }

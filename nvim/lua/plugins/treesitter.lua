@@ -3,12 +3,12 @@ return {
 	-- Provides some basic functionalities such as better highlighting.
 	{
 		"nvim-treesitter/nvim-treesitter",
+		event = "BufReadPost",
 		build = ":TSUpdate",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-refactor", -- Refactor modules.
 			"nvim-treesitter/nvim-treesitter-textobjects", -- Syntax aware text-objects.
 		},
-		event = "BufReadPost",
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				-- Parsers to install by defaults.
