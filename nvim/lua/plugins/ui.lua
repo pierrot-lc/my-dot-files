@@ -1,4 +1,9 @@
 return {
+	-- Enhance the basic ui.
+	{
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
+	},
 	-- Classic vim theme.
 	{
 		"sainnhe/gruvbox-material",

@@ -1,4 +1,8 @@
 return {
+	-- Search and replace.
+	{
+		"cshuaimin/ssr.nvim",
+	},
 	-- Comment lines and block of code.
 	{
 		"numToStr/Comment.nvim",
