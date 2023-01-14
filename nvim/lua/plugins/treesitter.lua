@@ -37,6 +37,59 @@ return {
 						},
 					},
 				},
+				-- Manipulate text-objects.
+				textobjects = {
+					-- Adding text-objects to select operators.
+					select = {
+						enable = true,
+						lookahead = true,
+						keys = {
+							["af"] = { query = "@function.outer", desc = "Select outer part of a function region" },
+							["if"] = { query = "@function.inner", desc = "Select inner part of a function region" },
+							["ac"] = { query = "@class.outer", desc = "Select outer part of a class region" },
+							["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+						},
+					},
+					-- Swap two text-objects.
+					swap = {
+						enable = true,
+						swap_next = {
+							["<leader>s"] = "@parameter.inner",
+						},
+						swap_previous = {
+							["<leader>S"] = "@parameter.inner",
+						},
+					},
+					-- Move around text-objects.
+					move = {
+						enable = true,
+						set_jumps = true,
+						goto_next_start = {
+							["]m"] = "@function.outer",
+							["]]"] = { query = "@class.outer", desc = "Next class start" },
+						},
+						goto_next_end = {
+							["]M"] = "@function.outer",
+							["]["] = "@class.outer",
+						},
+						goto_previous_start = {
+							["[m"] = "@function.outer",
+							["[["] = "@class.outer",
+						},
+						goto_previous_end = {
+							["[M"] = "@function.outer",
+							["[]"] = "@class.outer",
+						},
+					},
+					-- Peek definition code using built-in LSP.
+					lsp_interop = {
+						enable = true,
+						peek_definition_code = {
+							["<leader>df"] = "@function.outer",
+							["<leader>dF"] = "@class.outer",
+						},
+					},
+				},
 			})
 		end,
 	},
