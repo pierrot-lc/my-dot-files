@@ -109,4 +109,16 @@ return {
 			vim.opt.foldenable = false -- Disable folding by default
 		end,
 	},
+	-- Annotation toolkit.
+	{
+		"danymat/neogen",
+		cmd = "Neogen",
+		keys = {
+			{ "<Leader>La", "<CMD>Neogen<CR>", desc = "Add annotations" },
+		},
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		opts = {
+			snippet_engine = "luasnip",
+		},
+	},
 }

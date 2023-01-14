@@ -24,7 +24,7 @@ return {
 		event = "VeryLazy",
 		config = function()
 			vim.opt.timeout = true
-			vim.opt.timeoutlen = 100
+			vim.opt.timeoutlen = 300
 			require("which-key").setup()
 			require("which-key").register({
 				["<leader>V"] = { name = "+Neovim" },

@@ -43,6 +43,9 @@ return {
 	-- More info when inspecting a character.
 	{
 		"tpope/vim-characterize",
+		keys = {
+			{ "ga", desc = "Show character infos" },
+		},
 	},
 	-- Restore cursor to previous place.
 	{
