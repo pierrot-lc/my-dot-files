@@ -4,6 +4,9 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = "BufReadPost",
+		keys = {
+			{ "gr", desc = "Smart rename" },
+		},
 		build = ":TSUpdate",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-refactor", -- Refactor modules.
