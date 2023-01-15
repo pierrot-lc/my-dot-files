@@ -1,7 +1,36 @@
 return {
-	-- Search and replace.
+	-- Move quickly anywhere in the visible editor area.
 	{
-		"cshuaimin/ssr.nvim",
+		"ggandor/leap.nvim",
+		keys = {
+			{ "<leader>s", "<Plug>(leap-forward-to)", desc = "Search forward" },
+			{ "<leader>S", "<Plug>(leap-backward-to)", desc = "Search backward" },
+		},
+	},
+	-- Better increment/decrement features.
+	{
+		"monaqa/dial.nvim",
+		keys = {
+			{ "<C-a>", desc = "Increment" },
+			{ "<C-x>", desc = "Decrement" },
+		},
+		config = function()
+			local augend = require("dial.augend")
+			require("dial.config").augends:register_group({
+				default = {
+					augend.integer.alias.decimal_int,
+					augend.integer.alias.hex,
+					augend.date.alias["%Y/%m/%d"],
+					augend.constant.alias.alpha,
+					augend.constant.alias.Alpha,
+					augend.constant.alias.bool,
+					augend.constant.new({ elements = { "True", "False" } }),
+				},
+			})
+
+			vim.api.nvim_set_keymap("n", "<C-a>", require("dial.map").inc_normal(), { noremap = true })
+			vim.api.nvim_set_keymap("n", "<C-x>", require("dial.map").dec_normal(), { noremap = true })
+		end,
 	},
 	-- Comment lines and block of code.
 	{
@@ -12,7 +41,7 @@ return {
 	-- Toggle terminals.
 	{
 		"akinsho/toggleterm.nvim",
-		keys = { "<C-g>" },
+		keys = { "<C-g>", desc = "Toggle the terminal" },
 		opts = {
 			open_mapping = "<C-g>",
 			direction = "float",
