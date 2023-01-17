@@ -26,6 +26,9 @@ return {
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = "BufReadPre",
+		keys = {
+			{ "<leader>Pn", "<CMD>NullLsInfo<CR>", desc = "Null-ls" },
+		},
 		config = function()
 			local null_ls = require("null-ls")
 			local sources = {
@@ -61,6 +64,12 @@ return {
 		keys = {
 			{ "<leader>Pm", "<cmd>Mason<cr>", "Mason" },
 		},
+		config = true,
+	},
+	-- Pretty list for showing diagnostics, references, and others.
+	{
+		"folke/trouble.nvim",
+		cmd = "Trouble",
 		config = true,
 	},
 }
