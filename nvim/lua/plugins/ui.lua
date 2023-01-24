@@ -7,6 +7,7 @@ return {
 	-- Classic vim theme.
 	{
 		"sainnhe/gruvbox-material",
+		dependencies = { "bluz71/nvim-linefly" },
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -15,6 +16,13 @@ return {
 			vim.g.gruvbox_material_background = "hard" -- Either "hard", "medium" or "soft".
 			vim.g.gruvbox_material_better_performance = 1
 			vim.cmd("colorscheme gruvbox-material")
+
+			local highlight = vim.api.nvim_set_hl
+			highlight(0, "LineflyNormal", { link = "DiffChange" })
+			highlight(0, "LineflyInsert", { link = "WildMenu" })
+			highlight(0, "LineflyVisual", { link = "IncSearch" })
+			highlight(0, "LineflyCommand", { link = "WildMenu" })
+			highlight(0, "LineflyReplace", { link = "ErrorMsg" })
 		end,
 	},
 	-- Show git signs.
@@ -43,16 +51,19 @@ return {
 	},
 	-- Status line.
 	{
-		"nvim-lualine/lualine.nvim",
+		"bluz71/nvim-linefly",
 		event = "VeryLazy",
 		dependencies = { "nvim-tree/nvim-web-devicons" }, -- More icons.
 		config = function()
-			require("lualine").setup({
-				options = {
-					theme = "gruvbox-material",
-					icons_enabled = true,
-				},
-			})
+			vim.g.linefly_options = {
+				tabline = true,
+				winbar = true,
+				with_file_icon = true,
+				with_git_branch = true,
+				with_git_status = true,
+				with_diagnostic_status = true,
+				with_indent_status = true,
+			}
 			vim.opt.showmode = false -- Remove the default status line.
 		end,
 	},
