@@ -29,8 +29,8 @@ function pva() {
         root="$(pwd)"
     fi
 
-    if [ -f "$root/venv/bin/activate" ]; then
-        . "$root/venv/bin/activate"
+    if [ -f "$root/.venv/bin/activate" ]; then
+        . "$root/.venv/bin/activate"
     else
         if [[ "$root" == '/' ]]; then
             # We've hit root, we can't search further.
@@ -83,7 +83,7 @@ function pvc() {
         root="$(pwd)"
     fi
 
-    env_root="$root/venv"
+    env_root="$root/.venv"
     echo "Creating env at $env_root..."
     if [ -d "$env_root" ]; then
         rm -r "$env_root"
