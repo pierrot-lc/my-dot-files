@@ -84,7 +84,7 @@ return {
 	{
 		"farmergreg/vim-lastplace",
 	},
-	-- Fuzzy finder.
+	-- Find and open files.
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
@@ -119,5 +119,26 @@ return {
 		"nvim-telescope/telescope-fzf-native.nvim",
 		lazy = true,
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	},
+	-- Show images directly in neovim.
+	{
+		"samodostal/image.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"m00qek/baleia.nvim", -- Color support.
+		},
+		opts = {
+			render = {
+				min_padding = 5,
+				show_label = true,
+				use_dither = true,
+				foreground_color = true,
+				background_color = true,
+			},
+			events = {
+				update_on_nvim_resize = true,
+			},
+		},
+		enabled = false,
 	},
 }
