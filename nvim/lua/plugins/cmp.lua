@@ -109,6 +109,12 @@ return {
 			})
 		end,
 	},
+	{
+		"L3MON4D3/LuaSnip",
+		-- Build `jsregexp` to apply some code transformations.
+		-- This build needs the `luajit` package to be installed!
+		build = "make install_jsregexp",
+	},
 	-- Add some snippets to `LuaSnip`.
 	{
 		"rafamadriz/friendly-snippets",
