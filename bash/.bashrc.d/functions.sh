@@ -34,7 +34,7 @@ function pva() {
     else
         if [[ "$root" == '/' ]]; then
             # We've hit root, we can't search further.
-            echo "Could not find Python venv Activate file!" >&2
+            echo "Could not find Python '.venv' Activate file!" >&2
             return 1
         else
             pva "$(dirname "${root}")"
