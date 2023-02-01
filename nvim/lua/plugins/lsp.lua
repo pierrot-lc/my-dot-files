@@ -3,6 +3,10 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
+		keys = {
+			{ "gl", "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", desc = "Show diagnostics" },
+			{ "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
+		},
 		dependencies = {
 			"williamboman/mason.nvim",
 			{ "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Make it easier to use `mason` with `lspconfig`.
@@ -72,11 +76,20 @@ return {
 		cmd = "Trouble",
 		config = true,
 	},
+	-- Show a tree-like view of file symbols.
+	{
+		"simrat39/symbols-outline.nvim",
+		cmd = "SymbolsOutline",
+		keys = {
+			{ "<Leader>Lo", "<Cmd>SymbolsOutline<Cr>", desc = "Show symbols outline" },
+		},
+		config = true,
+	},
+	-- Use LSP functions to show a lot of different things.
 	{
 		"glepnir/lspsaga.nvim",
 		event = "BufRead",
 		keys = {
-			{ "gd", "<Cmd>Lspsaga goto_definition<CR>", desc = "Go to definition" },
 			{ "gs", "<Cmd>Lspsaga hover_doc<CR>", desc = "Hover documentation" },
 			{ "<Leader>Lf", "<Cmd>Lspsaga lsp_finder<CR>", desc = "Find symbol usages" },
 			{ "<Leader>La", "<Cmd>Lspsaga code_action<CR>", desc = "Show code actions" },
@@ -85,6 +98,18 @@ return {
 			"neovim/nvim-lspconfig",
 			"nvim-tree/nvim-web-devicons",
 		},
-		config = true,
+		opts = {
+			outline = {
+				keys = {
+					jump = "<CR>",
+					expand_collapse = "l",
+					quit = "q",
+				},
+			},
+			beacon = { enable = false },
+			ui = {
+				border = "rounded",
+			},
+		},
 	},
 }

@@ -31,5 +31,3 @@ vim.keymap.set("n", "<leader>Ld", function()
 	end
 	show_diagnostic = not show_diagnostic
 end, { desc = "Toggle diagnostics" })
-vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<cr>", { desc = "Show diagnostic" })
-vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Go to definition" })
