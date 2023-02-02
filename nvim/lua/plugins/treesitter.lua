@@ -97,9 +97,9 @@ return {
 					},
 					-- Peek definition code using built-in LSP.
 					lsp_interop = {
-						enable = false,
+						enable = true,
 						peek_definition_code = {
-							["<leader>Lf"] = { query = "@function.outer", desc = "Show function definition" },
+							["gs"] = { query = "@function.outer", desc = "Show function definition" },
 							["<leader>Lc"] = { query = "@class.outer", desc = "Show class definition" },
 						},
 					},

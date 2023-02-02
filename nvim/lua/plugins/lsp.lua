@@ -4,8 +4,9 @@ return {
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
 		keys = {
-			{ "gl", "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", desc = "Show diagnostics" },
-			{ "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
+			{ "gl", "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<Cr>", desc = "Show diagnostics" },
+			{ "gd", "<Cmd>lua vim.lsp.buf.definition()<Cr>", desc = "Go to definition" },
+			{ "<Leader>La", "<Cmd>lua vim.lsp.buf.code_action()<Cr>", desc = "Show code action" },
 		},
 		dependencies = {
 			"williamboman/mason.nvim",
@@ -84,32 +85,5 @@ return {
 			{ "<Leader>Lo", "<Cmd>SymbolsOutline<Cr>", desc = "Show symbols outline" },
 		},
 		config = true,
-	},
-	-- Use LSP functions to show a lot of different things.
-	{
-		"glepnir/lspsaga.nvim",
-		event = "BufRead",
-		keys = {
-			{ "gs", "<Cmd>Lspsaga hover_doc<CR>", desc = "Hover documentation" },
-			{ "<Leader>Lf", "<Cmd>Lspsaga lsp_finder<CR>", desc = "Find symbol usages" },
-			{ "<Leader>La", "<Cmd>Lspsaga code_action<CR>", desc = "Show code actions" },
-		},
-		dependencies = {
-			"neovim/nvim-lspconfig",
-			"nvim-tree/nvim-web-devicons",
-		},
-		opts = {
-			outline = {
-				keys = {
-					jump = "<CR>",
-					expand_collapse = "l",
-					quit = "q",
-				},
-			},
-			beacon = { enable = false },
-			ui = {
-				border = "rounded",
-			},
-		},
 	},
 }
