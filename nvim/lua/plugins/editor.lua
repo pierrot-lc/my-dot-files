@@ -99,6 +99,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- Common lua functions.
 			"nvim-telescope/telescope-fzf-native.nvim",
+			"tsakirist/telescope-lazy.nvim",
 		},
 		config = function()
 			require("telescope").setup({
@@ -127,7 +128,6 @@ return {
 		cmd = "Telescope",
 		keys = { { "<Leader>Tl", "<Cmd>Telescope lazy<Cr>", desc = "Lazy plugins" } },
 		dependencies = {
-			"nvim-telescope/telescope.nvim",
 			"folke/lazy.nvim",
 		},
 	},
