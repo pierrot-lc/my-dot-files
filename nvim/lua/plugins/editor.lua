@@ -111,7 +111,8 @@ return {
 					},
 				},
 			})
-			require("telescope").load_extension("fzf")
+			require("telescope").load_extension("fzf") -- telescope-fzf-native.nvim
+			require("telescope").load_extension("lazy") -- telescope-lazy.nvim
 		end,
 	},
 	-- Fuzzy finder for `telescope.nvim`.
@@ -119,6 +120,16 @@ return {
 		"nvim-telescope/telescope-fzf-native.nvim",
 		lazy = true,
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	},
+	-- Telescope plugins installed by `lazy.nvim`.
+	{
+		"tsakirist/telescope-lazy.nvim",
+		cmd = "Telescope",
+		keys = { { "<Leader>Tl", "<Cmd>Telescope lazy<Cr>", desc = "Lazy plugins" } },
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"folke/lazy.nvim",
+		},
 	},
 	-- Show images directly in neovim.
 	{
