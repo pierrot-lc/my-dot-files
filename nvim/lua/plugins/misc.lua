@@ -28,6 +28,7 @@ return {
 		},
 		enabled = false,
 	},
+	-- Ask confirmation before editing .env files.
 	{
 		"roberte777/keep-it-secret.nvim",
 		opts = {

@@ -15,7 +15,6 @@ return {
 			"nvim-lua/plenary.nvim", -- Common lua functions.
 			"nvim-telescope/telescope-fzf-native.nvim",
 			"tsakirist/telescope-lazy.nvim",
-			"sudormrfbin/cheatsheet.nvim",
 		},
 		config = function()
 			require("telescope").setup({
