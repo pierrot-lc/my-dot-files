@@ -4,17 +4,20 @@ return {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		keys = {
-			{ "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-			{ "<leader>Tf", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-			{ "<leader>Tg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" }, -- Requires `ripgrep` to be installed.
-			{ "<leader>Tb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-			{ "<leader>Th", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
-			{ "<leader>Mp", "<cmd>Telescope planets<cr>", desc = "Use the telescope" },
+			{ "<leader>f", "<Cmd>Telescope find_files<Cr>", desc = "Find files" },
+			{ "<leader>Tf", "<Cmd>Telescope find_files<Cr>", desc = "Find files" },
+			{ "<leader>Tg", "<Cmd>Telescope live_grep<Cr>", desc = "Live grep" }, -- Requires `ripgrep` to be installed.
+			{ "<leader>Tb", "<Cmd>Telescope buffers<Cr>", desc = "Buffers" },
+			{ "<leader>Tt", "<Cmd>Telescope treesitter<Cr>", desc = "Treesitter symbols" }, -- Requires `treesitter`.
+			{ "<leader>Th", "<Cmd>Telescope help_tags<Cr>", desc = "Help tags" },
+			{ "<leader>Tr", "<Cmd>Telescope lsp_references<Cr>", desc = "References of the word under cursor" },
+			{ "<leader>Mp", "<Cmd>Telescope planets<Cr>", desc = "Use the telescope" },
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- Common lua functions.
 			"nvim-telescope/telescope-fzf-native.nvim",
 			"tsakirist/telescope-lazy.nvim",
+			"nvim-treesitter/nvim-treesitter",
 		},
 		config = function()
 			require("telescope").setup({

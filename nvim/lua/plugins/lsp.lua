@@ -71,12 +71,6 @@ return {
 		},
 		config = true,
 	},
-	-- Pretty list for showing diagnostics, references, and others.
-	{
-		"folke/trouble.nvim",
-		cmd = "Trouble",
-		config = true,
-	},
 	-- Show a tree-like view of file symbols.
 	{
 		"simrat39/symbols-outline.nvim",
