@@ -3,6 +3,7 @@ return {
 	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
+		enabled = false,
 	},
 	-- Classic vim theme.
 	{

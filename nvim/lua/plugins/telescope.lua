@@ -49,4 +49,43 @@ return {
 			"folke/lazy.nvim",
 		},
 	},
+	-- Quickly browse some predefined websites.
+	{
+		"lalitmee/browse.nvim",
+		cmd = "Browse",
+		keys = {
+			{ "<Leader>Ts", "<Cmd>Browse<Cr>", desc = "Show all browsing options" },
+			{ "<Leader>To", "<Cmd>BrowseBookmarks<Cr>", desc = "Search among bookmarks" },
+			{ "<Leader>i", "<Cmd>BrowseInputSearch<Cr>", desc = "Search the internet" },
+		},
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		config = function()
+			local browse = require("browse")
+			local bookmarks = {
+				["github"] = {
+					["name"] = "search github from neovim",
+					["code_search"] = "https://github.com/search?q=%s&type=code",
+					["repo_search"] = "https://github.com/search?q=%s&type=repositories",
+					["issues_search"] = "https://github.com/search?q=%s&type=issues",
+					["pulls_search"] = "https://github.com/search?q=%s&type=pullrequests",
+				},
+			}
+
+			browse.setup({
+				provider = "duckduckgo",
+				bookmarks = bookmarks,
+			})
+
+			-- Add some commands.
+			vim.api.nvim_create_user_command("Browse", function()
+				browse.browse()
+			end, { desc = "Show all browsing options" })
+			vim.api.nvim_create_user_command("BrowseBookmarks", function()
+				browse.open_bookmarks()
+			end, { desc = "Browse bookmarks" })
+			vim.api.nvim_create_user_command("BrowseInputSearch", function()
+				browse.input_search()
+			end, { desc = "Browse the general web" })
+		end,
+	},
 }
