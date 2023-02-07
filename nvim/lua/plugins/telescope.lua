@@ -62,12 +62,12 @@ return {
 		config = function()
 			local browse = require("browse")
 			local bookmarks = {
-				["github"] = {
-					["name"] = "search github from neovim",
-					["code_search"] = "https://github.com/search?q=%s&type=code",
-					["repo_search"] = "https://github.com/search?q=%s&type=repositories",
-					["issues_search"] = "https://github.com/search?q=%s&type=issues",
-					["pulls_search"] = "https://github.com/search?q=%s&type=pullrequests",
+				["GitHub"] = {
+					["name"] = "Search GitHub from neovim",
+					["Code search"] = "https://github.com/search?q=%s&type=code",
+					["Repo search"] = "https://github.com/search?q=%s&type=repositories",
+					["Issues search"] = "https://github.com/search?q=%s&type=issues",
+					["Pulls search"] = "https://github.com/search?q=%s&type=pullrequests",
 				},
 			}
 
