@@ -7,6 +7,16 @@ return {
 			{ "<leader>S", "<Plug>(leap-backward-to)", desc = "Search backward" },
 		},
 	},
+	-- Move back and forth to previous elements.
+	{
+		"liangxianzhe/nap.nvim",
+		opts = {
+			next_prefix = "<Cr>",
+			prev_prefix = "<Tab>",
+			next_repeat = "<Cr><Cr>",
+			prev_repeat = "<Tab><Tab>",
+		},
+	},
 	-- Better increment/decrement features.
 	{
 		"monaqa/dial.nvim",
