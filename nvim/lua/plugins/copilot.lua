@@ -4,6 +4,9 @@ return {
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
 		event = "InsertEnter",
+		keys = {
+			{ "<leader>c", "<Cmd>Copilot suggestion toggle_auto_trigger<Cr>", desc = "Toggle GitHub Copilot" },
+		},
 		opts = {
 			suggestion = {
 				enabled = true,
