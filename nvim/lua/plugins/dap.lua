@@ -3,14 +3,23 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		keys = {
-			{ "<leader>Db", "<cmd>DapToggleBreakpoint<cr>", "Toggle breakpoint" },
-			{ "<leader>Dc", "<cmd>DapContinue<cr>", "Run/Continue until next breakpoint" },
-			{ "<leader>Do", "<cmd>DapToggleRepl<cr>", "Toggle DAP interface" },
+			{ "<leader>Db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint" },
+			{ "<leader>Dc", "<cmd>DapContinue<cr>", desc = "Run/Continue until next breakpoint" },
+			{ "<leader>Do", "<cmd>DapToggleRepl<cr>", desc = "Toggle DAP interface" },
 		},
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
-			{ "mfussenegger/nvim-dap-python", config = true }, -- DAP for Python.
+			"mfussenegger/nvim-dap-python",
 		},
+		config = function()
+			require("dap")
+
+			-- Override default highlight groups (for catppuccin).
+			local sign = vim.fn.sign_define
+			sign("DapBreakpoint", { text = "", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+			sign("DapBreakpointCondition", { text = "", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
+			sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
+		end,
 	},
 	-- DAP interface.
 	{
@@ -32,6 +41,13 @@ return {
 			dap.listeners.before.event_exited["dapui_config"] = function()
 				dapui.close({})
 			end
+		end,
+	},
+	-- DAP for Python.
+	{
+		"mfussenegger/nvim-dap-python",
+		config = function()
+			require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
 		end,
 	},
 }

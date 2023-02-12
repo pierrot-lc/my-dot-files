@@ -22,6 +22,7 @@ return {
 					"json",
 					"yaml",
 					"bash",
+					"help",
 				},
 				-- Highlight based on treesitter.
 				highlight = { enable = true },
