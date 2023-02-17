@@ -6,8 +6,15 @@ alias ll="ls -lA"
 alias l=ls
 alias l.="ls -d .*"
 
-# Quick clear
-alias c=clear
+# Git
+alias g="git"
+alias ga="git add"
+alias gc="git commit"
+alias gs="git status"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gds="git diff --staged"
+
 
 # Ask confirmation before deletion
 alias cp="cp -i"
@@ -50,3 +57,5 @@ alias forecast="curl wttr.in"  # Show meteo
 alias wn="watch -n 0.5 nvidia-smi"  # Monitor nvidia GPUs
 alias hsi="history | grep -i"  # Search in history
 alias env="env | sort"
+alias ip="curl -s https://api.ipify.org"
+alias ip6="curl -s https://api6.ipify.org"
