@@ -50,7 +50,7 @@ alias bashrc="vim ~/.bashrc && source ~/.bashrc"
 alias grep=riprep  # cargo install ripgrep
 alias vim=nvim  # nvim is better
 alias ls=exa  # cargo install exa
-alias du=dust  # cargo install du-dust
+# alias du=dust  # cargo install du-dust
 alias cat=bat  # cargo install bat
 alias top=htop
 
