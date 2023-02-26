@@ -84,4 +84,9 @@ return {
 	{
 		"farmergreg/vim-lastplace",
 	},
+	-- Better json and yaml support.
+	{
+		"gennaro-tedesco/nvim-jqx",
+		ft = { "json", "yaml" },
+	},
 }
