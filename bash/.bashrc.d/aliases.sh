@@ -54,6 +54,8 @@ alias du=dust  # cargo install du-dust
 alias cat=bat  # cargo install bat
 alias top=htop
 
+alias exa="exa --icons --git --color-scale --time-style=long-iso --group-directories-first"
+
 # Miscs
 alias forecast="curl wttr.in"  # Show meteo
 alias wn="watch -n 0.5 nvidia-smi"  # Monitor nvidia GPUs
