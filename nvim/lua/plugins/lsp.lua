@@ -4,15 +4,15 @@ return {
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
 		keys = {
-			{ "gl", "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<Cr>", desc = "Show diagnostics" },
-			{ "gd", "<Cmd>lua vim.lsp.buf.definition()<Cr>", desc = "Go to definition" },
-			{ "<Leader>La", "<Cmd>lua vim.lsp.buf.code_action()<Cr>", desc = "Show code action" },
+			{ "gl",         "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<Cr>", desc = "Show diagnostics" },
+			{ "gd",         "<Cmd>lua vim.lsp.buf.definition()<Cr>",                      desc = "Go to definition" },
+			{ "<Leader>La", "<Cmd>lua vim.lsp.buf.code_action()<Cr>",                     desc = "Show code action" },
 		},
 		dependencies = {
 			"williamboman/mason.nvim",
 			{ "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Make it easier to use `mason` with `lspconfig`.
-			{ "folke/neodev.nvim", config = true }, -- Add neovim library support for `sumneko_lua`.
-			"ray-x/lsp_signature.nvim", -- Show function signatures.
+			{ "folke/neodev.nvim",                 config = true },                         -- Add neovim library support for `sumneko_lua`.
+			"ray-x/lsp_signature.nvim",                                                     -- Show function signatures.
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
@@ -25,6 +25,19 @@ return {
 
 			-- Bind the `lsp_signature` to those LSP servers.
 			require("lsp_signature").setup({ bind = true, handler_opts = { border = "rounded" } })
+
+			-- Toggle diagnostics.
+			local show_diagnostic = true
+			vim.keymap.set("n", "<leader>Ld", function()
+				if not show_diagnostic then
+					vim.diagnostic.enable()
+					print("Diagnostics showed.")
+				else
+					vim.diagnostic.disable()
+					print("Diagnostics hidden.")
+				end
+				show_diagnostic = not show_diagnostic
+			end, { desc = "Toggle diagnostics" })
 		end,
 	},
 	-- Hook code actions, diagnostics, formatting, completion...

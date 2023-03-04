@@ -18,16 +18,3 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Quick move to right buffer" })
 vim.keymap.set("n", "<leader>Vr", "<cmd>source $MYVIMRC<cr>", { desc = "Reload the vim configuration" })
 vim.keymap.set("n", "<leader>Vc", "<cmd>edit $MYVIMRC<cr>", { desc = "Edit the vim configuration" })
 vim.keymap.set("n", "<leader>Pl", "<cmd>Lazy<cr>", { desc = "Lazy" })
-
--- LSP
-local show_diagnostic = true
-vim.keymap.set("n", "<leader>Ld", function()
-	if not show_diagnostic then
-		vim.diagnostic.show()
-		print("Diagnostics showed.")
-	else
-		vim.diagnostic.hide()
-		print("Diagnostics hidden.")
-	end
-	show_diagnostic = not show_diagnostic
-end, { desc = "Toggle diagnostics" })
