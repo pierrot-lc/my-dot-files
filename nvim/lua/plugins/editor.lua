@@ -3,7 +3,7 @@ return {
 	{
 		"ggandor/leap.nvim",
 		keys = {
-			{ "<leader>s", "<Plug>(leap-forward-to)",  desc = "Search forward" },
+			{ "<leader>s", "<Plug>(leap-forward-to)", desc = "Search forward" },
 			{ "<leader>S", "<Plug>(leap-backward-to)", desc = "Search backward" },
 		},
 	},

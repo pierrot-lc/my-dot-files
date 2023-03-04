@@ -4,15 +4,15 @@ return {
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
 		keys = {
-			{ "gl",         "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<Cr>", desc = "Show diagnostics" },
-			{ "gd",         "<Cmd>lua vim.lsp.buf.definition()<Cr>",                      desc = "Go to definition" },
-			{ "<Leader>La", "<Cmd>lua vim.lsp.buf.code_action()<Cr>",                     desc = "Show code action" },
+			{ "gl", "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<Cr>", desc = "Show diagnostics" },
+			{ "gd", "<Cmd>lua vim.lsp.buf.definition()<Cr>", desc = "Go to definition" },
+			{ "<Leader>La", "<Cmd>lua vim.lsp.buf.code_action()<Cr>", desc = "Show code action" },
 		},
 		dependencies = {
 			"williamboman/mason.nvim",
 			{ "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Make it easier to use `mason` with `lspconfig`.
-			{ "folke/neodev.nvim",                 config = true },                         -- Add neovim library support for `sumneko_lua`.
-			"ray-x/lsp_signature.nvim",                                                     -- Show function signatures.
+			{ "folke/neodev.nvim", config = true }, -- Add neovim library support for `sumneko_lua`.
+			"ray-x/lsp_signature.nvim", -- Show function signatures.
 		},
 		config = function()
 			local lspconfig = require("lspconfig")

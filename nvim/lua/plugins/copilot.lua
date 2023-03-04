@@ -22,7 +22,7 @@ return {
 			},
 			panel = {
 				enabled = false,
-			}
-		}
+			},
+		},
 	},
 }
