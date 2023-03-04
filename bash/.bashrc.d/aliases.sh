@@ -47,14 +47,25 @@ alias kk=ll
 alias bashrc="vim ~/.bashrc && source ~/.bashrc"
 
 # Replace old commands with new ones
-alias grep=riprep  # cargo install ripgrep
 alias vim=nvim  # nvim is better
-alias ls=exa  # cargo install exa
+if command -v htop > /dev/null 2>&1; then
+    alias top=htop
+fi
+if command -v exa > /dev/null 2>&1; then
+    alias ls=exa
+    alias exa="exa --icons --git --color-scale --time-style=long-iso --group-directories-first"
+    # cargo install exa
+fi
+if command -v bat > /dev/null 2>&1; then
+    alias cat=bat
+    # cargo install bat
+fi
+if command -v rg > /dev/null 2>&1; then
+    alias grep=rg
+    # cargo install ripgrep
+fi
 # alias du=dust  # cargo install du-dust
-alias cat=bat  # cargo install bat
-alias top=htop
 
-alias exa="exa --icons --git --color-scale --time-style=long-iso --group-directories-first"
 
 # Miscs
 alias forecast="curl wttr.in"  # Show meteo
