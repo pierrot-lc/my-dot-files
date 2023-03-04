@@ -36,13 +36,15 @@ return {
 		},
 		dependencies = {
 			"williamboman/mason.nvim",
-			{ "jay-babu/mason-null-ls.nvim", opts = { automatic_installation = true } }, -- Make it easier to use `mason` with `null-ls`.
 		},
 		config = function()
 			local null_ls = require("null-ls")
 			local sources = {
+				-- General.
 				null_ls.builtins.diagnostics.codespell,
 				null_ls.builtins.code_actions.proselint,
+				null_ls.builtins.diagnostics.proselint,
+				-- Python.
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.diagnostics.flake8.with({
 					extra_args = { "--max-line-length=88", "--extend-ignore=E203" }, -- Black configuration.
@@ -50,12 +52,19 @@ return {
 				null_ls.builtins.formatting.isort.with({
 					extra_args = { "--profile=black" }, -- Black configuration.
 				}),
+				-- Lua.
 				null_ls.builtins.formatting.stylua,
+				-- Shell.
 				null_ls.builtins.code_actions.shellcheck,
 				null_ls.builtins.diagnostics.shellcheck,
 				null_ls.builtins.formatting.beautysh,
+				-- Markdown.
 				null_ls.builtins.diagnostics.markdownlint,
 				null_ls.builtins.formatting.markdownlint,
+				-- JSON & YAML.
+				null_ls.builtins.formatting.jq,
+				null_ls.builtins.formatting.yamlfmt,
+				null_ls.builtins.diagnostics.yamllint,
 			}
 
 			null_ls.setup({
@@ -74,6 +83,15 @@ return {
 			{ "<leader>Pm", "<cmd>Mason<cr>", desc = "Mason" },
 		},
 		config = true,
+	},
+	-- Automatically install Null-ls sources using Mason.
+	{
+		"jay-babu/mason-null-ls.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"jose-elias-alvarez/null-ls.nvim",
+		},
+		opts = { automatic_installation = true },
 	},
 	-- Show a tree-like view of file symbols.
 	{

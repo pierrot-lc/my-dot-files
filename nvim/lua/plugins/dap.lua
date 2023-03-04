@@ -10,7 +10,6 @@ return {
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
 			"mfussenegger/nvim-dap-python",
-			"jay-babu/mason-nvim-dap.nvim",
 		},
 		config = function()
 			require("dap")
@@ -56,6 +55,7 @@ return {
 		"jay-babu/mason-nvim-dap.nvim",
 		dependencies = {
 			"williamboman/mason.nvim",
+			"mfussenegger/nvim-dap",
 		},
 		opts = {
 			automatic_installation = true,
