@@ -15,6 +15,6 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Quick move to left buffer" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Quick move to right buffer" })
 
 -- Neovim configuration
-vim.keymap.set("n", "<leader>Vr", "<cmd>source $MYVIMRC<cr>", { desc = "Reload the vim configuration" })
-vim.keymap.set("n", "<leader>Vc", "<cmd>edit $MYVIMRC<cr>", { desc = "Edit the vim configuration" })
-vim.keymap.set("n", "<leader>Pl", "<cmd>Lazy<cr>", { desc = "Lazy" })
+vim.keymap.set("n", "<leader>vr", "<cmd>source $MYVIMRC<cr>", { desc = "Reload the vim configuration" })
+vim.keymap.set("n", "<leader>vc", "<cmd>edit $MYVIMRC<cr>", { desc = "Edit the vim configuration" })
+vim.keymap.set("n", "<leader>pl", "<cmd>Lazy<cr>", { desc = "Lazy" })

@@ -10,13 +10,13 @@ return {
 		opts = {
 			suggestion = {
 				enabled = true,
-				auto_trigger = true,
+				auto_trigger = false, -- Start suggesting as soon as you start typing.
 				keymap = {
-					accept = "<M-l>",
-					accept_word = false,
+					accept = "<M-h>",
+					accept_word = "<M-l>",
 					accept_line = false,
-					next = "<M-)>",
-					prev = "<M-(>",
+					next = "<M-k>",
+					prev = "<M-j>",
 					dismiss = false,
 				},
 			},

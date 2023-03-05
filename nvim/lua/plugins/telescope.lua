@@ -5,13 +5,18 @@ return {
 		cmd = "Telescope",
 		keys = {
 			{ "<leader>f", "<Cmd>Telescope find_files<Cr>", desc = "Find files" },
-			{ "<leader>Tf", "<Cmd>Telescope find_files<Cr>", desc = "Find files" },
-			{ "<leader>Tg", "<Cmd>Telescope live_grep<Cr>", desc = "Live grep" }, -- Requires `ripgrep` to be installed.
-			{ "<leader>Tb", "<Cmd>Telescope buffers<Cr>", desc = "Buffers" },
-			{ "<leader>Tt", "<Cmd>Telescope treesitter<Cr>", desc = "Treesitter symbols" }, -- Requires `treesitter`.
-			{ "<leader>Th", "<Cmd>Telescope help_tags<Cr>", desc = "Help tags" },
-			{ "<leader>Tr", "<Cmd>Telescope lsp_references<Cr>", desc = "References of the word under cursor" },
-			{ "<leader>Mp", "<Cmd>Telescope planets<Cr>", desc = "Use the telescope" },
+			{ "<leader>tf", "<Cmd>Telescope find_files<Cr>", desc = "Find files" },
+			{ "<leader>tg", "<Cmd>Telescope live_grep<Cr>", desc = "Live grep" }, -- Requires `ripgrep` to be installed.
+			{ "<leader>tb", "<Cmd>Telescope buffers<Cr>", desc = "Buffers" },
+			{ "<leader>tt", "<Cmd>Telescope treesitter<Cr>", desc = "Treesitter symbols" }, -- Requires `treesitter`.
+			{ "<leader>th", "<Cmd>Telescope help_tags<Cr>", desc = "Help tags" },
+			{ "<leader>tr", "<Cmd>Telescope lsp_references<Cr>", desc = "References of the word under cursor" },
+			{ "<leader>td", "<Cmd>Telescope lsp_definitions<Cr>", desc = "Definitions of the word under cursor" },
+			{ "<leader>ts", "<Cmd>Telescope lsp_document_symbols<Cr>", desc = "Document symbols" },
+			{ "<leader>tc", "<Cmd>Telescope commands<Cr>", desc = "Commands" },
+			{ "<leader>tm", "<Cmd>Telescope marks<Cr>", desc = "Marks" },
+			{ "<Leader>tp", "<Cmd>Telescope resume<Cr>", desc = "Resume last search" },
+			{ "<leader>mp", "<Cmd>Telescope planets<Cr>", desc = "Use the telescope" },
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- Common lua functions.
@@ -44,7 +49,7 @@ return {
 	{
 		"tsakirist/telescope-lazy.nvim",
 		cmd = "Telescope",
-		keys = { { "<Leader>Tl", "<Cmd>Telescope lazy<Cr>", desc = "Lazy plugins" } },
+		keys = { { "<Leader>tl", "<Cmd>Telescope lazy<Cr>", desc = "Lazy plugins" } },
 		dependencies = {
 			"folke/lazy.nvim",
 		},
@@ -54,8 +59,8 @@ return {
 		"lalitmee/browse.nvim",
 		cmd = "Browse",
 		keys = {
-			{ "<Leader>Ts", "<Cmd>Browse<Cr>", desc = "Show all browsing options" },
-			{ "<Leader>To", "<Cmd>BrowseBookmarks<Cr>", desc = "Search among bookmarks" },
+			{ "<Leader>ts", "<Cmd>Browse<Cr>", desc = "Show all browsing options" },
+			{ "<Leader>to", "<Cmd>BrowseBookmarks<Cr>", desc = "Search among bookmarks" },
 			{ "<Leader>i", "<Cmd>BrowseInputSearch<Cr>", desc = "Search the internet" },
 		},
 		dependencies = { "nvim-telescope/telescope.nvim" },

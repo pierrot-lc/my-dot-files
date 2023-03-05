@@ -13,8 +13,8 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.opt.termguicolors = true -- Activate terminal colors.
-			vim.opt.background = "dark" -- Global theme.
+			vim.opt.termguicolors = true            -- Activate terminal colors.
+			vim.opt.background = "dark"             -- Global theme.
 			vim.g.gruvbox_material_background = "hard" -- Either "hard", "medium" or "soft".
 			vim.g.gruvbox_material_better_performance = 1
 			vim.cmd("colorscheme gruvbox-material")
@@ -110,12 +110,12 @@ return {
 			vim.opt.timeoutlen = 300
 			require("which-key").setup()
 			require("which-key").register({
-				["<leader>V"] = { name = "+Neovim" },
-				["<leader>P"] = { name = "+Panels" },
-				["<leader>T"] = { name = "+Telescope" },
-				["<leader>D"] = { name = "+Debugger" },
-				["<leader>L"] = { name = "+LSP" },
-				["<leader>M"] = { name = "+Misc" },
+						["<leader>v"] = { name = "+Neovim" },
+						["<leader>p"] = { name = "+Panels" },
+						["<leader>t"] = { name = "+Telescope" },
+						["<leader>d"] = { name = "+Debugger" },
+						["<leader>l"] = { name = "+LSP" },
+						["<leader>m"] = { name = "+Misc" },
 			})
 		end,
 	},

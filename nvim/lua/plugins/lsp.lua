@@ -6,7 +6,13 @@ return {
 		keys = {
 			{ "gl", "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<Cr>", desc = "Show diagnostics" },
 			{ "gd", "<Cmd>lua vim.lsp.buf.definition()<Cr>", desc = "Go to definition" },
-			{ "<Leader>La", "<Cmd>lua vim.lsp.buf.code_action()<Cr>", desc = "Show code action" },
+			{
+				"gs",
+				"<Cmd>lua vim.lsp.buf.signature_help()<Cr>",
+				desc = "Show signature help",
+			},
+			{ "gr", "<Cmd>lua vim.lsp.buf.rename()<Cr>", desc = "Rename symbol" },
+			{ "<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<Cr>", desc = "Show code action" },
 		},
 		dependencies = {
 			"williamboman/mason.nvim",
@@ -28,7 +34,7 @@ return {
 
 			-- Toggle diagnostics.
 			local show_diagnostic = true
-			vim.keymap.set("n", "<leader>Ld", function()
+			vim.keymap.set("n", "<leader>ld", function()
 				if not show_diagnostic then
 					vim.diagnostic.enable()
 					print("Diagnostics showed.")
@@ -45,7 +51,7 @@ return {
 		"jose-elias-alvarez/null-ls.nvim",
 		event = "BufReadPre",
 		keys = {
-			{ "<leader>Pn", "<CMD>NullLsInfo<CR>", desc = "Null-ls" },
+			{ "<leader>pn", "<CMD>NullLsInfo<CR>", desc = "Null-ls" },
 		},
 		dependencies = {
 			"williamboman/mason.nvim",
@@ -55,8 +61,8 @@ return {
 			local sources = {
 				-- General.
 				null_ls.builtins.diagnostics.codespell,
-				null_ls.builtins.code_actions.proselint,
 				null_ls.builtins.diagnostics.proselint,
+				null_ls.builtins.code_actions.proselint,
 				-- Python.
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.diagnostics.flake8.with({
@@ -93,7 +99,7 @@ return {
 		"williamboman/mason.nvim",
 		cmd = "Mason",
 		keys = {
-			{ "<leader>Pm", "<cmd>Mason<cr>", desc = "Mason" },
+			{ "<leader>pm", "<cmd>Mason<cr>", desc = "Mason" },
 		},
 		config = true,
 	},
@@ -111,7 +117,7 @@ return {
 		"simrat39/symbols-outline.nvim",
 		cmd = "SymbolsOutline",
 		keys = {
-			{ "<Leader>Lo", "<Cmd>SymbolsOutline<Cr>", desc = "Show symbols outline" },
+			{ "<Leader>lo", "<Cmd>SymbolsOutline<Cr>", desc = "Show symbols outline" },
 		},
 		config = true,
 	},
@@ -121,6 +127,14 @@ return {
 		dependencies = "neovim/nvim-lspconfig",
 		opts = {
 			window = { blend = 0 },
+		},
+	},
+	-- Lightbulb to indicate a code action.
+	{
+		"kosayoda/nvim-lightbulb",
+		lazy = true,
+		opts = {
+			autocmd = { enabled = true },
 		},
 	},
 }

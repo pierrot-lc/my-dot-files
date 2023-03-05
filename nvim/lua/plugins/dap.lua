@@ -3,9 +3,9 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		keys = {
-			{ "<leader>Db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint" },
-			{ "<leader>Dc", "<cmd>DapContinue<cr>", desc = "Run/Continue until next breakpoint" },
-			{ "<leader>Do", "<cmd>DapToggleRepl<cr>", desc = "Toggle DAP interface" },
+			{ "<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint" },
+			{ "<leader>dc", "<cmd>DapContinue<cr>",         desc = "Run/Continue until next breakpoint" },
+			{ "<leader>do", "<cmd>DapToggleRepl<cr>",       desc = "Toggle DAP interface" },
 		},
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
