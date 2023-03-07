@@ -64,6 +64,10 @@ if command -v rg > /dev/null 2>&1; then
     alias grep=rg
     # cargo install ripgrep
 fi
+if command -v btm > /dev/null 2>&1; then
+    alias htop=btm
+    # cargo install bottom
+fi
 # alias du=dust  # cargo install du-dust
 
 
