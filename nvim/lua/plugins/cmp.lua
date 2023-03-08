@@ -53,6 +53,7 @@ return {
 							luasnip = "⋗",
 							buffer = "Ω",
 							path = "",
+							neorg = "",
 						}
 
 						item.menu = menu_icon[entry.source.name]
