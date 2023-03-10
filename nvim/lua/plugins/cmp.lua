@@ -10,6 +10,7 @@ return {
 			"hrsh7th/cmp-buffer", -- Buffer source for completion.
 			"L3MON4D3/LuaSnip", -- Propose snippets.
 			"saadparwaiz1/cmp_luasnip", -- Use `LuaSnip` snippets source for completion.
+			"nvim-neorg/neorg", -- `Neorg` support.
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
