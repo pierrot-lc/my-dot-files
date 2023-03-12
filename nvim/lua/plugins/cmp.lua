@@ -5,12 +5,14 @@ return {
 		event = "InsertEnter",
 		dependencies = {
 			"neovim/nvim-lspconfig",
-			"hrsh7th/cmp-nvim-lsp", -- Handle `nvim-cmp` interactions with neovim's LSP.
-			"hrsh7th/cmp-path", -- Filesystem paths source for completion.
-			"hrsh7th/cmp-buffer", -- Buffer source for completion.
-			"L3MON4D3/LuaSnip", -- Propose snippets.
+			"hrsh7th/cmp-nvim-lsp",  -- Handle `nvim-cmp` interactions with neovim's LSP.
+			"hrsh7th/cmp-path",      -- Filesystem paths source for completion.
+			"hrsh7th/cmp-buffer",    -- Buffer source for completion.
+			"hrsh7th/cmp-calc",      -- Replace simple computations with their results.
+			"L3MON4D3/LuaSnip",      -- Propose snippets.
 			"saadparwaiz1/cmp_luasnip", -- Use `LuaSnip` snippets source for completion.
-			"nvim-neorg/neorg", -- `Neorg` support.
+			"lukas-reineke/cmp-rg",  -- Use results from `ripgrep` as a source.
+			"zbirenbaum/copilot-cmp", -- Copilot source.
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
@@ -38,8 +40,11 @@ return {
 					{ name = "path" },
 					{ name = "nvim_lsp" },
 					{ name = "buffer" },
+					{ name = "calc" },
 					{ name = "luasnip" },
-					{ name = "neorg" },
+					{ name = "rg" },
+					{ name = "neorg" }, -- Optional, used in Neorg files.
+					{ name = "copilot" }, -- Optional, used if Copilot is loaded.
 				},
 				window = {
 					completion = cmp.config.window.bordered(),
@@ -52,8 +57,11 @@ return {
 							nvim_lsp = "λ",
 							luasnip = "⋗",
 							buffer = "Ω",
+							calc = "",
 							path = "",
+							rg = "",
 							neorg = "",
+							copilot = "",
 						}
 
 						item.menu = menu_icon[entry.source.name]
@@ -61,29 +69,29 @@ return {
 					end,
 				},
 				mapping = {
-					["<Up>"] = cmp.mapping.select_prev_item(select_opts),
-					["<Down>"] = cmp.mapping.select_next_item(select_opts),
-					["<C-p>"] = cmp.mapping.select_prev_item(select_opts),
-					["<C-n>"] = cmp.mapping.select_next_item(select_opts),
-					["<C-u>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = false }),
-					["<C-d>"] = cmp.mapping(function(fallback)
+							["<Up>"] = cmp.mapping.select_prev_item(select_opts),
+							["<Down>"] = cmp.mapping.select_next_item(select_opts),
+							["<C-p>"] = cmp.mapping.select_prev_item(select_opts),
+							["<C-n>"] = cmp.mapping.select_next_item(select_opts),
+							["<C-u>"] = cmp.mapping.scroll_docs(-4),
+							["<C-f>"] = cmp.mapping.scroll_docs(4),
+							["<C-e>"] = cmp.mapping.abort(),
+							["<CR>"] = cmp.mapping.confirm({ select = false }),
+							["<C-d>"] = cmp.mapping(function(fallback)
 						if luasnip.jumpable(1) then
 							luasnip.jump(1)
 						else
 							fallback()
 						end
 					end, { "i", "s" }),
-					["<C-b>"] = cmp.mapping(function(fallback)
+							["<C-b>"] = cmp.mapping(function(fallback)
 						if luasnip.jumpable(-1) then
 							luasnip.jump(-1)
 						else
 							fallback()
 						end
 					end, { "i", "s" }),
-					["<Tab>"] = cmp.mapping(function(fallback)
+							["<Tab>"] = cmp.mapping(function(fallback)
 						local col = vim.fn.col(".") - 1
 
 						if cmp.visible() then
@@ -94,7 +102,7 @@ return {
 							cmp.complete()
 						end
 					end, { "i", "s" }),
-					["<S-Tab>"] = cmp.mapping(function(fallback)
+							["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item(select_opts)
 						else
