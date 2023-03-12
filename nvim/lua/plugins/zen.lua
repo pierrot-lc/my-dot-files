@@ -39,8 +39,8 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		opts = {
-			context = 30,
-			treesitter = true,
+			context = 35,
+			treesitter = false,
 			expand = {
 				"function",
 				"method",
