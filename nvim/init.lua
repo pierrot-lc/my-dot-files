@@ -32,12 +32,6 @@ vim.opt.listchars:append({
 })
 vim.g.mapleader = " " -- Redefine leader key.
 
-vim.filetype.add({
-	extension = {
-		neorg = "norg",
-	},
-})
-
 -- Install the Lazy.nvim plugin manager.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
