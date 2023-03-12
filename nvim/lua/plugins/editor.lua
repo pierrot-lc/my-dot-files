@@ -3,8 +3,11 @@ return {
 	{
 		"ggandor/leap.nvim",
 		keys = {
-			{ "<leader>s", "<Plug>(leap-forward-to)", desc = "Search forward" },
-			{ "<leader>S", "<Plug>(leap-backward-to)", desc = "Search backward" },
+			{
+				"<Leader>s",
+				"<Cmd>lua require('leap').leap({ target_windows = { vim.fn.win_getid() } })<Cr>",
+				desc = "Leap",
+			},
 		},
 	},
 	-- Better increment/decrement features.

@@ -25,4 +25,10 @@ return {
 			},
 		},
 	},
+	-- Add Copilot as a source to `nvim-cmp`.
+	{
+		"zbirenbaum/copilot-cmp",
+		dependencies = "zbirenbaum/copilot.lua",
+		config = true,
+	},
 }

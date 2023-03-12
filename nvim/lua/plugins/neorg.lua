@@ -7,17 +7,17 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
-			"hrsh7th/nvim-cmp",
 			"folke/zen-mode.nvim",
+			"hrsh7th/nvim-cmp",
 		},
 		opts = {
 			load = {
 				-- Loads default behaviour.
-				["core.defaults"] = {},
+						["core.defaults"] = {},
 				-- Adds pretty icons to your documents.
-				["core.norg.concealer"] = {},
+						["core.norg.concealer"] = {},
 				-- Manages Neorg workspaces.
-				["core.norg.dirman"] = {
+						["core.norg.dirman"] = {
 					config = {
 						workspaces = {
 							notes = "~/Notes",
@@ -25,14 +25,14 @@ return {
 					},
 				},
 				-- Add completion support.
-				["core.norg.completion"] = {
+						["core.norg.completion"] = {
 					config = {
 						engine = "nvim-cmp",
 					},
 				},
 				-- Make any Norg file presentable.
 				-- Use the `:Neorg presenter start` command.
-				["core.presenter"] = {
+						["core.presenter"] = {
 					config = {
 						zen_mode = "zen-mode",
 					},

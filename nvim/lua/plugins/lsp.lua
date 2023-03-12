@@ -30,19 +30,38 @@ return {
 			lspconfig["rust_analyzer"].setup({})
 
 			-- Bind the `lsp_signature` to those LSP servers.
-			require("lsp_signature").setup({ bind = true, handler_opts = { border = "rounded" } })
+			local signature_opts = {
+				bind = true,
+				floating_window = true,
+				handler_opts = { border = "rounded" },
+				hint_enable = false,
+				wrap = false,
+			}
+			require("lsp_signature").setup(signature_opts)
+
+			--Toggle signatures.
+			local show_signature = signature_opts.floating_window
+			vim.keymap.set("n", "<leader>lp", function()
+				show_signature = not show_signature
+				require("lsp_signature").toggle_float_win()
+				if show_signature then
+					print("Signature activated.")
+				else
+					print("Signature hidden.")
+				end
+			end, { desc = "Toggle signature hints" })
 
 			-- Toggle diagnostics.
 			local show_diagnostic = true
 			vim.keymap.set("n", "<leader>ld", function()
-				if not show_diagnostic then
+				show_diagnostic = not show_diagnostic
+				if show_diagnostic then
 					vim.diagnostic.enable()
-					print("Diagnostics showed.")
+					print("Diagnostics activated.")
 				else
 					vim.diagnostic.disable()
 					print("Diagnostics hidden.")
 				end
-				show_diagnostic = not show_diagnostic
 			end, { desc = "Toggle diagnostics" })
 		end,
 	},
