@@ -10,8 +10,6 @@ return {
 			{ "<leader>tb", "<Cmd>Telescope buffers<Cr>", desc = "Buffers" },
 			{ "<leader>tt", "<Cmd>Telescope treesitter<Cr>", desc = "Treesitter symbols" }, -- Requires `treesitter`.
 			{ "<leader>th", "<Cmd>Telescope help_tags<Cr>", desc = "Help tags" },
-			{ "<leader>tr", "<Cmd>Telescope lsp_references<Cr>", desc = "References of the word under cursor" },
-			{ "<leader>td", "<Cmd>Telescope lsp_definitions<Cr>", desc = "Definitions of the word under cursor" },
 			{ "<leader>ts", "<Cmd>Telescope lsp_document_symbols<Cr>", desc = "Document symbols" },
 			{ "<leader>tc", "<Cmd>Telescope commands<Cr>", desc = "Commands" },
 			{ "<leader>tm", "<Cmd>Telescope marks<Cr>", desc = "Marks" },
@@ -23,6 +21,7 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			"tsakirist/telescope-lazy.nvim",
 			"nvim-treesitter/nvim-treesitter",
+			"dhruvmanila/browser-bookmarks.nvim",
 		},
 		config = function()
 			require("telescope").setup({
@@ -33,10 +32,16 @@ return {
 						ovveride_file_sorter = true,
 						case_mode = "smart_case",
 					},
+					bookmarks = {
+						selected_browser = "firefox",
+						profile_name = "default-release",
+						url_open_command = "xdg-open",
+					},
 				},
 			})
 			require("telescope").load_extension("fzf") -- telescope-fzf-native.nvim
 			require("telescope").load_extension("lazy") -- telescope-lazy.nvim
+			require("telescope").load_extension("bookmarks") -- browser-bookmarks.nvim
 		end,
 	},
 	-- Fuzzy finder for `telescope.nvim`.
@@ -92,5 +97,19 @@ return {
 				browse.input_search()
 			end, { desc = "Browse the general web" })
 		end,
+	},
+	-- Browse my browser bookmarks.
+	{
+		"dhruvmanila/browser-bookmarks.nvim",
+		cmd = "Telescope",
+		keys = { { "<Leader>td", "<Cmd>Telescope bookmarks<Cr>", desc = "Browser bookmarks" } },
+		dependencies = {
+			"kkharji/sqlite.lua", -- For firefox support, install `sqlite` and `sqlite-dev`.
+		},
+		opts = {
+			selected_browser = "firefox",
+			profile_name = "default-release",
+			url_open_command = "xdg-open",
+		},
 	},
 }

@@ -7,7 +7,6 @@ return {
 			"neovim/nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",  -- Handle `nvim-cmp` interactions with neovim's LSP.
 			"hrsh7th/cmp-path",      -- Filesystem paths source for completion.
-			"hrsh7th/cmp-buffer",    -- Buffer source for completion.
 			"hrsh7th/cmp-calc",      -- Replace simple computations with their results.
 			"L3MON4D3/LuaSnip",      -- Propose snippets.
 			"saadparwaiz1/cmp_luasnip", -- Use `LuaSnip` snippets source for completion.
@@ -39,7 +38,6 @@ return {
 				sources = {
 					{ name = "path" },
 					{ name = "nvim_lsp" },
-					-- { name = "buffer" },
 					{ name = "calc" },
 					{ name = "luasnip" },
 					{ name = "rg" },
@@ -56,15 +54,21 @@ return {
 						local menu_icon = {
 							nvim_lsp = "λ",
 							luasnip = "⋗",
-							-- buffer = "Ω",
 							calc = "",
 							path = "",
 							rg = "",
 							neorg = "",
 							copilot = "",
 						}
-
 						item.menu = menu_icon[entry.source.name]
+
+						-- Remove duplicate entries from some sources.
+						local item_dup = {
+							rg = 0,
+							copilot = 0,
+						}
+						item.dup = item_dup[entry.source.name] or 1
+
 						return item
 					end,
 				},
