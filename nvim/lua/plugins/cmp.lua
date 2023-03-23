@@ -39,7 +39,7 @@ return {
 				sources = {
 					{ name = "path" },
 					{ name = "nvim_lsp" },
-					{ name = "buffer" },
+					-- { name = "buffer" },
 					{ name = "calc" },
 					{ name = "luasnip" },
 					{ name = "rg" },
@@ -56,7 +56,7 @@ return {
 						local menu_icon = {
 							nvim_lsp = "λ",
 							luasnip = "⋗",
-							buffer = "Ω",
+							-- buffer = "Ω",
 							calc = "",
 							path = "",
 							rg = "",
