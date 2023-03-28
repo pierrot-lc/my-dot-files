@@ -92,4 +92,14 @@ return {
 		"gennaro-tedesco/nvim-jqx",
 		ft = { "json", "yaml" },
 	},
+	-- Better "w", "e", "b" moves.
+	{
+		"chrisgrieser/nvim-spider",
+		keys = {
+			{ "w", "<Cmd> lua require('spider').motion('w')<CR>", desc = "Spider-w" },
+			{ "e", "<Cmd> lua require('spider').motion('e')<CR>", desc = "Spider-e" },
+			{ "b", "<Cmd> lua require('spider').motion('b')<CR>", desc = "Spider-b" },
+			{ "ge", "<Cmd> lua require('spider').motion('ge')<CR>", desc = "Spider-ge" },
+		},
+	},
 }
