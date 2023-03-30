@@ -102,4 +102,10 @@ return {
 			{ "ge", "<Cmd> lua require('spider').motion('ge')<CR>", desc = "Spider-ge" },
 		},
 	},
+	-- Provide default gitignores.
+	{
+		"wintermute-cell/gitignore.nvim",
+		cmd = "Gitignore",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+	},
 }
