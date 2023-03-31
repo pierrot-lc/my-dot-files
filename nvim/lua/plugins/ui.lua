@@ -143,6 +143,38 @@ return {
 		event = "VimEnter",
 		opts = function()
 			local dashboard = require("alpha.themes.dashboard")
+			local welcome_msgs = {
+				"Hello Killian! Let's code!",
+				"Welcome, Killian! Ready to hack?",
+				"Hey Killian! Let's write some code!",
+				"Good to have you here, Killian!",
+				"Killian, let's make some magic!",
+				"Hi Killian! Ready to code and chill?",
+				"Welcome, Killian! Time to code!",
+				"Hello Killian! Let's get coding!",
+				"Greetings, Killian! Ready to rock?",
+				"Killian, let's start coding!",
+				"Hey Killian! Let's create something!",
+				"Welcome, Killian! Let's code some awesomeness!",
+				"Hi Killian! Ready to conquer code?",
+				"Hello Killian! Let's make some tech art!",
+				"Good to see you, Killian! Let's code!",
+				"Killian, let's write some amazing code!",
+				"Welcome, Killian! Let's make some software!",
+				"Hey Killian! Let's build something cool!",
+				"Hello Killian! Let's make some code magic!",
+				"Hi Killian! Ready to create some tech?",
+				"Welcome, Killian! Let's write some code!",
+				"Hey Killian! Let's code and have fun!",
+				"Hello Killian! Let's make some tech dreams!",
+				"Good to have you here, Killian! Let's code!",
+				"Killian, let's make some coding history!",
+				"Hi Killian! Ready to make some software?",
+				"Welcome, Killian! Let's write some epic code!",
+				"Hey Killian! Let's hack and learn!",
+				"Hello Killian! Let's code and change the world!",
+				"Good to see you, Killian! Let's build something amazing!",
+			}
 			local logo = [[
 $$\   $$\                    $$\    $$\ $$\
 $$$\  $$ |                   $$ |   $$ |\__|
@@ -153,9 +185,7 @@ $$ |\$$$ |$$   ____|$$ |  $$ | \$$$  /  $$ |$$ | $$ | $$ |
 $$ | \$$ |\$$$$$$$\ \$$$$$$  |  \$  /   $$ |$$ | $$ | $$ |
 \__|  \__| \_______| \______/    \_/    \__|\__| \__| \__|
 
-						Welcome Killian!
-]]
-
+]] .. welcome_msgs[math.random(#welcome_msgs)]
 			dashboard.section.header.val = vim.split(logo, "\n")
 			dashboard.section.buttons.val = {
 				dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
