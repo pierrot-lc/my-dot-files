@@ -56,3 +56,7 @@ require("lazy").setup("plugins", {
 })
 require("commands")
 require("keybindings")
+vim.cmd("highlight VertSplit guibg=#FFFFFF guifg=#FFFFFF")
+vim.cmd("highlight StatusLine guifg=#000000 guibg=#1D7524") -- set statusline color
+vim.cmd("highlight StatusLineNC guifg=#000000 guibg=#FFFFFF") -- set statusline color for non-active windows
+vim.cmd("highlight StatusLineSeparator guifg=#FFFFFF") -- set color for statusline separator
