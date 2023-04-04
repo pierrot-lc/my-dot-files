@@ -5,12 +5,12 @@ return {
 		event = "InsertEnter",
 		dependencies = {
 			"neovim/nvim-lspconfig",
-			"hrsh7th/cmp-nvim-lsp",  -- Handle `nvim-cmp` interactions with neovim's LSP.
-			"hrsh7th/cmp-path",      -- Filesystem paths source for completion.
-			"hrsh7th/cmp-calc",      -- Replace simple computations with their results.
-			"L3MON4D3/LuaSnip",      -- Propose snippets.
+			"hrsh7th/cmp-nvim-lsp", -- Handle `nvim-cmp` interactions with neovim's LSP.
+			"hrsh7th/cmp-path", -- Filesystem paths source for completion.
+			"hrsh7th/cmp-calc", -- Replace simple computations with their results.
+			"L3MON4D3/LuaSnip", -- Propose snippets.
 			"saadparwaiz1/cmp_luasnip", -- Use `LuaSnip` snippets source for completion.
-			"lukas-reineke/cmp-rg",  -- Use results from `ripgrep` as a source.
+			"lukas-reineke/cmp-rg", -- Use results from `ripgrep` as a source.
 			"zbirenbaum/copilot-cmp", -- Copilot source.
 		},
 		config = function()
@@ -19,7 +19,7 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
-			local select_opts = { behavior = cmp.SelectBehavior.Replace }
+			local select_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false }
 
 			vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
@@ -73,42 +73,26 @@ return {
 					end,
 				},
 				mapping = {
-							["<Up>"] = cmp.mapping.select_prev_item(select_opts),
-							["<Down>"] = cmp.mapping.select_next_item(select_opts),
-							["<C-p>"] = cmp.mapping.select_prev_item(select_opts),
-							["<C-n>"] = cmp.mapping.select_next_item(select_opts),
-							["<C-u>"] = cmp.mapping.scroll_docs(-4),
-							["<C-f>"] = cmp.mapping.scroll_docs(4),
-							["<C-e>"] = cmp.mapping.abort(),
-							["<CR>"] = cmp.mapping.confirm({ select = false }),
-							["<C-d>"] = cmp.mapping(function(fallback)
-						if luasnip.jumpable(1) then
-							luasnip.jump(1)
+					["<Up>"] = cmp.mapping.select_prev_item(select_opts),
+					["<Down>"] = cmp.mapping.select_next_item(select_opts),
+					["<C-d>"] = cmp.mapping.scroll_docs(-4),
+					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-e>"] = cmp.mapping.abort(),
+					["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item({ cmp.SelectBehavior.Select, select = true })
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
 						else
 							fallback()
 						end
 					end, { "i", "s" }),
-							["<C-b>"] = cmp.mapping(function(fallback)
-						if luasnip.jumpable(-1) then
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item({ cmp.SelectBehavior.Select, select = true })
+						elseif luasnip.jumpable(-1) then
 							luasnip.jump(-1)
-						else
-							fallback()
-						end
-					end, { "i", "s" }),
-							["<Tab>"] = cmp.mapping(function(fallback)
-						local col = vim.fn.col(".") - 1
-
-						if cmp.visible() then
-							cmp.select_next_item(select_opts)
-						elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-							fallback()
-						else
-							cmp.complete()
-						end
-					end, { "i", "s" }),
-							["<S-Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item(select_opts)
 						else
 							fallback()
 						end
