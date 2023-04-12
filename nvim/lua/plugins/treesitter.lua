@@ -22,7 +22,7 @@ return {
 					"json",
 					"yaml",
 					"bash",
-					"help",
+					"vimdoc",
 				},
 				-- Highlight based on treesitter.
 				highlight = { enable = true },
@@ -59,20 +59,20 @@ return {
 						enable = true,
 						lookahead = true,
 						keymaps = {
-									["af"] = { query = "@function.outer", desc = "Select outer part of a function region" },
-									["if"] = { query = "@function.inner", desc = "Select inner part of a function region" },
-									["ac"] = { query = "@class.outer", desc = "Select outer part of a class region" },
-									["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+							["af"] = { query = "@function.outer", desc = "Select outer part of a function region" },
+							["if"] = { query = "@function.inner", desc = "Select inner part of a function region" },
+							["ac"] = { query = "@class.outer", desc = "Select outer part of a class region" },
+							["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
 						},
 					},
 					-- Swap two text-objects.
 					swap = {
 						enable = true,
 						swap_next = {
-									["<Leader>ls"] = { query = "@parameter.inner", desc = "Swap with the next parameter" },
+							["<Leader>ls"] = { query = "@parameter.inner", desc = "Swap with the next parameter" },
 						},
 						swap_previous = {
-									["<Leader>lS"] = { query = "@parameter.inner", desc = "Swap with the previous parameter" },
+							["<Leader>lS"] = { query = "@parameter.inner", desc = "Swap with the previous parameter" },
 						},
 					},
 					-- Move around text-objects.
@@ -80,28 +80,28 @@ return {
 						enable = true,
 						set_jumps = true,
 						goto_next_start = {
-									["]m"] = "@function.outer",
-									["]]"] = { query = "@class.outer", desc = "Next class start" },
+							["]m"] = "@function.outer",
+							["]]"] = { query = "@class.outer", desc = "Next class start" },
 						},
 						goto_next_end = {
-									["]M"] = "@function.outer",
-									["]["] = "@class.outer",
+							["]M"] = "@function.outer",
+							["]["] = "@class.outer",
 						},
 						goto_previous_start = {
-									["[m"] = "@function.outer",
-									["[["] = "@class.outer",
+							["[m"] = "@function.outer",
+							["[["] = "@class.outer",
 						},
 						goto_previous_end = {
-									["[M"] = "@function.outer",
-									["[]"] = "@class.outer",
+							["[M"] = "@function.outer",
+							["[]"] = "@class.outer",
 						},
 					},
 					-- Peek definition code using built-in LSP.
 					lsp_interop = {
 						enable = true,
 						peek_definition_code = {
-									["<Leader>lf"] = { query = "@function.outer", desc = "Show function definition" },
-									["<Leader>lc"] = { query = "@class.outer", desc = "Show class definition" },
+							["<Leader>lf"] = { query = "@function.outer", desc = "Show function definition" },
+							["<Leader>lc"] = { query = "@class.outer", desc = "Show class definition" },
 						},
 					},
 				},
