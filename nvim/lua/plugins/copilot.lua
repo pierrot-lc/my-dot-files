@@ -2,6 +2,7 @@ return {
 	-- GitHub Copilot extension. Use `:Copilot auth` to authenticate yourself.
 	{
 		"zbirenbaum/copilot.lua",
+		enabled = true,
 		cmd = "Copilot",
 		event = "InsertEnter",
 		keys = {
@@ -28,6 +29,7 @@ return {
 	-- Add Copilot as a source to `nvim-cmp`.
 	{
 		"zbirenbaum/copilot-cmp",
+		enabled = true,
 		dependencies = "zbirenbaum/copilot.lua",
 		config = function()
 			require("copilot_cmp").setup({
