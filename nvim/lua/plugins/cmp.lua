@@ -5,12 +5,12 @@ return {
 		event = "InsertEnter",
 		dependencies = {
 			"neovim/nvim-lspconfig",
-			"hrsh7th/cmp-nvim-lsp", -- Handle `nvim-cmp` interactions with neovim's LSP.
-			"hrsh7th/cmp-path", -- Filesystem paths source for completion.
-			"hrsh7th/cmp-calc", -- Replace simple computations with their results.
-			"L3MON4D3/LuaSnip", -- Propose snippets.
+			"hrsh7th/cmp-nvim-lsp",  -- Handle `nvim-cmp` interactions with neovim's LSP.
+			"hrsh7th/cmp-path",      -- Filesystem paths source for completion.
+			"hrsh7th/cmp-calc",      -- Replace simple computations with their results.
+			"L3MON4D3/LuaSnip",      -- Propose snippets.
 			"saadparwaiz1/cmp_luasnip", -- Use `LuaSnip` snippets source for completion.
-			"lukas-reineke/cmp-rg", -- Use results from `ripgrep` as a source.
+			"lukas-reineke/cmp-rg",  -- Use results from `ripgrep` as a source.
 			"zbirenbaum/copilot-cmp", -- Copilot source.
 		},
 		config = function()
@@ -19,7 +19,6 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
-			local select_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false }
 
 			vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
@@ -73,10 +72,10 @@ return {
 					end,
 				},
 				mapping = {
-					["<Up>"] = cmp.mapping.select_prev_item(select_opts),
-					["<Down>"] = cmp.mapping.select_next_item(select_opts),
-					["<C-d>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<Up>"] = cmp.mapping.select_prev_item({ cmp.SelectBehavior.Select, select = true }),
+					["<Down>"] = cmp.mapping.select_next_item({ cmp.SelectBehavior.Select, select = true }),
+					["<C-d>"] = cmp.mapping.scroll_docs(4),
+					["<C-u>"] = cmp.mapping.scroll_docs(-4),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
 					["<Tab>"] = cmp.mapping(function(fallback)
