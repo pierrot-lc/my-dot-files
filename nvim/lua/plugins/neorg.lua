@@ -15,9 +15,9 @@ return {
 				-- Loads default behaviour.
 				["core.defaults"] = {},
 				-- Adds pretty icons to your documents.
-				["core.norg.concealer"] = {},
+				["core.concealer"] = {},
 				-- Manages Neorg workspaces.
-				["core.norg.dirman"] = {
+				["core.dirman"] = {
 					config = {
 						workspaces = {
 							notes = "~/my-notes/",
@@ -25,7 +25,7 @@ return {
 					},
 				},
 				-- Add completion support.
-				["core.norg.completion"] = {
+				["core.completion"] = {
 					config = {
 						engine = "nvim-cmp",
 					},
