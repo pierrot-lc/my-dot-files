@@ -60,15 +60,24 @@ return {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons", -- File icons.
 		},
-		opts = {
-			view = {
-				mappings = {
-					list = {
-						{ key = "l", action = "edit" },
-					},
-				},
-			},
-		},
+		config = function()
+			local function on_attach(bufnr)
+				local api = require("nvim-tree.api")
+
+				api.config.mappings.default_on_attach(bufnr)
+
+				vim.keymap.set(
+					"n",
+					"l",
+					api.node.open.edit,
+					{ desc = "Open", buffer = bufnr, noremap = true, silent = true, nowait = true }
+				)
+			end
+
+			require("nvim-tree").setup({
+				on_attach = on_attach,
+			})
+		end,
 	},
 	-- Autopairs.
 	{
@@ -96,9 +105,9 @@ return {
 	{
 		"chrisgrieser/nvim-spider",
 		keys = {
-			{ "w", "<Cmd> lua require('spider').motion('w')<CR>", desc = "Spider-w" },
-			{ "e", "<Cmd> lua require('spider').motion('e')<CR>", desc = "Spider-e" },
-			{ "b", "<Cmd> lua require('spider').motion('b')<CR>", desc = "Spider-b" },
+			{ "w",  "<Cmd> lua require('spider').motion('w')<CR>",  desc = "Spider-w" },
+			{ "e",  "<Cmd> lua require('spider').motion('e')<CR>",  desc = "Spider-e" },
+			{ "b",  "<Cmd> lua require('spider').motion('b')<CR>",  desc = "Spider-b" },
 			{ "ge", "<Cmd> lua require('spider').motion('ge')<CR>", desc = "Spider-ge" },
 		},
 	},
