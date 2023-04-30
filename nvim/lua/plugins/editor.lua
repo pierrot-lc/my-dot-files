@@ -117,4 +117,16 @@ return {
 		cmd = "Gitignore",
 		dependencies = { "nvim-telescope/telescope.nvim" },
 	},
+	-- Multiple search and replace with ease.
+	{
+		"AckslD/muren.nvim",
+		cmd = {
+			"MurenToggle",
+			"MurenOpen",
+			"MurenClose",
+			"MurenFresh",
+			"MurenUnique",
+		},
+		config = true,
+	},
 }
