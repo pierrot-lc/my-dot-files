@@ -32,7 +32,7 @@ return {
 		"catppuccin/nvim",
 		lazy = false,
 		priority = 1000,
-		dependencies = { "bluz71/nvim-linefly" },
+		dependencies = { "bluz71/nvim-linefly", "shaun-mathew/Chameleon.nvim" },
 		config = function()
 			require("catppuccin").setup({
 				flavour = "mocha", -- latte, frappe, macchiato, mocha
@@ -110,12 +110,12 @@ return {
 			vim.opt.timeoutlen = 300
 			require("which-key").setup()
 			require("which-key").register({
-						["<leader>v"] = { name = "+Neovim" },
-						["<leader>p"] = { name = "+Panels" },
-						["<leader>t"] = { name = "+Telescope" },
-						["<leader>d"] = { name = "+Debugger" },
-						["<leader>l"] = { name = "+LSP" },
-						["<leader>m"] = { name = "+Misc" },
+				["<leader>v"] = { name = "+Neovim" },
+				["<leader>p"] = { name = "+Panels" },
+				["<leader>t"] = { name = "+Telescope" },
+				["<leader>d"] = { name = "+Debugger" },
+				["<leader>l"] = { name = "+LSP" },
+				["<leader>m"] = { name = "+Misc" },
 			})
 		end,
 	},

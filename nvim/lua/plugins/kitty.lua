@@ -5,4 +5,9 @@ return {
 		"fladson/vim-kitty",
 		ft = "kitty",
 	},
+	-- Make kitty terminal colors match vim colors.
+	{
+		"shaun-mathew/Chameleon.nvim",
+		config = true,
+	},
 }
