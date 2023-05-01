@@ -78,3 +78,6 @@ alias hsi="history | grep -i"  # Search in history
 alias env="env | sort"
 alias ip4="curl -s https://api.ipify.org"
 alias ip6="curl -s https://api6.ipify.org"
+
+# Kitty
+alias icat="kitty +kitten icat"
