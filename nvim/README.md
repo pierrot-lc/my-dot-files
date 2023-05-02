@@ -29,7 +29,9 @@ Use `:checkhealth` to make sure everything is working properly.
 * neovim >= 0.9 (nightlty is advised)
 * curl
 * git
-* nerdfonts ([getnf](https://github.com/ronniedroid/getnf))
-* pip, npm, cargo (optional, for `mason` to install packages)
-* cmake, make and gcc or clang (optional, for `telescope-fzf-native`)
-* pynvim (optional, for python)
+* nerdfonts (`fira-code` or [getnf](https://github.com/ronniedroid/getnf))
+* pip, npm, cargo (for `mason` to install packages)
+* cmake, make and gcc (for `telescope-fzf-native`)
+* luajit (for `LuaSnip`)
+* ripgrep (for `telescope` with rg)
+* pynvim (for python support)
