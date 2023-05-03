@@ -14,7 +14,6 @@ return {
 	-- Make kitty terminal colors match vim colors.
 	{
 		"shaun-mathew/Chameleon.nvim",
-		enabled = true,
 		config = true,
 	},
 }
