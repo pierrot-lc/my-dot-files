@@ -2,8 +2,13 @@
 
 wd=$(pwd)
 
+rm -rf "$HOME/.config/kitty"
 mkdir -p "$HOME/.config/kitty"
-rm -f "$HOME/.config/kitty/kitty.conf"
-ln -s "$wd/kitty.conf" "$HOME/.config/kitty/kitty.conf"
+
+# Iterate over all ".conf" files using globs
+for file in "$wd"/*.conf; do
+    filename=$(basename "$file")
+    ln -s "$wd/$filename" "$HOME/.config/kitty/$filename"
+done
 
 echo "Done"
