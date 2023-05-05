@@ -22,3 +22,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		vim.lsp.buf.format()
 	end,
 })
+
+-- Temporary fix, see https://github.com/neovim/neovim/issues/21856.
+vim.api.nvim_create_autocmd({ "VimLeave" }, {
+	callback = function()
+		vim.fn.jobstart('notify-send "hello"', { detach = true })
+	end,
+})
