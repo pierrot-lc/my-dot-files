@@ -79,6 +79,15 @@ return {
 			})
 		end,
 	},
+	-- `Ranger` integration.
+	{
+		"kelly-lin/ranger.nvim",
+		keys = {
+			{ "<Leader>r", "<Cmd>lua require('ranger-nvim').open()<CR>", desc = "Open ranger" },
+		},
+		lazy = false, -- Unfortunately there's no easy way to load this plugin when entering a directory.
+		opts = { replace_netrw = true },
+	},
 	-- Autopairs.
 	{
 		"windwp/nvim-autopairs",
@@ -105,9 +114,9 @@ return {
 	{
 		"chrisgrieser/nvim-spider",
 		keys = {
-			{ "w",  "<Cmd> lua require('spider').motion('w')<CR>",  desc = "Spider-w" },
-			{ "e",  "<Cmd> lua require('spider').motion('e')<CR>",  desc = "Spider-e" },
-			{ "b",  "<Cmd> lua require('spider').motion('b')<CR>",  desc = "Spider-b" },
+			{ "w", "<Cmd> lua require('spider').motion('w')<CR>", desc = "Spider-w" },
+			{ "e", "<Cmd> lua require('spider').motion('e')<CR>", desc = "Spider-e" },
+			{ "b", "<Cmd> lua require('spider').motion('b')<CR>", desc = "Spider-b" },
 			{ "ge", "<Cmd> lua require('spider').motion('ge')<CR>", desc = "Spider-ge" },
 		},
 	},
