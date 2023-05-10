@@ -38,8 +38,44 @@ return {
 	-- Comment lines and block of code.
 	{
 		"numToStr/Comment.nvim",
-		event = "VeryLazy",
-		config = true,
+		keys = {
+			{ "gcc", desc = "Comment line" },
+			{ "gbc", desc = "Comment block" },
+			{ "gc", desc = "Comment line (visual mode)", mode = "v" },
+			{ "gb", desc = "Comment block (visual mode)", mode = "v" },
+			{ "gcO", desc = "Comment above" },
+			{ "gco", desc = "Comment below" },
+			{ "gcA", desc = "Comment at the end of line" },
+		},
+		config = function()
+			require("Comment").setup({
+				toggler = {
+					line = "gcc",
+					block = "gbc",
+				},
+				opleader = {
+					line = nil,
+					block = nil,
+				},
+			})
+
+			-- Check for the "which-key" plugin.
+			local has_whichkey, whichkey = pcall(require, "which-key")
+			if has_whichkey then
+				whichkey.register({
+					["g"] = {
+						c = {
+							name = "+Comment",
+							c = "Line",
+							b = "Block",
+							O = "Above",
+							o = "Below",
+							A = "At the end of line",
+						},
+					},
+				})
+			end
+		end,
 	},
 	-- Toggle terminals.
 	{
@@ -105,9 +141,9 @@ return {
 	{
 		"chrisgrieser/nvim-spider",
 		keys = {
-			{ "w",  "<Cmd> lua require('spider').motion('w')<CR>",  desc = "Spider-w" },
-			{ "e",  "<Cmd> lua require('spider').motion('e')<CR>",  desc = "Spider-e" },
-			{ "b",  "<Cmd> lua require('spider').motion('b')<CR>",  desc = "Spider-b" },
+			{ "w", "<Cmd> lua require('spider').motion('w')<CR>", desc = "Spider-w" },
+			{ "e", "<Cmd> lua require('spider').motion('e')<CR>", desc = "Spider-e" },
+			{ "b", "<Cmd> lua require('spider').motion('b')<CR>", desc = "Spider-b" },
 			{ "ge", "<Cmd> lua require('spider').motion('ge')<CR>", desc = "Spider-ge" },
 		},
 	},

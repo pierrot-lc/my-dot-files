@@ -13,8 +13,8 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.opt.termguicolors = true            -- Activate terminal colors.
-			vim.opt.background = "dark"             -- Global theme.
+			vim.opt.termguicolors = true -- Activate terminal colors.
+			vim.opt.background = "dark" -- Global theme.
 			vim.g.gruvbox_material_background = "hard" -- Either "hard", "medium" or "soft".
 			vim.g.gruvbox_material_better_performance = 1
 			vim.cmd("colorscheme gruvbox-material")
