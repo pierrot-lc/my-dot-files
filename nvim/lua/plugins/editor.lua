@@ -115,6 +115,15 @@ return {
 			})
 		end,
 	},
+	-- `Ranger` integration.
+	{
+		"kelly-lin/ranger.nvim",
+		keys = {
+			{ "<Leader>r", "<Cmd>lua require('ranger-nvim').open()<CR>", desc = "Open ranger" },
+		},
+		lazy = false, -- Unfortunately there's no easy way to load this plugin when entering a directory.
+		opts = { replace_netrw = true },
+	},
 	-- Autopairs.
 	{
 		"windwp/nvim-autopairs",
