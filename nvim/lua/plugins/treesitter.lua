@@ -23,6 +23,7 @@ return {
 					"yaml",
 					"bash",
 					"vimdoc",
+					"norg",
 				},
 				-- Highlight based on treesitter.
 				highlight = { enable = true },
