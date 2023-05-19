@@ -22,6 +22,7 @@ return {
 			"tsakirist/telescope-lazy.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"dhruvmanila/browser-bookmarks.nvim",
+			"cljoly/telescope-repo.nvim",
 		},
 		config = function()
 			require("telescope").setup({
@@ -37,11 +38,17 @@ return {
 						profile_name = "default-release",
 						url_open_command = "xdg-open",
 					},
+					repo = {
+						list = {
+							file_ignore_patterns = { "/%.cache/", "/%.cargo/", "/share/" },
+						},
+					},
 				},
 			})
 			require("telescope").load_extension("fzf") -- telescope-fzf-native.nvim
 			require("telescope").load_extension("lazy") -- telescope-lazy.nvim
 			require("telescope").load_extension("bookmarks") -- browser-bookmarks.nvim
+			require("telescope").load_extension("repo") -- telescope-repo.nvim
 		end,
 	},
 	-- Fuzzy finder for `telescope.nvim`.
@@ -53,7 +60,6 @@ return {
 	-- Telescope plugins installed by `lazy.nvim`.
 	{
 		"tsakirist/telescope-lazy.nvim",
-		cmd = "Telescope",
 		keys = { { "<Leader>tl", "<Cmd>Telescope lazy<Cr>", desc = "Lazy plugins" } },
 		dependencies = {
 			"folke/lazy.nvim",
@@ -101,7 +107,6 @@ return {
 	-- Browse my browser bookmarks.
 	{
 		"dhruvmanila/browser-bookmarks.nvim",
-		cmd = "Telescope",
 		keys = { { "<Leader>td", "<Cmd>Telescope bookmarks<Cr>", desc = "Browser bookmarks" } },
 		dependencies = {
 			"kkharji/sqlite.lua", -- For firefox support, install `sqlite` and `sqlite-dev`.
@@ -110,6 +115,16 @@ return {
 			selected_browser = "firefox",
 			profile_name = "default-release",
 			url_open_command = "xdg-open",
+		},
+	},
+	-- Browse local repositories (needs `locate` and `fd`).
+	{
+		"cljoly/telescope-repo.nvim",
+		keys = {
+			{ "<Leader>tr", "<Cmd>Telescope repo list<Cr>", desc = "Browse repositories" },
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
 		},
 	},
 }
