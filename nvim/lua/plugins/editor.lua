@@ -87,6 +87,11 @@ return {
 			shade_terminals = true,
 		},
 	},
+	-- Automatically change the project working directory when opening a new file.
+	{
+		"notjedi/nvim-rooter.lua",
+		config = true,
+	},
 	-- File explorer.
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -95,6 +100,7 @@ return {
 		},
 		dependencies = {
 			"nvim-tree/nvim-web-devicons", -- File icons.
+			"notjedi/nvim-rooter.lua",
 		},
 		config = function()
 			local function on_attach(bufnr)

@@ -47,7 +47,9 @@ alias kk=ll
 alias bashrc="vim ~/.bashrc && source ~/.bashrc"
 
 # Replace old commands with new ones
-alias vim=nvim  # nvim is better
+if command -v nvim > /dev/null 2>&1; then
+    alias vim=nvim  # nvim is better
+fi
 if command -v htop > /dev/null 2>&1; then
     alias top=htop
 fi
@@ -69,6 +71,7 @@ if command -v btm > /dev/null 2>&1; then
     # cargo install bottom
 fi
 # alias du=dust  # cargo install du-dust
+# alias find=fd  # cargo install fd-find
 
 
 # Miscs

@@ -4,6 +4,9 @@ return {
 		ft = "neorg",
 		cmd = "Neorg",
 		build = ":Neorg sync-parsers",
+		keys = {
+			{ "<LocalLeader>c", ":Neorg toggle-concealer<CR>", desc = "Toggle conceiler" },
+		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
