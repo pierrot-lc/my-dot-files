@@ -5,12 +5,12 @@ return {
 		event = "InsertEnter",
 		dependencies = {
 			"neovim/nvim-lspconfig",
-			"hrsh7th/cmp-nvim-lsp",  -- Handle `nvim-cmp` interactions with neovim's LSP.
-			"hrsh7th/cmp-path",      -- Filesystem paths source for completion.
-			"hrsh7th/cmp-calc",      -- Replace simple computations with their results.
-			"L3MON4D3/LuaSnip",      -- Propose snippets.
+			"hrsh7th/cmp-nvim-lsp", -- Handle `nvim-cmp` interactions with neovim's LSP.
+			"hrsh7th/cmp-path", -- Filesystem paths source for completion.
+			"hrsh7th/cmp-calc", -- Replace simple computations with their results.
+			"L3MON4D3/LuaSnip", -- Propose snippets.
 			"saadparwaiz1/cmp_luasnip", -- Use `LuaSnip` snippets source for completion.
-			"lukas-reineke/cmp-rg",  -- Use results from `ripgrep` as a source.
+			"lukas-reineke/cmp-rg", -- Use results from `ripgrep` as a source.
 			"zbirenbaum/copilot-cmp", -- Copilot source.
 		},
 		config = function()
@@ -34,7 +34,7 @@ return {
 				unpack = unpack or table.unpack
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 				return col ~= 0
-						and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 			end
 
 			cmp.setup({
@@ -127,5 +127,13 @@ return {
 		config = function()
 			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
+	},
+	-- Latex snippets.
+	{
+		"evesdropper/luasnip-latex-snippets.nvim",
+		dependencies = {
+			"L3MON4D3/LuaSnip",
+		},
+		ft = "latex",
 	},
 }

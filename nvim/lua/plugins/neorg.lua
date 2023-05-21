@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-neorg/neorg",
-		ft = "norg",
+		ft = "neorg",
 		cmd = "Neorg",
 		build = ":Neorg sync-parsers",
 		keys = {
