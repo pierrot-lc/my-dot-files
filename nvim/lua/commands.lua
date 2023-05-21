@@ -31,10 +31,8 @@ vim.api.nvim_create_autocmd({ "VimLeave" }, {
 })
 
 -- Set filetypes.
-vim.api.nvim_create_autocmd("BufNewFile,BufRead", {
-	group = augroup,
-	pattern = "*.norg",
-	callback = function()
-		vim.bo.filetype = "neorg" -- See `./plugins/neorg.lua`
-	end,
-})
+-- vim.filetype.add({
+-- 	extension = {
+-- 		norg = "norg", -- Trivial example.
+-- 	},
+-- })
