@@ -36,6 +36,7 @@ return {
 				handler_opts = { border = "rounded" },
 				hint_enable = false,
 				wrap = false,
+				hi_parameter = "Search",
 			}
 			require("lsp_signature").setup(signature_opts)
 
