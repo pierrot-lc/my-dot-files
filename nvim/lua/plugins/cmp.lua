@@ -5,12 +5,12 @@ return {
 		event = "InsertEnter",
 		dependencies = {
 			"neovim/nvim-lspconfig",
-			"hrsh7th/cmp-nvim-lsp", -- Handle `nvim-cmp` interactions with neovim's LSP.
-			"hrsh7th/cmp-path", -- Filesystem paths source for completion.
-			"hrsh7th/cmp-calc", -- Replace simple computations with their results.
-			"L3MON4D3/LuaSnip", -- Propose snippets.
+			"hrsh7th/cmp-nvim-lsp",  -- Handle `nvim-cmp` interactions with neovim's LSP.
+			"hrsh7th/cmp-path",      -- Filesystem paths source for completion.
+			"hrsh7th/cmp-calc",      -- Replace simple computations with their results.
+			"L3MON4D3/LuaSnip",      -- Propose snippets.
 			"saadparwaiz1/cmp_luasnip", -- Use `LuaSnip` snippets source for completion.
-			"lukas-reineke/cmp-rg", -- Use results from `ripgrep` as a source.
+			"lukas-reineke/cmp-rg",  -- Use results from `ripgrep` as a source.
 			"zbirenbaum/copilot-cmp", -- Copilot source.
 		},
 		config = function()
@@ -34,8 +34,45 @@ return {
 				unpack = unpack or table.unpack
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 				return col ~= 0
-					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+						and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 			end
+
+			local kind_icons = {
+				Text = " ",
+				Method = "󰆧 ",
+				Function = "󰊕 ",
+				Constructor = " ",
+				Field = "󰇽 ",
+				Variable = "󰂡 ",
+				Class = "󰠱 ",
+				Interface = " ",
+				Module = " ",
+				Property = "󰜢 ",
+				Unit = " ",
+				Value = "󰎠 ",
+				Enum = " ",
+				Keyword = "󰌋 ",
+				Snippet = " ",
+				Color = "󰏘 ",
+				File = "󰈙 ",
+				Reference = " ",
+				Folder = "󰉋 ",
+				EnumMember = " ",
+				Constant = "󰏿 ",
+				Struct = " ",
+				Event = " ",
+				Operator = "󰆕 ",
+				TypeParameter = "󰅲 ",
+			}
+			local menu_icons = {
+				nvim_lsp = "λ",
+				luasnip = "⋗",
+				calc = "",
+				path = "",
+				rg = "",
+				neorg = "",
+				copilot = "",
+			}
 
 			cmp.setup({
 				snippet = {
@@ -59,16 +96,8 @@ return {
 				formatting = {
 					fields = { "menu", "abbr", "kind" },
 					format = function(entry, item)
-						local menu_icon = {
-							nvim_lsp = "λ",
-							luasnip = "⋗",
-							calc = "",
-							path = "",
-							rg = "",
-							neorg = "",
-							copilot = "",
-						}
-						item.menu = menu_icon[entry.source.name]
+						item.menu = menu_icons[entry.source.name]
+						item.kind = string.format("%s %s", kind_icons[item.kind] or "  ", item.kind)
 
 						-- Remove duplicate entries from some sources.
 						local item_dup = {
