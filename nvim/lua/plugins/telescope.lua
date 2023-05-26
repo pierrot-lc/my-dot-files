@@ -4,17 +4,17 @@ return {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		keys = {
-			{ "<leader>f", "<Cmd>Telescope find_files<Cr>", desc = "Find files" },
-			{ "<leader>tf", "<Cmd>Telescope find_files<Cr>", desc = "Find files" },
-			{ "<leader>tg", "<Cmd>Telescope live_grep<Cr>", desc = "Live grep" }, -- Requires `ripgrep` to be installed.
-			{ "<leader>tb", "<Cmd>Telescope buffers<Cr>", desc = "Buffers" },
-			{ "<leader>tt", "<Cmd>Telescope treesitter<Cr>", desc = "Treesitter symbols" }, -- Requires `treesitter`.
-			{ "<leader>th", "<Cmd>Telescope help_tags<Cr>", desc = "Help tags" },
+			{ "<leader>f",  "<Cmd>Telescope find_files<Cr>",           desc = "Find files" },
+			{ "<leader>tf", "<Cmd>Telescope find_files<Cr>",           desc = "Find files" },
+			{ "<leader>tg", "<Cmd>Telescope live_grep<Cr>",            desc = "Live grep" }, -- Requires `ripgrep` to be installed.
+			{ "<leader>tb", "<Cmd>Telescope buffers<Cr>",              desc = "Buffers" },
+			{ "<leader>tt", "<Cmd>Telescope treesitter<Cr>",           desc = "Treesitter symbols" }, -- Requires `treesitter`.
+			{ "<leader>th", "<Cmd>Telescope help_tags<Cr>",            desc = "Help tags" },
 			{ "<leader>ts", "<Cmd>Telescope lsp_document_symbols<Cr>", desc = "Document symbols" },
-			{ "<leader>tc", "<Cmd>Telescope commands<Cr>", desc = "Commands" },
-			{ "<leader>tm", "<Cmd>Telescope marks<Cr>", desc = "Marks" },
-			{ "<Leader>tp", "<Cmd>Telescope resume<Cr>", desc = "Resume last search" },
-			{ "<leader>mp", "<Cmd>Telescope planets<Cr>", desc = "Use the telescope" },
+			{ "<leader>tc", "<Cmd>Telescope commands<Cr>",             desc = "Commands" },
+			{ "<leader>tm", "<Cmd>Telescope marks<Cr>",                desc = "Marks" },
+			{ "<Leader>tp", "<Cmd>Telescope resume<Cr>",               desc = "Resume last search" },
+			{ "<leader>mp", "<Cmd>Telescope planets<Cr>",              desc = "Use the telescope" },
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- Common lua functions.
@@ -45,10 +45,10 @@ return {
 					},
 				},
 			})
-			require("telescope").load_extension("fzf") -- telescope-fzf-native.nvim
-			require("telescope").load_extension("lazy") -- telescope-lazy.nvim
+			require("telescope").load_extension("fzf")    -- telescope-fzf-native.nvim
+			require("telescope").load_extension("lazy")   -- telescope-lazy.nvim
 			require("telescope").load_extension("bookmarks") -- browser-bookmarks.nvim
-			require("telescope").load_extension("repo") -- telescope-repo.nvim
+			require("telescope").load_extension("repo")   -- telescope-repo.nvim
 		end,
 	},
 	-- Fuzzy finder for `telescope.nvim`.
@@ -70,9 +70,9 @@ return {
 		"lalitmee/browse.nvim",
 		cmd = "Browse",
 		keys = {
-			{ "<Leader>ts", "<Cmd>Browse<Cr>", desc = "Show all browsing options" },
-			{ "<Leader>to", "<Cmd>BrowseBookmarks<Cr>", desc = "Search among bookmarks" },
-			{ "<Leader>i", "<Cmd>BrowseInputSearch<Cr>", desc = "Search the internet" },
+			{ "<Leader>ts", "<Cmd>Browse<Cr>",            desc = "Show all browsing options" },
+			{ "<Leader>to", "<Cmd>BrowseBookmarks<Cr>",   desc = "Search among bookmarks" },
+			{ "<Leader>i",  "<Cmd>BrowseInputSearch<Cr>", desc = "Search the internet" },
 		},
 		dependencies = { "nvim-telescope/telescope.nvim" },
 		config = function()

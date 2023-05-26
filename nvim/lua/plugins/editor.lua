@@ -41,8 +41,8 @@ return {
 		keys = {
 			{ "gcc", desc = "Comment line" },
 			{ "gbc", desc = "Comment block" },
-			{ "gc", desc = "Comment line (visual mode)", mode = "v" },
-			{ "gb", desc = "Comment block (visual mode)", mode = "v" },
+			{ "gc",  desc = "Comment line (visual mode)",  mode = "v" },
+			{ "gb",  desc = "Comment block (visual mode)", mode = "v" },
 			{ "gcO", desc = "Comment above" },
 			{ "gco", desc = "Comment below" },
 			{ "gcA", desc = "Comment at the end of line" },
@@ -90,7 +90,9 @@ return {
 	-- Automatically change the project working directory when opening a new file.
 	{
 		"notjedi/nvim-rooter.lua",
-		config = true,
+		opts = {
+			manual = true,
+		},
 	},
 	-- File explorer.
 	{
@@ -156,9 +158,9 @@ return {
 	{
 		"chrisgrieser/nvim-spider",
 		keys = {
-			{ "w", "<Cmd> lua require('spider').motion('w')<CR>", desc = "Spider-w" },
-			{ "e", "<Cmd> lua require('spider').motion('e')<CR>", desc = "Spider-e" },
-			{ "b", "<Cmd> lua require('spider').motion('b')<CR>", desc = "Spider-b" },
+			{ "w",  "<Cmd> lua require('spider').motion('w')<CR>",  desc = "Spider-w" },
+			{ "e",  "<Cmd> lua require('spider').motion('e')<CR>",  desc = "Spider-e" },
+			{ "b",  "<Cmd> lua require('spider').motion('b')<CR>",  desc = "Spider-b" },
 			{ "ge", "<Cmd> lua require('spider').motion('ge')<CR>", desc = "Spider-ge" },
 		},
 	},
