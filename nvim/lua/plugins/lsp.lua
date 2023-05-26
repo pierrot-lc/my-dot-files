@@ -5,20 +5,20 @@ return {
 		event = "BufReadPre",
 		keys = {
 			{ "gl", "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<Cr>", desc = "Show diagnostics" },
-			{ "gd", "<Cmd>lua vim.lsp.buf.definition()<Cr>",                      desc = "Go to definition" },
+			{ "gd", "<Cmd>lua vim.lsp.buf.definition()<Cr>", desc = "Go to definition" },
 			{
 				"gs",
 				"<Cmd>lua vim.lsp.buf.signature_help()<Cr>",
 				desc = "Show signature help",
 			},
-			{ "gr",         "<Cmd>lua vim.lsp.buf.rename()<Cr>",      desc = "Rename symbol" },
+			{ "gr", "<Cmd>lua vim.lsp.buf.rename()<Cr>", desc = "Rename symbol" },
 			{ "<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<Cr>", desc = "Show code action" },
 		},
 		dependencies = {
 			"williamboman/mason.nvim",
 			{ "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Make it easier to use `mason` with `lspconfig`.
-			{ "folke/neodev.nvim",                 config = true },                         -- Add neovim library support for `sumneko_lua`.
-			"ray-x/lsp_signature.nvim",                                                     -- Show function signatures.
+			{ "folke/neodev.nvim", config = true }, -- Add neovim library support for `sumneko_lua`.
+			"ray-x/lsp_signature.nvim", -- Show function signatures.
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
@@ -102,7 +102,7 @@ return {
 				null_ls.builtins.formatting.markdownlint,
 				-- JSON & YAML.
 				null_ls.builtins.formatting.jq,
-				null_ls.builtins.formatting.yamlfmt,
+				-- null_ls.builtins.formatting.yamlfmt,
 				null_ls.builtins.diagnostics.yamllint,
 			}
 
