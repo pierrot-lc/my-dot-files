@@ -65,13 +65,13 @@ return {
 				TypeParameter = "󰅲 ",
 			}
 			local menu_icons = {
-				nvim_lsp = "λ",
-				luasnip = "⋗",
-				calc = "",
-				path = "",
-				rg = "",
-				neorg = "",
-				copilot = "",
+				nvim_lsp = "λ ",
+				luasnip = "󱐋 ",
+				calc = " ",
+				path = " ",
+				rg = " ",
+				neorg = " ",
+				copilot = " ",
 			}
 
 			cmp.setup({
@@ -97,7 +97,7 @@ return {
 					fields = { "menu", "abbr", "kind" },
 					format = function(entry, item)
 						item.menu = menu_icons[entry.source.name]
-						item.kind = string.format("%s %s", kind_icons[item.kind] or "  ", item.kind)
+						item.kind = string.format("%s %s", kind_icons[item.kind] or "󰠱 ", item.kind)
 
 						-- Remove duplicate entries from some sources.
 						local item_dup = {
