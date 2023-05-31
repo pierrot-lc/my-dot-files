@@ -4,15 +4,15 @@ return {
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
 		keys = {
-			{ "gl", "<Cmd>lua vim.diagnostic.open_float(nil, {focus=false})<Cr>", desc = "Show diagnostics" },
-			{ "gd", "<Cmd>lua vim.lsp.buf.definition()<Cr>", desc = "Go to definition" },
+			{ "gl", "<CMD>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", desc = "Show diagnostics" },
+			{ "gd", "<CMD>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
 			{
 				"gs",
-				"<Cmd>lua vim.lsp.buf.signature_help()<Cr>",
+				"<CMD>lua vim.lsp.buf.signature_help()<CR>",
 				desc = "Show signature help",
 			},
-			{ "gr", "<Cmd>lua vim.lsp.buf.rename()<Cr>", desc = "Rename symbol" },
-			{ "<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<Cr>", desc = "Show code action" },
+			{ "gr", "<CMD>lua vim.lsp.buf.rename()<CR>", desc = "Rename symbol" },
+			{ "<Leader>la", "<CMD>lua vim.lsp.buf.code_action()<CR>", desc = "Show code action" },
 		},
 		dependencies = {
 			"williamboman/mason.nvim",
@@ -42,7 +42,7 @@ return {
 
 			--Toggle signatures.
 			local show_signature = signature_opts.floating_window
-			vim.keymap.set("n", "<leader>lp", function()
+			vim.keymap.set("n", "<Leader>lp", function()
 				show_signature = not show_signature
 				require("lsp_signature").toggle_float_win()
 				if show_signature then
@@ -54,7 +54,7 @@ return {
 
 			-- Toggle diagnostics.
 			local show_diagnostic = true
-			vim.keymap.set("n", "<leader>ld", function()
+			vim.keymap.set("n", "<Leader>ld", function()
 				show_diagnostic = not show_diagnostic
 				if show_diagnostic then
 					vim.diagnostic.enable()
@@ -71,7 +71,7 @@ return {
 		"jose-elias-alvarez/null-ls.nvim",
 		event = "BufReadPre",
 		keys = {
-			{ "<leader>pn", "<CMD>NullLsInfo<CR>", desc = "Null-ls" },
+			{ "<Leader>pn", "<CMD>NullLsInfo<CR>", desc = "Null-ls" },
 		},
 		dependencies = {
 			"williamboman/mason.nvim",
@@ -119,7 +119,7 @@ return {
 		"williamboman/mason.nvim",
 		cmd = "Mason",
 		keys = {
-			{ "<leader>pm", "<cmd>Mason<cr>", desc = "Mason" },
+			{ "<Leader>pm", "<CMD>Mason<CR>", desc = "Mason" },
 		},
 		config = true,
 	},
@@ -137,7 +137,7 @@ return {
 		"simrat39/symbols-outline.nvim",
 		cmd = "SymbolsOutline",
 		keys = {
-			{ "<Leader>lo", "<Cmd>SymbolsOutline<Cr>", desc = "Show symbols outline" },
+			{ "<Leader>lo", "<CMD>SymbolsOutline<CR>", desc = "Show symbols outline" },
 		},
 		config = true,
 	},

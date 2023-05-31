@@ -4,17 +4,17 @@ return {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		keys = {
-			{ "<leader>f",  "<Cmd>Telescope find_files<Cr>",           desc = "Find files" },
-			{ "<leader>tf", "<Cmd>Telescope find_files<Cr>",           desc = "Find files" },
-			{ "<leader>tg", "<Cmd>Telescope live_grep<Cr>",            desc = "Live grep" }, -- Requires `ripgrep` to be installed.
-			{ "<leader>tb", "<Cmd>Telescope buffers<Cr>",              desc = "Buffers" },
-			{ "<leader>tt", "<Cmd>Telescope treesitter<Cr>",           desc = "Treesitter symbols" }, -- Requires `treesitter`.
-			{ "<leader>th", "<Cmd>Telescope help_tags<Cr>",            desc = "Help tags" },
-			{ "<leader>ts", "<Cmd>Telescope lsp_document_symbols<Cr>", desc = "Document symbols" },
-			{ "<leader>tc", "<Cmd>Telescope commands<Cr>",             desc = "Commands" },
-			{ "<leader>tm", "<Cmd>Telescope marks<Cr>",                desc = "Marks" },
-			{ "<Leader>tp", "<Cmd>Telescope resume<Cr>",               desc = "Resume last search" },
-			{ "<leader>mp", "<Cmd>Telescope planets<Cr>",              desc = "Use the telescope" },
+			{ "<Leader>f", "<CMD>Telescope find_files<CR>", desc = "Find files" },
+			{ "<Leader>tf", "<CMD>Telescope find_files<CR>", desc = "Find files" },
+			{ "<Leader>tg", "<CMD>Telescope live_grep<CR>", desc = "Live grep" }, -- Requires `ripgrep` to be installed.
+			{ "<Leader>tb", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
+			{ "<Leader>tt", "<CMD>Telescope treesitter<CR>", desc = "Treesitter symbols" }, -- Requires `treesitter`.
+			{ "<Leader>th", "<CMD>Telescope help_tags<CR>", desc = "Help tags" },
+			{ "<Leader>ts", "<CMD>Telescope lsp_document_symbols<CR>", desc = "Document symbols" },
+			{ "<Leader>tc", "<CMD>Telescope commands<CR>", desc = "Commands" },
+			{ "<Leader>tm", "<CMD>Telescope marks<CR>", desc = "Marks" },
+			{ "<Leader>tp", "<CMD>Telescope resume<CR>", desc = "Resume last search" },
+			{ "<Leader>mp", "<CMD>Telescope planets<CR>", desc = "Use the telescope" },
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- Common lua functions.
@@ -45,10 +45,10 @@ return {
 					},
 				},
 			})
-			require("telescope").load_extension("fzf")    -- telescope-fzf-native.nvim
-			require("telescope").load_extension("lazy")   -- telescope-lazy.nvim
+			require("telescope").load_extension("fzf") -- telescope-fzf-native.nvim
+			require("telescope").load_extension("lazy") -- telescope-lazy.nvim
 			require("telescope").load_extension("bookmarks") -- browser-bookmarks.nvim
-			require("telescope").load_extension("repo")   -- telescope-repo.nvim
+			require("telescope").load_extension("repo") -- telescope-repo.nvim
 		end,
 	},
 	-- Fuzzy finder for `telescope.nvim`.
@@ -60,7 +60,7 @@ return {
 	-- Telescope plugins installed by `lazy.nvim`.
 	{
 		"tsakirist/telescope-lazy.nvim",
-		keys = { { "<Leader>tl", "<Cmd>Telescope lazy<Cr>", desc = "Lazy plugins" } },
+		keys = { { "<Leader>tl", "<CMD>Telescope lazy<CR>", desc = "Lazy plugins" } },
 		dependencies = {
 			"folke/lazy.nvim",
 		},
@@ -70,9 +70,9 @@ return {
 		"lalitmee/browse.nvim",
 		cmd = "Browse",
 		keys = {
-			{ "<Leader>ts", "<Cmd>Browse<Cr>",            desc = "Show all browsing options" },
-			{ "<Leader>to", "<Cmd>BrowseBookmarks<Cr>",   desc = "Search among bookmarks" },
-			{ "<Leader>i",  "<Cmd>BrowseInputSearch<Cr>", desc = "Search the internet" },
+			{ "<Leader>ts", "<CMD>Browse<CR>", desc = "Show all browsing options" },
+			{ "<Leader>to", "<CMD>BrowseBookmarks<CR>", desc = "Search among bookmarks" },
+			{ "<Leader>i", "<CMD>BrowseInputSearch<CR>", desc = "Search the internet" },
 		},
 		dependencies = { "nvim-telescope/telescope.nvim" },
 		config = function()
@@ -107,7 +107,7 @@ return {
 	-- Browse my browser bookmarks.
 	{
 		"dhruvmanila/browser-bookmarks.nvim",
-		keys = { { "<Leader>td", "<Cmd>Telescope bookmarks<Cr>", desc = "Browser bookmarks" } },
+		keys = { { "<Leader>td", "<CMD>Telescope bookmarks<CR>", desc = "Browser bookmarks" } },
 		dependencies = {
 			"kkharji/sqlite.lua", -- For firefox support, install `sqlite` and `sqlite-dev`.
 		},
@@ -121,7 +121,7 @@ return {
 	{
 		"cljoly/telescope-repo.nvim",
 		keys = {
-			{ "<Leader>tr", "<Cmd>Telescope repo list<Cr>", desc = "Browse repositories" },
+			{ "<Leader>tr", "<CMD>Telescope repo list<CR>", desc = "Browse repositories" },
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",

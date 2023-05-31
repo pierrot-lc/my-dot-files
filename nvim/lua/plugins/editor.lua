@@ -5,7 +5,7 @@ return {
 		keys = {
 			{
 				"<Leader>s",
-				"<Cmd>lua require('leap').leap({ target_windows = { vim.fn.win_getid() } })<Cr>",
+				"<CMD>lua require('leap').leap({ target_windows = { vim.fn.win_getid() } })<CR>",
 				desc = "Leap",
 			},
 		},
@@ -41,8 +41,8 @@ return {
 		keys = {
 			{ "gcc", desc = "Comment line" },
 			{ "gbc", desc = "Comment block" },
-			{ "gc",  desc = "Comment line (visual mode)",  mode = "v" },
-			{ "gb",  desc = "Comment block (visual mode)", mode = "v" },
+			{ "gc", desc = "Comment line (visual mode)", mode = "v" },
+			{ "gb", desc = "Comment block (visual mode)", mode = "v" },
 			{ "gcO", desc = "Comment above" },
 			{ "gco", desc = "Comment below" },
 			{ "gcA", desc = "Comment at the end of line" },
@@ -98,7 +98,7 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		keys = {
-			{ "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Open/close file explorer" },
+			{ "<Leader>e", "<CMD>NvimTreeToggle<CR>", desc = "Open/close file explorer" },
 		},
 		dependencies = {
 			"nvim-tree/nvim-web-devicons", -- File icons.
@@ -127,7 +127,7 @@ return {
 	{
 		"kelly-lin/ranger.nvim",
 		keys = {
-			{ "<Leader>r", "<Cmd>lua require('ranger-nvim').open()<CR>", desc = "Open ranger" },
+			{ "<Leader>r", "<CMD>lua require('ranger-nvim').open()<CR>", desc = "Open ranger" },
 		},
 		lazy = false, -- Unfortunately there's no easy way to load this plugin when entering a directory.
 		opts = { replace_netrw = true },
@@ -158,10 +158,10 @@ return {
 	{
 		"chrisgrieser/nvim-spider",
 		keys = {
-			{ "w",  "<Cmd> lua require('spider').motion('w')<CR>",  desc = "Spider-w" },
-			{ "e",  "<Cmd> lua require('spider').motion('e')<CR>",  desc = "Spider-e" },
-			{ "b",  "<Cmd> lua require('spider').motion('b')<CR>",  desc = "Spider-b" },
-			{ "ge", "<Cmd> lua require('spider').motion('ge')<CR>", desc = "Spider-ge" },
+			{ "w", "<CMD> lua require('spider').motion('w')<CR>", desc = "Spider-w" },
+			{ "e", "<CMD> lua require('spider').motion('e')<CR>", desc = "Spider-e" },
+			{ "b", "<CMD> lua require('spider').motion('b')<CR>", desc = "Spider-b" },
+			{ "ge", "<CMD> lua require('spider').motion('ge')<CR>", desc = "Spider-ge" },
 		},
 	},
 	-- Provide default gitignores.
