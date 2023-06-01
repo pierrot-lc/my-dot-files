@@ -4,7 +4,7 @@ return {
 		"Eandrju/cellular-automaton.nvim",
 		cmd = "CellularAutomaton",
 		keys = {
-			{ "<leader>mf", "<cmd>CellularAutomaton make_it_rain<cr>", desc = "Make it rain!" },
+			{ "<Leader>mf", "<CMD>CellularAutomaton make_it_rain<CR>", desc = "Make it rain!" },
 		},
 	},
 	-- Show images directly in neovim.

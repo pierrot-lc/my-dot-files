@@ -34,8 +34,8 @@ return {
 					enable = true,
 					keymaps = {
 						init_selection = "gn",
-						node_incremental = "<Tab>",
-						node_decremental = "<S-Tab>",
+						node_incremental = "<TAB>",
+						node_decremental = "<S-TAB>",
 						scope_incremental = false,
 					},
 				},

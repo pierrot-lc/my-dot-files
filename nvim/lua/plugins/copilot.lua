@@ -6,7 +6,7 @@ return {
 		cmd = "Copilot",
 		event = "InsertEnter",
 		keys = {
-			{ "<leader>c", "<Cmd>Copilot suggestion toggle_auto_trigger<Cr>", desc = "Toggle GitHub Copilot" },
+			{ "<Leader>c", "<CMD>Copilot suggestion toggle_auto_trigger<CR>", desc = "Toggle GitHub Copilot" },
 		},
 		opts = {
 			suggestion = {
