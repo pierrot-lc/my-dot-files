@@ -5,20 +5,20 @@ return {
 		event = "BufReadPre",
 		keys = {
 			{ "gl", "<CMD>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", desc = "Show diagnostics" },
-			{ "gd", "<CMD>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
+			{ "gd", "<CMD>lua vim.lsp.buf.definition()<CR>",                      desc = "Go to definition" },
 			{
 				"gs",
 				"<CMD>lua vim.lsp.buf.signature_help()<CR>",
 				desc = "Show signature help",
 			},
-			{ "gr", "<CMD>lua vim.lsp.buf.rename()<CR>", desc = "Rename symbol" },
+			{ "gr",         "<CMD>lua vim.lsp.buf.rename()<CR>",      desc = "Rename symbol" },
 			{ "<Leader>la", "<CMD>lua vim.lsp.buf.code_action()<CR>", desc = "Show code action" },
 		},
 		dependencies = {
 			"williamboman/mason.nvim",
 			{ "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Make it easier to use `mason` with `lspconfig`.
-			{ "folke/neodev.nvim", config = true }, -- Add neovim library support for `sumneko_lua`.
-			"ray-x/lsp_signature.nvim", -- Show function signatures.
+			{ "folke/neodev.nvim",                 config = true },                         -- Add neovim library support for `sumneko_lua`.
+			"ray-x/lsp_signature.nvim",                                                     -- Show function signatures.
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
@@ -85,12 +85,10 @@ return {
 				null_ls.builtins.code_actions.proselint,
 				-- Python.
 				null_ls.builtins.formatting.black,
-				null_ls.builtins.diagnostics.flake8.with({
-					extra_args = { "--max-line-length=88", "--extend-ignore=E203" }, -- Black configuration.
-				}),
 				null_ls.builtins.formatting.isort.with({
 					extra_args = { "--profile=black" }, -- Black configuration.
 				}),
+				null_ls.builtins.diagnostics.ruff,
 				-- Lua.
 				null_ls.builtins.formatting.stylua,
 				-- Shell.
