@@ -142,17 +142,10 @@ return {
 	-- Eye candy nvim-lsp progress.
 	{
 		"j-hui/fidget.nvim",
+		tag = "legacy",
 		dependencies = "neovim/nvim-lspconfig",
 		opts = {
 			window = { blend = 0 },
-		},
-	},
-	-- Lightbulb to indicate a code action.
-	{
-		"kosayoda/nvim-lightbulb",
-		lazy = true,
-		opts = {
-			autocmd = { enabled = true },
 		},
 	},
 }
