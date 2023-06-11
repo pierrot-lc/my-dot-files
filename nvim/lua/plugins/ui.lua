@@ -3,7 +3,7 @@ return {
 	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
-		enabled = false,
+		enabled = true,
 	},
 	-- Classic vim theme.
 	{
@@ -112,12 +112,6 @@ return {
 
 			vim.cmd("colorscheme github_dark_tritanopia")
 		end,
-	},
-	-- Show git signs.
-	{
-		"lewis6991/gitsigns.nvim",
-		event = "VeryLazy",
-		config = true,
 	},
 	-- Dynamically show keybindings.
 	{

@@ -113,15 +113,6 @@ return {
 			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 		end,
 	},
-	-- Annotation toolkit.
-	{
-		"danymat/neogen",
-		cmd = "Neogen",
-		keys = {
-			{ "<Leader>lc", "<CMD>Neogen<CR>", desc = "Add comments" },
-		},
-		dependencies = "nvim-treesitter/nvim-treesitter",
-	},
 	-- Enhanced folding.
 	{
 		"kevinhwang91/nvim-ufo",

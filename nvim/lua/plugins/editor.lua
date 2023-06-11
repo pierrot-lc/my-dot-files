@@ -90,6 +90,7 @@ return {
 	-- Automatically change the project working directory when opening a new file.
 	{
 		"notjedi/nvim-rooter.lua",
+		cmd = { "Rooter", "RooterToggle" },
 		opts = {
 			manual = true,
 		},
@@ -163,23 +164,5 @@ return {
 			{ "b", "<CMD> lua require('spider').motion('b')<CR>", desc = "Spider-b" },
 			{ "ge", "<CMD> lua require('spider').motion('ge')<CR>", desc = "Spider-ge" },
 		},
-	},
-	-- Provide default gitignores.
-	{
-		"wintermute-cell/gitignore.nvim",
-		cmd = "Gitignore",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-	},
-	-- Multiple search and replace with ease.
-	{
-		"AckslD/muren.nvim",
-		cmd = {
-			"MurenToggle",
-			"MurenOpen",
-			"MurenClose",
-			"MurenFresh",
-			"MurenUnique",
-		},
-		config = true,
 	},
 }

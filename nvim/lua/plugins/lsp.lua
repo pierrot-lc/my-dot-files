@@ -5,20 +5,20 @@ return {
 		event = "BufReadPre",
 		keys = {
 			{ "gl", "<CMD>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", desc = "Show diagnostics" },
-			{ "gd", "<CMD>lua vim.lsp.buf.definition()<CR>",                      desc = "Go to definition" },
+			{ "gd", "<CMD>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
 			{
 				"gs",
 				"<CMD>lua vim.lsp.buf.signature_help()<CR>",
 				desc = "Show signature help",
 			},
-			{ "gr",         "<CMD>lua vim.lsp.buf.rename()<CR>",      desc = "Rename symbol" },
+			{ "gr", "<CMD>lua vim.lsp.buf.rename()<CR>", desc = "Rename symbol" },
 			{ "<Leader>la", "<CMD>lua vim.lsp.buf.code_action()<CR>", desc = "Show code action" },
 		},
 		dependencies = {
 			"williamboman/mason.nvim",
 			{ "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Make it easier to use `mason` with `lspconfig`.
-			{ "folke/neodev.nvim",                 config = true },                         -- Add neovim library support for `sumneko_lua`.
-			"ray-x/lsp_signature.nvim",                                                     -- Show function signatures.
+			{ "folke/neodev.nvim", config = true }, -- Add neovim library support for `sumneko_lua`.
+			"ray-x/lsp_signature.nvim", -- Show function signatures.
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
@@ -27,7 +27,6 @@ return {
 			lspconfig["pyright"].setup({})
 			lspconfig["lua_ls"].setup({})
 			lspconfig["marksman"].setup({})
-			lspconfig["rust_analyzer"].setup({})
 
 			-- Bind the `lsp_signature` to those LSP servers.
 			local signature_opts = {
@@ -100,7 +99,6 @@ return {
 				null_ls.builtins.formatting.markdownlint,
 				-- JSON & YAML.
 				null_ls.builtins.formatting.jq,
-				-- null_ls.builtins.formatting.yamlfmt,
 				null_ls.builtins.diagnostics.yamllint,
 			}
 
@@ -129,15 +127,6 @@ return {
 			"jose-elias-alvarez/null-ls.nvim",
 		},
 		opts = { automatic_installation = true },
-	},
-	-- Show a tree-like view of file symbols.
-	{
-		"simrat39/symbols-outline.nvim",
-		cmd = "SymbolsOutline",
-		keys = {
-			{ "<Leader>lo", "<CMD>SymbolsOutline<CR>", desc = "Show symbols outline" },
-		},
-		config = true,
 	},
 	-- Eye candy nvim-lsp progress.
 	{
