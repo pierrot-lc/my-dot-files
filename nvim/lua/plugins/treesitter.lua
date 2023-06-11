@@ -121,9 +121,6 @@ return {
 			{ "<Leader>lc", "<CMD>Neogen<CR>", desc = "Add comments" },
 		},
 		dependencies = "nvim-treesitter/nvim-treesitter",
-		opts = {
-			snippet_engine = "luasnip",
-		},
 	},
 	-- Enhanced folding.
 	{
