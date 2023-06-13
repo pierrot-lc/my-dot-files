@@ -138,7 +138,7 @@ return {
 				["<Leader>t"] = { name = "+Telescope" },
 				["<Leader>d"] = { name = "+Debugger" },
 				["<Leader>l"] = { name = "+LSP" },
-				["<Leader>m"] = { name = "+Misc" },
+				["gc"] = { name = "+Comment" },
 			})
 		end,
 	},
@@ -181,12 +181,12 @@ $$ | \$$ |\$$$$$$$\ \$$$$$$  |  \$  /   $$ |$$ | $$ | $$ |
 
 			dashboard.section.header.val = vim.split(logo, "\n")
 			dashboard.section.buttons.val = {
-				dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
-				dashboard.button("r", "󱋡 " .. " Recent files", ":Telescope oldfiles <CR>"),
-				dashboard.button("f", "󰈢 " .. " Find file", ":Telescope find_files <CR>"),
-				dashboard.button("g", "󰺮 " .. " Find text", ":Telescope live_grep <CR>"),
-				dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-				dashboard.button("s", "󰦛 " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
+				dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert<CR>"),
+				dashboard.button("p", " " .. " Projects", ":Telescope repo list<CR>"),
+				dashboard.button("r", "󱋡 " .. " Recent files", ":Telescope oldfiles<CR>"),
+				dashboard.button("f", "󰈢 " .. " Find file", ":Telescope find_files<CR>"),
+				dashboard.button("g", "󰺮 " .. " Find text", ":Telescope live_grep<CR>"),
+				dashboard.button("c", " " .. " Config", ":e $MYVIMRC<CR>"),
 				dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
 				dashboard.button("q", " " .. " Quit", ":qa<CR>"),
 			}

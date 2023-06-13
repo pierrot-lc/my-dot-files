@@ -39,30 +39,39 @@ return {
 			}
 			require("lsp_signature").setup(signature_opts)
 
-			--Toggle signatures.
-			local show_signature = signature_opts.floating_window
-			vim.keymap.set("n", "<Leader>lp", function()
-				show_signature = not show_signature
+			-- Deactivate all LSP clients.
+			local deactivate_lsp = function()
+				vim.lsp.stop_client(vim.lsp.get_active_clients())
+				print("LSP clients deactivated.")
+			end
+			vim.keymap.set("n", "<Leader>ll", deactivate_lsp, { desc = "Deactivate LSP" })
+
+			-- Toggle signatures.
+			local show_signatures = signature_opts.floating_window
+			local toggle_signatures = function()
+				show_signatures = not show_signatures
 				require("lsp_signature").toggle_float_win()
-				if show_signature then
-					print("Signature activated.")
+				if show_signatures then
+					print("Signatures activated.")
 				else
-					print("Signature hidden.")
+					print("Signatures hidden.")
 				end
-			end, { desc = "Toggle signature hints" })
+			end
+			vim.keymap.set("n", "<Leader>lp", toggle_signatures, { desc = "Toggle signature hints" })
 
 			-- Toggle diagnostics.
-			local show_diagnostic = true
-			vim.keymap.set("n", "<Leader>ld", function()
-				show_diagnostic = not show_diagnostic
-				if show_diagnostic then
+			local show_diagnostics = true
+			local toggle_diagnostics = function()
+				show_diagnostics = not show_diagnostics
+				if show_diagnostics then
 					vim.diagnostic.enable()
 					print("Diagnostics activated.")
 				else
 					vim.diagnostic.disable()
 					print("Diagnostics hidden.")
 				end
-			end, { desc = "Toggle diagnostics" })
+			end
+			vim.keymap.set("n", "<Leader>ld", toggle_diagnostics, { desc = "Toggle diagnostics" })
 		end,
 	},
 	-- Hook code actions, diagnostics, formatting, completion...

@@ -1,15 +1,4 @@
 return {
-	-- Move quickly anywhere in the visible editor area.
-	{
-		"ggandor/leap.nvim",
-		keys = {
-			{
-				"<Leader>s",
-				"<CMD>lua require('leap').leap({ target_windows = { vim.fn.win_getid() } })<CR>",
-				desc = "Leap",
-			},
-		},
-	},
 	-- Better increment/decrement features.
 	{
 		"monaqa/dial.nvim",
@@ -37,47 +26,22 @@ return {
 	},
 	-- Comment lines and block of code.
 	{
-		"numToStr/Comment.nvim",
+		"echasnovski/mini.comment",
 		keys = {
+			{ "gc",  desc = "Comment line (visual mode)", mode = "v" },
 			{ "gcc", desc = "Comment line" },
-			{ "gbc", desc = "Comment block" },
-			{ "gc", desc = "Comment line (visual mode)", mode = "v" },
-			{ "gb", desc = "Comment block (visual mode)", mode = "v" },
-			{ "gcO", desc = "Comment above" },
-			{ "gco", desc = "Comment below" },
-			{ "gcA", desc = "Comment at the end of line" },
+			{ "dgc", desc = "Delete comment textobject" },
+			{ "vgc", desc = "Select comment textobject" },
 		},
-		config = function()
-			require("Comment").setup({
-				toggler = {
-					line = "gcc",
-					block = "gbc",
-				},
-				opleader = {
-					line = nil,
-					block = nil,
-				},
-			})
-
-			-- Check for the "which-key" plugin.
-			local has_whichkey, whichkey = pcall(require, "which-key")
-			if has_whichkey then
-				whichkey.register({
-					["g"] = {
-						c = {
-							name = "+Comment",
-							c = "Line",
-							b = "Block",
-							O = "Above",
-							o = "Below",
-							A = "At the end of line",
-						},
-					},
-				})
-			end
-		end,
+		opts = {
+			mappings = {
+				comment = "gc",
+				comment_line = "gcc",
+				textobject = "gc",
+			},
+		},
 	},
-	-- Toggle terminals.
+	-- Toggle a virtual terminal.
 	{
 		"akinsho/toggleterm.nvim",
 		keys = { "<C-g>", desc = "Toggle the terminal" },
@@ -103,7 +67,6 @@ return {
 		},
 		dependencies = {
 			"nvim-tree/nvim-web-devicons", -- File icons.
-			"notjedi/nvim-rooter.lua",
 		},
 		config = function()
 			local function on_attach(bufnr)
@@ -121,48 +84,46 @@ return {
 
 			require("nvim-tree").setup({
 				on_attach = on_attach,
+				update_cwd = true,
+				update_focused_file = {
+					enable = true,
+					update_cwd = true,
+				},
 			})
 		end,
 	},
 	-- `Ranger` integration.
+	-- `pipx install ranger-fm`
 	{
 		"kelly-lin/ranger.nvim",
 		keys = {
 			{ "<Leader>r", "<CMD>lua require('ranger-nvim').open()<CR>", desc = "Open ranger" },
-		},
-		lazy = false, -- Unfortunately there's no easy way to load this plugin when entering a directory.
+		}, -- Unfortunately there's no easy way to load this plugin when entering a directory.
 		opts = { replace_netrw = true },
 	},
 	-- Autopairs.
 	{
-		"windwp/nvim-autopairs",
+		"echasnovski/mini.pairs",
 		event = "InsertEnter",
 		config = true,
+	},
+	-- Easy splits and joins.
+	{
+		"echasnovski/mini.splitjoin",
+		keys = {
+			{ "gS", desc = "Toggle split/join" },
+		},
+		opts = {
+			mappings = {
+				toggle = "gS",
+			},
+		},
 	},
 	-- More info when inspecting a character.
 	{
 		"tpope/vim-characterize",
 		keys = {
 			{ "ga", desc = "Show character infos" },
-		},
-	},
-	-- Restore cursor to previous place.
-	{
-		"farmergreg/vim-lastplace",
-	},
-	-- Better json and yaml support.
-	{
-		"gennaro-tedesco/nvim-jqx",
-		ft = { "json", "yaml" },
-	},
-	-- Better "w", "e", "b" moves.
-	{
-		"chrisgrieser/nvim-spider",
-		keys = {
-			{ "w", "<CMD> lua require('spider').motion('w')<CR>", desc = "Spider-w" },
-			{ "e", "<CMD> lua require('spider').motion('e')<CR>", desc = "Spider-e" },
-			{ "b", "<CMD> lua require('spider').motion('b')<CR>", desc = "Spider-b" },
-			{ "ge", "<CMD> lua require('spider').motion('ge')<CR>", desc = "Spider-ge" },
 		},
 	},
 }
