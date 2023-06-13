@@ -13,8 +13,8 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.opt.termguicolors = true -- Activate terminal colors.
-			vim.opt.background = "dark" -- Global theme.
+			vim.opt.termguicolors = true            -- Activate terminal colors.
+			vim.opt.background = "dark"             -- Global theme.
 			vim.g.gruvbox_material_background = "hard" -- Either "hard", "medium" or "soft".
 			vim.g.gruvbox_material_better_performance = 1
 			vim.cmd("colorscheme gruvbox-material")
@@ -99,7 +99,8 @@ return {
 	-- GitHub theme.
 	{
 		"projekt0n/github-nvim-theme",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		enabled = false,
+		lazy = false,  -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			require("github-theme").setup({
@@ -111,6 +112,16 @@ return {
 			})
 
 			vim.cmd("colorscheme github_dark_tritanopia")
+		end,
+	},
+	-- Dark green theme.
+	{
+		"ribru17/bamboo.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("bamboo").setup()
+			require("bamboo").load()
 		end,
 	},
 	-- Dynamically show keybindings.
