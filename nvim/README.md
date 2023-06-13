@@ -22,16 +22,53 @@ to maintain and to understand.
 The plugins are organized into multiple files such that each file can be deleted
 without affecting (too much) the plugins of the files.
 
+## Install
+
+You can use :
+
+```sh
+./install.sh
+```
+
+**Note that the will remove your neovim config files if there are any!**
+Also, this installation script will only make a link to the repository files.
+
 ## Dependencies
 
 Use `:checkhealth` to make sure everything is working properly.
 
-* neovim >= 0.9 (nightlty is advised)
-* curl
-* git
-* nerdfonts (`fira-code` or [getnf](https://github.com/ronniedroid/getnf))
-* pip, npm, cargo (for `mason` to install packages)
-* cmake, make and gcc (for `telescope-fzf-native`)
-* luajit (for `LuaSnip`)
-* ripgrep (for `telescope` with rg)
-* pynvim (for python support)
+### Install neovim nightly
+
+It is recommended to use [bob](https://github.com/MordechaiHadad/bob) as a
+neovim version manager.
+
+```sh
+cargo install bob-nvim
+bob install nightly
+```
+
+You will need nerdfont icons.
+You can use [getnf](https://github.com/ronniedroid/getnf) to install such a font.
+
+### Lazy package manager
+
+Requires `git`. Lazy will be installed automatically when launching neovim
+for the first time, and the plugins will be installed as well.
+
+### Mason packages
+
+The current Mason config needs [pip](https://pip.pypa.io/en/stable/installation/),
+[npm](https://github.com/nvm-sh/nvm) and [cargo](https://www.rust-lang.org/tools/install).
+
+### Other plugins dependencies
+
+* [ranger](https://github.com/ranger/ranger): [kelly-lin/ranger.nvim](https://github.com/kelly-lin/ranger.nvim)
+* [fd](https://github.com/sharkdp/fd) & [locate](https://wiki.archlinux.org/title/Locate):
+[cljoly/telescope-repo.nvim"](https://github.com/nvim-telescope/telescope.nvim)
+* make: [nvim-telescope/telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
+
+```sh
+pipx install ranger-fm
+cargo install ripgrep fd-find
+sudo zypper install mlocate make
+```
