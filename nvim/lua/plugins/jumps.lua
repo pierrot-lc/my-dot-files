@@ -24,4 +24,16 @@ return {
 	{
 		"farmergreg/vim-lastplace",
 	},
+	-- Mark files to quickly find them.
+	-- TODO: Add more keybindings.
+	-- TODO: Check about scopes. Find a way to mark specific locations in the files.
+	{
+		"cbochs/grapple.nvim",
+		keys = {
+			{ "<Leader>gt", "<CMD>GrappleTag<CR>",        desc = "Grapple tag" },
+			{ "<Leader>gu", "<CMD>GrappleUntag<CR>",      desc = "Grapple untag" },
+			{ "<Leader>gm", "<CMD>GrapplePopup tags<CR>", desc = "Grapple menu" },
+		},
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 }
