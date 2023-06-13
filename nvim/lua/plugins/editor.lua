@@ -126,4 +126,12 @@ return {
 			{ "ga", desc = "Show character infos" },
 		},
 	},
+	-- Highlight and search for todo comments like TODO, HACK or BUG.
+	{
+		"folke/todo-comments.nvim",
+		cmd = { "TodoTelescope" },
+		event = "BufReadPre",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = true,
+	},
 }
