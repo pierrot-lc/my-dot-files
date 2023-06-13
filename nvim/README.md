@@ -1,7 +1,5 @@
 # Neovim configuration files
 
-I tried to put up a modern neovim config.
-
 <p float="center">
   <img src="./.images/tree-and-suggestions.png" width="500" />
   <img src="./.images/linters.png" width="500" />
