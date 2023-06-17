@@ -4,17 +4,17 @@ return {
 		"mfussenegger/nvim-dap",
 		keys = {
 			{ "<Leader>db", "<CMD>DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
-			{ "<Leader>dc", "<CMD>DapContinue<CR>", desc = "Run/Continue until next breakpoint" },
-			{ "<Leader>do", "<CMD>DapToggleRepl<CR>", desc = "Toggle DAP interface" },
+			{ "<Leader>dc", "<CMD>DapContinue<CR>",         desc = "Run/Continue until next breakpoint" },
+			{ "<Leader>do", "<CMD>DapToggleRepl<CR>",       desc = "Toggle DAP interface" },
 		},
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
+			"theHamsta/nvim-dap-virtual-text",
 			"mfussenegger/nvim-dap-python",
 		},
 		config = function()
 			require("dap")
 
-			-- Override default highlight groups (for catppuccin).
 			local sign = vim.fn.sign_define
 			sign("DapBreakpoint", { text = " ", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 			sign(
@@ -45,6 +45,14 @@ return {
 				dapui.close({})
 			end
 		end,
+	},
+	-- Shows variable values in virtual lines.
+	{
+		"theHamsta/nvim-dap-virtual-text",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = true,
 	},
 	-- DAP for Python.
 	{
