@@ -1,16 +1,9 @@
 #!/bin/sh
 
-wd=$(pwd)
-
 echo "Copying the kitty configuration files..."
 rm -rf "$HOME/.config/kitty"
 mkdir -p "$HOME/.config/kitty"
-
-# Iterate over all ".conf" files using globs
-for file in "$wd"/*.conf; do
-    filename=$(basename "$file")
-    ln -s "$wd/$filename" "$HOME/.config/kitty/$filename"
-done
+cp ./*.conf "$HOME/.config/kitty/"
 
 echo "Symlinks to ~/.local/bin/ if necessary..."
 if [ -d "$HOME/.local/kitty.app/" ]; then
