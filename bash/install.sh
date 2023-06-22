@@ -1,17 +1,9 @@
 #!/bin/sh
 
 load_rc="
-# >>>> Loading my .bashrc.d files
-if [ -d ~/.bashrc.d ]; then
-	for rc in ~/.bashrc.d/*; do
-		if [ -f \"\$rc\" ]; then
-			. \"\$rc\"
-		fi
-	done
-fi
-
-unset rc
-# <<<<"
+# Loading my .bashrc.d files
+. $HOME/.bashrc.d/main.sh
+"
 
 # Check if .bashrc is not already contains load_rc
 if ! grep -q "Loading my .bashrc.d files" "$HOME/.bashrc"; then

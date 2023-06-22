@@ -1,10 +1,16 @@
 #!/bin/sh
 
-export PATH="$PATH:~/.local/bin"
-export PATH="$PATH:~/.cargo/bin"
-export EDITOR=nvim
+. "$HOME/.bashrc.d/sources.sh"
+. "$HOME/.bashrc.d/functions.sh"
 
-# Load aliases
-if [ -f "$HOME/.bash_aliases" ]; then
-    . "$HOME/.bash_aliases"
+# Make sure the sources.sh are loaded first.
+# Otherwise some packages won't be found.
+. "$HOME/.bashrc.d/aliases.sh"
+
+# Check if we are running a kitty terminal.
+# If so, source kitty.sh
+if [ "$TERM" = "xterm-kitty" ]; then
+    . "$HOME/.bashrc.d/kitty.sh"
 fi
+
+export EDITOR=nvim
