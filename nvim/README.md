@@ -34,8 +34,6 @@ You can use :
 
 **Note that the will remove your neovim config files if there are any!**
 
-Also, this installation script will only make a link to the repository files.
-
 ## Dependencies
 
 Use `:checkhealth` to make sure everything is working properly.
