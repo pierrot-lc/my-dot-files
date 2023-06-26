@@ -5,7 +5,9 @@ return {
 		keys = {
 			{ "<Leader>db", "<CMD>DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
 			{ "<Leader>dc", "<CMD>DapContinue<CR>",         desc = "Run/Continue until next breakpoint" },
-			{ "<Leader>do", "<CMD>DapToggleRepl<CR>",       desc = "Toggle DAP interface" },
+			{ "<Leader>do", "<CMD>DapStepOver<CR>",         desc = "Step over" },
+			{ "<Leader>di", "<CMD>DapStepInto<CR>",         desc = "Step into" },
+			{ "<Leader>dt", "<CMD>DapTerminate<CR>",        desc = "Terminate" },
 		},
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
