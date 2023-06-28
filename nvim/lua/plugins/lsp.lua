@@ -35,7 +35,7 @@ return {
 						},
 					},
 				},
-			})
+			}) -- See settings here: https://microsoft.github.io/pyright/#/settings
 			lspconfig["lua_ls"].setup({})
 			lspconfig["marksman"].setup({})
 
