@@ -24,7 +24,18 @@ return {
 			local lspconfig = require("lspconfig")
 
 			-- Load LSP servers.
-			lspconfig["pyright"].setup({})
+			lspconfig["pyright"].setup({
+				settings = {
+					python = {
+						analysis = {
+							autoSearchPaths = true,
+							useLibraryCodeForTypes = true,
+							diagnosticMode = "openFilesOnly",
+							typeCheckingMode = "basic",
+						},
+					},
+				},
+			})
 			lspconfig["lua_ls"].setup({})
 			lspconfig["marksman"].setup({})
 
