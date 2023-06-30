@@ -9,7 +9,6 @@ return {
 			"hrsh7th/cmp-path", -- Filesystem paths source for completion.
 			"hrsh7th/cmp-calc", -- Replace simple computations with their results.
 			"lukas-reineke/cmp-rg", -- Use results from `ripgrep` as a source.
-			"zbirenbaum/copilot-cmp", -- Copilot source.
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
@@ -64,7 +63,6 @@ return {
 				path = " ",
 				rg = " ",
 				neorg = " ",
-				copilot = " ",
 			}
 
 			cmp.setup({
@@ -74,7 +72,6 @@ return {
 					{ name = "calc" },
 					{ name = "rg" },
 					{ name = "neorg" }, -- Optional, used in Neorg files.
-					{ name = "copilot" }, -- Optional, used if Copilot is loaded.
 				},
 				window = {
 					completion = cmp.config.window.bordered(),
@@ -89,7 +86,6 @@ return {
 						-- Remove duplicate entries from some sources.
 						local item_dup = {
 							rg = 0,
-							copilot = 0,
 						}
 						item.dup = item_dup[entry.source.name] or 1
 
@@ -106,7 +102,7 @@ return {
 					["<TAB>"] = cmp.mapping(function(fallback)
 						if cmp.visible() and has_words_before() then
 							-- We make sure there's a word before the cursor,
-							-- otherwise Copilot could be triggered when we don't want to.
+							-- otherwise `cmp` could be triggered when we don't want to.
 							cmp.select_next_item()
 						else
 							fallback()
@@ -123,12 +119,7 @@ return {
 				sorting = {
 					priority_weight = 2,
 					comparators = {
-						-- This ensure that poor Copilot matches do not prioritize
-						-- other sources.
-						require("copilot_cmp.comparators").prioritize,
-						-- Below is the default comparitor list and order for nvim-cmp
 						cmp.config.compare.offset,
-						-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
 						cmp.config.compare.exact,
 						cmp.config.compare.score,
 						cmp.config.compare.recently_used,
