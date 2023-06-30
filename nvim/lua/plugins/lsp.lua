@@ -6,11 +6,7 @@ return {
 		keys = {
 			{ "gl", "<CMD>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", desc = "Show diagnostics" },
 			{ "gd", "<CMD>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
-			{
-				"gs",
-				"<CMD>lua vim.lsp.buf.signature_help()<CR>",
-				desc = "Show signature help",
-			},
+			{ "gs", "<CMD>lua vim.lsp.buf.signature_help()<CR>", desc = "Show signature help" },
 			{ "gr", "<CMD>lua vim.lsp.buf.rename()<CR>", desc = "Rename symbol" },
 			{ "<Leader>la", "<CMD>lua vim.lsp.buf.code_action()<CR>", desc = "Show code action" },
 		},
@@ -24,19 +20,47 @@ return {
 			local lspconfig = require("lspconfig")
 
 			-- Load LSP servers.
-			lspconfig["pyright"].setup({
+			lspconfig["pylsp"].setup({
 				settings = {
-					python = {
-						analysis = {
-							autoSearchPaths = true,
-							useLibraryCodeForTypes = true,
-							diagnosticMode = "openFilesOnly",
-							typeCheckingMode = "basic",
+					pylsp = {
+						plugins = {
+							preload = { enabled = true },
+							autopep8 = { enabled = false },
+							flake8 = { enabled = false },
+							pycodestyle = { enabled = false },
+							pydocstyle = { enabled = false },
+							mccabe = { enabled = false },
+							yapf = { enabled = false },
+							pylint = { enabled = false },
+							pyflakes = { enabled = false },
 						},
 					},
 				},
-			}) -- See settings here: https://microsoft.github.io/pyright/#/settings
-			lspconfig["lua_ls"].setup({})
+			})
+			lspconfig["lua_ls"].setup({
+				settings = {
+					Lua = {
+						runtime = {
+							-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+							version = "LuaJIT",
+						},
+						diagnostics = {
+							-- Get the language server to recognize the `vim` global
+							globals = { "vim" },
+						},
+						workspace = {
+							-- Make the server aware of Neovim runtime files
+							library = vim.api.nvim_get_runtime_file("", true),
+						},
+						telemetry = {
+							enable = true, -- That's fine.
+						},
+						format = {
+							enable = false,
+						},
+					},
+				},
+			})
 			lspconfig["marksman"].setup({})
 
 			-- Bind the `lsp_signature` to those LSP servers.
