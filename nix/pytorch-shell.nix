@@ -9,6 +9,8 @@
   targetPkgs = pkgs: (with pkgs; [
     python3Full
     cudaPackages.cudatoolkit
+    cudaPackages.cudnn
+    cudaPackages.nccl
   ]);
   runScript = "bash";
 }).env
