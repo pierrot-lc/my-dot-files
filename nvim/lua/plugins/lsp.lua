@@ -132,7 +132,7 @@ return {
 					extra_args = { "--profile=black" }, -- Black configuration.
 				}),
 				null_ls.builtins.diagnostics.ruff.with({
-					extra_args = { "--ignore E501" }, -- Ignore line length.
+					extra_args = { "--ignore", "E501" }, -- Ignore line length.
 				}),
 				-- Lua.
 				null_ls.builtins.formatting.stylua,
