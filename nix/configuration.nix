@@ -49,25 +49,41 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  # Allow unfree packages
+  # Allow unfree packages (NVIDIA).
   nixpkgs.config.allowUnfree = true;
 
-  # Activate proprietary NVIDIA drivers.
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl.enable = true;
-  # Optionally, you may need to select the appropriate driver version for your specific GPU.
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway
-  hardware.nvidia.modesetting.enable = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+  
+  # Tell Xorg to use the nvidia driver.
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+    # Modesetting is needed for most wayland compositors.
+    modesetting.enable = true;
+
+    # Use the open source version of the kernel module.
+    # Only available on driver 515.43.04+
+    open = true;
+
+    # Enable the nvidia settings menu.
+    nvidiaSettings = true;
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
   nixpkgs.config.CudaSupport = true;
 
-  # Configure keymap in X11
+  # Configure keymap in X11.
   services.xserver = {
     layout = "fr";
     xkbVariant = "";
   };
 
-  # Configure console keymap
+  # Configure console keymap.
   console.keyMap = "fr";
 
   # Enable CUPS to print documents.
@@ -143,6 +159,7 @@
       zotero
       drawio
       blanket
+      foliate
 
       # Installers.
       rustup
@@ -159,7 +176,6 @@
       gnomeExtensions.vitals
       gnomeExtensions.material-you-color-theming
       gnomeExtensions.rounded-window-corners
-      gnomeExtensions.lock-screen-message
 
       # Cuda.
       cudaPackages.cudatoolkit
@@ -168,6 +184,7 @@
 
   # Install Flatpak.
   services.flatpak.enable = true;
+  services.dbus.enable = true;
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
@@ -185,7 +202,9 @@
   # Fonts.
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "NerdFontsSymbolsOnly" ]; })
+    emojione
     twitter-color-emoji
+    twemoji-color-font
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
