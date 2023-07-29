@@ -103,26 +103,16 @@ return {
 	},
 	-- Autopairs.
 	{
-		"echasnovski/mini.pairs",
+		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		opts = {
-			-- In which modes mappings from this `config` should be created
-			modes = { insert = true, command = false, terminal = false },
+		config = function()
+			require("nvim-autopairs").setup()
 
-			mappings = {
-				["("] = { action = "open", pair = "()", neigh_pattern = "[^\\][^%)]" },
-				["["] = { action = "open", pair = "[]", neigh_pattern = "[^\\][^%]]" },
-				["{"] = { action = "open", pair = "{}", neigh_pattern = "[^\\][^%}]" },
-
-				[")"] = { action = "close", pair = "()", neigh_pattern = "[^\\]." },
-				["]"] = { action = "close", pair = "[]", neigh_pattern = "[^\\]." },
-				["}"] = { action = "close", pair = "{}", neigh_pattern = "[^\\]." },
-
-				['"'] = { action = "closeopen", pair = '""', neigh_pattern = "[^\\].", register = { cr = false } },
-				["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^%a\\].", register = { cr = false } },
-				["`"] = { action = "closeopen", pair = "``", neigh_pattern = "[^\\].", register = { cr = false } },
-			},
-		},
+			-- If you want insert `(` after select function or method item
+			local cmp = require("cmp")
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+		end,
 	},
 	-- Easy splits and joins.
 	{
