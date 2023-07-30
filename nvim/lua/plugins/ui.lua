@@ -49,6 +49,21 @@ return {
 			highlight(0, "LineflyReplace", { link = "ErrorMsg" })
 		end,
 	},
+	-- Show current indentation scope.
+	{
+		"echasnovski/mini.indentscope",
+		event = "BufReadPre",
+		config = function()
+			require("mini.indentscope").setup()
+
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = { "help", "alpha", "dashboard", "NvimTree", "Trouble", "lazy", "mason" },
+				callback = function()
+					vim.b.miniindentscope_disable = true
+				end,
+			})
+		end,
+	},
 	-- Welcoming panel.
 	{
 		"goolord/alpha-nvim",
@@ -90,8 +105,6 @@ $$ | \$$ |\$$$$$$$\ \$$$$$$  |  \$  /   $$ |$$ | $$ | $$ |
 			return dashboard
 		end,
 		config = function(_, dashboard)
-			vim.b.miniindentscope_disable = true
-
 			-- close Lazy and re-open when the dashboard is ready
 			if vim.o.filetype == "lazy" then
 				vim.cmd.close()
