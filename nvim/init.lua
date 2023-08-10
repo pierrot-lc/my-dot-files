@@ -59,7 +59,7 @@ require("lazy").setup(
 			notify = false,
 		},
 		lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
-	},
+	}
 )
 require("commands")
 require("keybindings")
