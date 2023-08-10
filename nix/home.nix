@@ -35,7 +35,6 @@
     bottom
     bat
     exa
-    mlocate
     zip
     unzip
     gnutar
@@ -50,7 +49,6 @@
     cmake
     pdm
     just
-    luajit
 
     # GUI.
     firefox
@@ -121,6 +119,7 @@
       fd  # telescope-repo.nvim
       mlocate  # telescope-repo.nvim
       ranger  # ranger.nvim
+      ripgrep  # telescope.nvim
 
       # Formatters, linters and other LSP's related packages.
       ruff
