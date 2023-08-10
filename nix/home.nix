@@ -80,6 +80,12 @@
     gnomeExtensions.material-you-color-theming
     gnomeExtensions.rounded-window-corners
     gnomeExtensions.runcat
+
+    # Fonts.
+    (nerdfonts.override { fonts = [ "FiraCode" "NerdFontsSymbolsOnly" ]; })
+    emojione
+    twitter-color-emoji
+    twemoji-color-font
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -145,4 +151,7 @@
     userEmail = "pstmrtem@outlook.com";
     userName = "Pierrot LC";
   };
+
+  # Discover installed fonts by home-manager and enable them.
+  fonts.fontconfig.enable = true;
 }
