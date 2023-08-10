@@ -3,18 +3,18 @@
 HOME_MANAGER_PATH="$HOME/.config/home-manager"
 rm -rf "$HOME_MANAGER_PATH"
 mkdir -p "$HOME_MANAGER_PATH"
-cp "./home.nix" "$HOME_MANAGER_PATH/"
+cp ./home.nix "$HOME_MANAGER_PATH/"
 
 mkdir -p "$HOME_MANAGER_PATH/nvim"
-cp "../nvim/init.lua" "$HOME_MANAGER_PATH/nvim/"
-cp -r "../nvim/lua" "$HOME_MANAGER_PATH/nvim/"
-cp -r "../nvim/ftplugin" "$HOME_MANAGER_PATH/nvim/"
+cp ../nvim/init.lua "$HOME_MANAGER_PATH/nvim/"
+cp -r ../nvim/lua "$HOME_MANAGER_PATH/nvim/"
+cp -r ../nvim/ftplugin "$HOME_MANAGER_PATH/nvim/"
 
 mkdir -p "$HOME_MANAGER_PATH/kitty"
-cp "../kitty/*.conf" "$HOME_MANAGER_PATH/kitty/"
+cp ../kitty/*.conf "$HOME_MANAGER_PATH/kitty/"
 
-mkdir -p "$HOME_MANAGER_PATH/.bashrd.d"
-cp "../bash/.bashrc.d/*" "$HOME_MANAGER_PATH/.bashrc.d/"
+mkdir -p "$HOME_MANAGER_PATH/.bashrc.d"
+cp ../bash/.bashrc.d/* "$HOME_MANAGER_PATH/.bashrc.d/"
 
 
 load_rc="

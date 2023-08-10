@@ -29,7 +29,6 @@
     # TUI
     kitty
     starship
-    vim
     ranger
     ripgrep
     fd
@@ -46,7 +45,6 @@
     python310Packages.pynvim
     python310Packages.pip
     nodejs_20
-    git
     gcc
     gnumake
     cmake
@@ -83,21 +81,15 @@
     gnomeExtensions.vitals
     gnomeExtensions.material-you-color-theming
     gnomeExtensions.rounded-window-corners
+    gnomeExtensions.runcat
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    ".config/kitty".source = ./kitty;
+    ".config/nvim".source = ./nvim;
+    ".bashrc.d".source = ./.bashrc.d;
   };
 
   # You can also manage environment variables but you will have to manually
@@ -122,6 +114,15 @@
     package = pkgs.neovim-nightly;  # Using dedicated overlay.
     defaultEditor = true;
     extraPackages = with pkgs; [
+      # Dependencies.
+      git  # lazy.nvim
+      gcc  # treesitter
+      gnumake  # telescope-fzf-native.nvim
+      fd  # telescope-repo.nvim
+      mlocate  # telescope-repo.nvim
+      ranger  # ranger.nvim
+
+      # Formatters, linters and other LSP's related packages.
       ruff
       black
       isort
@@ -138,5 +139,11 @@
       luajitPackages.lua-lsp
       marksman
     ];
+  };
+
+  programs.git = {
+    enable = true;
+    userEmail = "pstmrtem@outlook.com";
+    userName = "Pierrot LC";
   };
 }
