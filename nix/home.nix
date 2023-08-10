@@ -136,8 +136,8 @@
       yamllint
       python310Packages.python-lsp-server
       python310Packages.debugpy
-      luajitPackages.lua-lsp
       marksman
+      lua-language-server
     ];
   };
 
