@@ -11,8 +11,6 @@ return {
 			{ "<Leader>la", "<CMD>lua vim.lsp.buf.code_action()<CR>", desc = "Show code action" },
 		},
 		dependencies = {
-			"williamboman/mason.nvim",
-			{ "williamboman/mason-lspconfig.nvim", opts = { automatic_installation = true } }, -- Make it easier to use `mason` with `lspconfig`.
 			{ "folke/neodev.nvim", config = true }, -- Add neovim library support for `sumneko_lua`.
 			"ray-x/lsp_signature.nvim", -- Show function signatures.
 		},
@@ -116,9 +114,6 @@ return {
 		keys = {
 			{ "<Leader>pn", "<CMD>NullLsInfo<CR>", desc = "Null-ls" },
 		},
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
 		config = function()
 			local null_ls = require("null-ls")
 			local sources = {
@@ -155,24 +150,6 @@ return {
 			-- Update diagnostics even in insert mode. Can slow nvim.
 			vim.diagnostic.config({ update_in_insert = false })
 		end,
-	},
-	-- Install LSP packages.
-	{
-		"williamboman/mason.nvim",
-		cmd = "Mason",
-		keys = {
-			{ "<Leader>pm", "<CMD>Mason<CR>", desc = "Mason" },
-		},
-		config = true,
-	},
-	-- Automatically install Null-ls sources using Mason.
-	{
-		"jay-babu/mason-null-ls.nvim",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
-		},
-		opts = { automatic_installation = true },
 	},
 	-- Eye candy nvim-lsp progress.
 	{

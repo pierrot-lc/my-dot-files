@@ -4,10 +4,10 @@ return {
 		"mfussenegger/nvim-dap",
 		keys = {
 			{ "<Leader>db", "<CMD>DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
-			{ "<Leader>dc", "<CMD>DapContinue<CR>",         desc = "Run/Continue until next breakpoint" },
-			{ "<Leader>do", "<CMD>DapStepOver<CR>",         desc = "Step over" },
-			{ "<Leader>di", "<CMD>DapStepInto<CR>",         desc = "Step into" },
-			{ "<Leader>dt", "<CMD>DapTerminate<CR>",        desc = "Terminate" },
+			{ "<Leader>dc", "<CMD>DapContinue<CR>", desc = "Run/Continue until next breakpoint" },
+			{ "<Leader>do", "<CMD>DapStepOver<CR>", desc = "Step over" },
+			{ "<Leader>di", "<CMD>DapStepInto<CR>", desc = "Step into" },
+			{ "<Leader>dt", "<CMD>DapTerminate<CR>", desc = "Terminate" },
 		},
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
@@ -60,18 +60,8 @@ return {
 	{
 		"mfussenegger/nvim-dap-python",
 		config = function()
+			-- TODO: Dynamically setup the path below (so that it works on Nix).
 			require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
 		end,
-	},
-	-- Automatically install debug protocols.
-	{
-		"jay-babu/mason-nvim-dap.nvim",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"mfussenegger/nvim-dap",
-		},
-		opts = {
-			automatic_installation = true,
-		},
 	},
 }
