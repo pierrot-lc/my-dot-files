@@ -10,7 +10,7 @@
     python3Full
     cudaPackages.cudatoolkit
     cudaPackages.cudnn
-    cudaPackages.nccl
+    # cudaPackages.nccl
   ]);
   runScript = "bash";
 }).env
