@@ -63,6 +63,7 @@
     drawio
     blanket
     foliate
+    popcorntime
 
     # Installers.
     rustup
