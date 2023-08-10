@@ -25,6 +25,7 @@ return {
 					"bash",
 					"vimdoc",
 					"norg",
+					"nix",
 				},
 				-- Highlight based on treesitter.
 				highlight = { enable = true },
