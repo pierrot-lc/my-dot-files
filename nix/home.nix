@@ -81,6 +81,7 @@
     gnomeExtensions.material-you-color-theming
     gnomeExtensions.rounded-window-corners
     gnomeExtensions.runcat
+    gnomeExtensions.no-activities-button
 
     # Fonts.
     (nerdfonts.override { fonts = [ "FiraCode" "NerdFontsSymbolsOnly" ]; })
@@ -154,5 +155,6 @@
   };
 
   # Discover installed fonts by home-manager and enable them.
-  fonts.fontconfig.enable = true;
+  # But it masks already installed fonts :(.
+  fonts.fontconfig.enable = false;
 }
