@@ -64,6 +64,7 @@
     blanket
     foliate
     popcorntime
+    mullvad-vpn
 
     # Installers.
     rustup
