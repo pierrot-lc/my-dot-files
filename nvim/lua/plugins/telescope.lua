@@ -4,16 +4,16 @@ return {
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		keys = {
-			{ "<Leader>f",  "<CMD>Telescope find_files<CR>",           desc = "Find files" },
-			{ "<Leader>tf", "<CMD>Telescope find_files<CR>",           desc = "Find files" },
-			{ "<Leader>tg", "<CMD>Telescope live_grep<CR>",            desc = "Live grep" }, -- Requires `ripgrep` to be installed.
-			{ "<Leader>tb", "<CMD>Telescope buffers<CR>",              desc = "Buffers" },
-			{ "<Leader>tt", "<CMD>Telescope treesitter<CR>",           desc = "Treesitter symbols" }, -- Requires `treesitter`.
-			{ "<Leader>th", "<CMD>Telescope help_tags<CR>",            desc = "Help tags" },
+			{ "<Leader>f", "<CMD>Telescope find_files<CR>", desc = "Find files" },
+			{ "<Leader>tf", "<CMD>Telescope find_files<CR>", desc = "Find files" },
+			{ "<Leader>tg", "<CMD>Telescope live_grep<CR>", desc = "Live grep" }, -- Requires `ripgrep` to be installed.
+			{ "<Leader>tb", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
+			{ "<Leader>tt", "<CMD>Telescope treesitter<CR>", desc = "Treesitter symbols" }, -- Requires `treesitter`.
+			{ "<Leader>th", "<CMD>Telescope help_tags<CR>", desc = "Help tags" },
 			{ "<Leader>ts", "<CMD>Telescope lsp_document_symbols<CR>", desc = "Document symbols" },
-			{ "<Leader>tc", "<CMD>Telescope commands<CR>",             desc = "Commands" },
-			{ "<Leader>tm", "<CMD>Telescope marks<CR>",                desc = "Marks" },
-			{ "<Leader>tp", "<CMD>Telescope resume<CR>",               desc = "Resume last search" },
+			{ "<Leader>tc", "<CMD>Telescope commands<CR>", desc = "Commands" },
+			{ "<Leader>tm", "<CMD>Telescope marks<CR>", desc = "Marks" },
+			{ "<Leader>tp", "<CMD>Telescope resume<CR>", desc = "Resume last search" },
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- Common lua functions.
@@ -44,6 +44,7 @@ return {
 		end,
 	},
 	-- Fuzzy finder for `telescope.nvim`.
+	-- Requires `make` installed.
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		lazy = true,
@@ -57,7 +58,8 @@ return {
 			"folke/lazy.nvim",
 		},
 	},
-	-- Browse local repositories (needs `locate` and `fd`).
+	-- Browse local repositories.
+	-- Requires `locate` and `fd` to be installed.
 	{
 		"cljoly/telescope-repo.nvim",
 		keys = {

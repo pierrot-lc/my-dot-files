@@ -12,6 +12,7 @@ return {
 			"nvim-treesitter/nvim-treesitter-refactor", -- Refactor modules.
 			"nvim-treesitter/nvim-treesitter-textobjects", -- Syntax aware text-objects.
 			"HiPhish/rainbow-delimiters.nvim", -- Switch delimiters colors to better distinguish them.
+			"calops/hmts.nvim", -- Highlight languages contained in nix strings.
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({

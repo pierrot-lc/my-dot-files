@@ -65,6 +65,7 @@
     foliate
     popcorntime
     mullvad-vpn
+    pandoc
 
     # Installers.
     rustup

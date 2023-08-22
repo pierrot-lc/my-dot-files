@@ -1,5 +1,3 @@
--- Specific kitty plugins.
-
 -- Make sure we're in kitty.
 if vim.fn.expand("$TERM") ~= "xterm-kitty" then
 	return {}
