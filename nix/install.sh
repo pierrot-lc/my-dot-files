@@ -16,7 +16,6 @@ cp ../kitty/*.conf "$HOME_MANAGER_PATH/kitty/"
 mkdir -p "$HOME_MANAGER_PATH/.bashrc.d"
 cp ../bash/.bashrc.d/* "$HOME_MANAGER_PATH/.bashrc.d/"
 
-
 load_rc="
 # Loading my .bashrc.d files
 . $HOME/.bashrc.d/main.sh
@@ -25,5 +24,5 @@ load_rc="
 # Check if .bashrc is not already contains load_rc
 if ! grep -q "Loading my .bashrc.d files" "$HOME/.bashrc"; then
     echo "Add load_rc to .bashrc"
-    echo "$load_rc" >> "$HOME/.bashrc"
+    echo "$load_rc" >>"$HOME/.bashrc"
 fi

@@ -37,7 +37,7 @@ return {
 				"isort",
 				"jq",
 				"stylua",
-				"beautysh",
+				"shfmt",
 				"marksman",
 				"lua-language-server",
 				"python-lsp-server",

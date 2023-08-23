@@ -139,7 +139,7 @@
       codespell
       proselint
       shellcheck
-      beautysh
+      shfmt
       nodePackages_latest.markdownlint-cli
       jq
       yamllint
