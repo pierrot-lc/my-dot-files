@@ -123,30 +123,32 @@
     defaultEditor = true;
     extraPackages = with pkgs; [
       # Dependencies.
-      git  # lazy.nvim
-      gcc  # treesitter
-      gnumake  # telescope-fzf-native.nvim
       fd  # telescope-repo.nvim
+      gcc  # treesitter
+      git  # lazy.nvim
+      gnumake  # telescope-fzf-native.nvim
       mlocate  # telescope-repo.nvim
       ranger  # ranger.nvim
       ripgrep  # telescope.nvim
 
       # Formatters, linters and other LSP's related packages.
-      ruff
+      # Everything that `Mason` usually handle itself.
       black
-      isort
-      stylua
       codespell
+      isort
+      jq
+      lua-language-server
+      marksman
+      nodePackages_latest.bash-language-server
+      nodePackages_latest.markdownlint-cli
       proselint
+      python310Packages.debugpy
+      python310Packages.python-lsp-server
+      ruff
       shellcheck
       shfmt
-      nodePackages_latest.markdownlint-cli
-      jq
+      stylua
       yamllint
-      python310Packages.python-lsp-server
-      python310Packages.debugpy
-      marksman
-      lua-language-server
     ];
   };
 

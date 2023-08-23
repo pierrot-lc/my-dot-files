@@ -59,6 +59,7 @@ return {
 					},
 				},
 			})
+			lspconfig["bashls"].setup({})
 			lspconfig["marksman"].setup({})
 
 			-- Bind the `lsp_signature` to those LSP servers.
@@ -136,7 +137,7 @@ return {
 	{
 		"mhartington/formatter.nvim",
 		keys = {
-			{"<Leader>F", "<CMD>FormatLock<CR>", desc="Format"},
+			{ "<Leader>F", "<CMD>FormatLock<CR>", desc = "Format" },
 		},
 		config = function()
 			local stylua = require("formatter.filetypes.lua").stylua
