@@ -27,45 +27,51 @@
   # environment.
   home.packages = with pkgs; [
     # TUI
+    bat
+    bottom
+    exa
+    fd
+    gnutar
     kitty
-    starship
     ranger
     ripgrep
-    fd
-    bottom
-    bat
-    exa
-    zip
+    starship
     unzip
-    gnutar
+    zip
 
     # Development tools.
-    python3Full
-    python310Packages.pynvim
-    python310Packages.pip
-    nodejs_20
+    cmake
     gcc
     gnumake
-    cmake
-    pdm
     just
+    nodejs_20
+    pdm
+    python310Packages.pip
+    python310Packages.pynvim
+    python3Full
 
     # GUI.
-    firefox
-    thunderbird
-    vlc
+    blanket
     caprine-bin
     discord
-    keepassxc
-    newsflash
-    qbittorrent
-    zotero
     drawio
-    blanket
+    firefox
     foliate
-    popcorntime
+    keepassxc
     mullvad-vpn
+    newsflash
     pandoc
+    popcorntime
+    qbittorrent
+    thunderbird
+    vlc
+    zotero
+
+    # Office suite.
+    libreoffice-fresh
+    hunspell
+    hunspellDicts.fr-any
+    hunspellDicts.en-us
 
     # Installers.
     rustup
@@ -75,21 +81,22 @@
     gnome-extension-manager
     gnomeExtensions.blur-my-shell
     gnomeExtensions.caffeine
-    gnomeExtensions.weather-oclock
-    gnomeExtensions.workspace-indicator
-    gnomeExtensions.places-status-indicator
-    gnomeExtensions.tray-icons-reloaded
-    gnomeExtensions.vitals
+    gnomeExtensions.just-perfection
     gnomeExtensions.material-you-color-theming
+    gnomeExtensions.no-activities-button
+    gnomeExtensions.places-status-indicator
     gnomeExtensions.rounded-window-corners
     gnomeExtensions.runcat
-    gnomeExtensions.no-activities-button
+    gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.vitals
+    gnomeExtensions.weather-oclock
+    gnomeExtensions.workspace-indicator
 
     # Fonts.
     (nerdfonts.override { fonts = [ "FiraCode" "NerdFontsSymbolsOnly" ]; })
     emojione
-    twitter-color-emoji
     twemoji-color-font
+    twitter-color-emoji
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
