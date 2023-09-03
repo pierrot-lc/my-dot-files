@@ -52,6 +52,7 @@
 
     # GUI.
     blanket
+    calibre
     caprine-bin
     discord
     drawio
@@ -62,6 +63,7 @@
     newsflash
     pandoc
     popcorntime
+    popsicle
     qbittorrent
     thunderbird
     vlc
