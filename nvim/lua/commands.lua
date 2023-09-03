@@ -15,13 +15,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank({ higroup = "Visual", timeout = 100 })
 	end,
 })
-vim.api.nvim_create_autocmd("BufWritePre", {
-	group = augroup,
-	desc = "Format on save",
-	callback = function(event)
-		vim.lsp.buf.format()
-	end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+-- 	group = augroup,
+-- 	desc = "Format on save",
+-- 	callback = function(event)
+-- 		vim.lsp.buf.format()
+-- 	end,
+-- })
 
 -- Set filetypes.
 -- vim.filetype.add({

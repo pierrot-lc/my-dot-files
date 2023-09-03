@@ -59,6 +59,7 @@ return {
 					},
 				},
 			})
+			lspconfig["bashls"].setup({})
 			lspconfig["marksman"].setup({})
 
 			-- Bind the `lsp_signature` to those LSP servers.
@@ -107,48 +108,75 @@ return {
 			vim.keymap.set("n", "<Leader>ld", toggle_diagnostics, { desc = "Toggle diagnostics" })
 		end,
 	},
-	-- Hook code actions, diagnostics, formatting, completion...
+	-- Linter, complementary to the native LSP.
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"mfussenegger/nvim-lint",
 		event = "BufReadPre",
-		keys = {
-			{ "<Leader>pn", "<CMD>NullLsInfo<CR>", desc = "Null-ls" },
-		},
 		config = function()
-			local null_ls = require("null-ls")
-			local sources = {
-				-- General.
-				null_ls.builtins.diagnostics.codespell,
-				null_ls.builtins.diagnostics.proselint,
-				null_ls.builtins.code_actions.proselint,
-				-- Python.
-				null_ls.builtins.formatting.black,
-				null_ls.builtins.formatting.isort.with({
-					extra_args = { "--profile=black" }, -- Black configuration.
-				}),
-				null_ls.builtins.diagnostics.ruff.with({
-					extra_args = { "--ignore", "E501" }, -- Ignore line length.
-				}),
-				-- Lua.
-				null_ls.builtins.formatting.stylua,
-				-- Shell.
-				null_ls.builtins.code_actions.shellcheck,
-				null_ls.builtins.diagnostics.shellcheck,
-				null_ls.builtins.formatting.beautysh,
-				-- Markdown.
-				null_ls.builtins.diagnostics.markdownlint,
-				null_ls.builtins.formatting.markdownlint,
-				-- JSON & YAML.
-				null_ls.builtins.formatting.jq,
-				null_ls.builtins.diagnostics.yamllint,
+			require("lint").linters_by_ft = {
+				python = { "ruff" },
+				yaml = { "yamllint" },
+				markdown = { "markdownlint", "codespell", "proselint" },
+				sh = { "shellcheck" },
+				norg = { "codespell", "proselint" },
 			}
 
-			null_ls.setup({
-				sources = sources,
-			})
+			local ruff = require("lint").linters.ruff
+			vim.list_extend(ruff.args, { "--ignore", "E501" }) -- Ignore line length.
 
-			-- Update diagnostics even in insert mode. Can slow nvim.
 			vim.diagnostic.config({ update_in_insert = false })
+
+			vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
+				callback = function()
+					require("lint").try_lint()
+				end,
+			})
+		end,
+	},
+	-- Implement formatters, not LSP-native.
+	{
+		"mhartington/formatter.nvim",
+		keys = {
+			{ "<Leader>F", "<CMD>FormatLock<CR>", desc = "Format" },
+		},
+		config = function()
+			local stylua = require("formatter.filetypes.lua").stylua
+			local black = require("formatter.filetypes.python").black
+			local jq = require("formatter.filetypes.json").jq
+			local shfmt = require("formatter.filetypes.sh").shfmt
+			local isort_black = function()
+				local config = require("formatter.filetypes.python").isort()
+				vim.list_extend(config.args, { "--profile=black" })
+				return config
+			end
+
+			require("formatter").setup({
+				-- Enable or disable logging
+				logging = true,
+				-- Set the log level
+				log_level = vim.log.levels.WARN,
+				-- All formatter configurations are opt-in
+				filetype = {
+					lua = {
+						stylua,
+					},
+					python = {
+						black,
+						isort_black,
+					},
+					sh = {
+						shfmt,
+					},
+					json = {
+						jq,
+					},
+					-- Use the special "*" filetype for defining formatter configurations on
+					-- any filetype
+					["*"] = {
+						require("formatter.filetypes.any").remove_trailing_whitespace,
+					},
+				},
+			})
 		end,
 	},
 	-- Eye candy nvim-lsp progress.

@@ -3,46 +3,48 @@ if vim.fn.executable("nix") == 1 then
 	return {}
 end
 
+-- Handle the installation of the multiple LSPs and other code related packages.
+-- Make sure that the corresponding packages managers are available:
+-- `pip` with `venv`
+-- `cargo`
+-- `npm`
+
 return {
 	-- Package manager for LSP servers, DAP, linters and formatters.
 	{
 		"williamboman/mason.nvim",
+		lazy = false,  -- Need to be load at launch so that the Mason's path is added to PATH.
 		cmd = "Mason",
 		keys = {
 			{ "<Leader>pm", "<CMD>Mason<CR>", desc = "Mason" },
 		},
 		config = true,
 	},
-	-- Automatically install Null-ls sources using Mason.
+	-- Automatically install packages using Mason.
 	{
-		"jay-babu/mason-null-ls.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"jose-elias-alvarez/null-ls.nvim",
-		},
-		opts = { automatic_installation = true },
-	},
-	-- Automatically install lspconfig sources using Mason.
-	{
-		"williamboman/mason-lspconfig.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"neovim/nvim-lspconfig",
-		},
-		opts = { automatic_installation = true },
-	},
-	-- Automatically install debug protocols.
-	{
-		"jay-babu/mason-nvim-dap.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"mfussenegger/nvim-dap",
-		},
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		cmd = { "MasonToolsInstall", "MasonToolsUpdate" },
 		opts = {
-			automatic_installation = true,
+			run_on_start = false,
+			auto_update = false,
+			ensure_installed = {
+				"bash-language-server",
+				"black",
+				"codespell",
+				"debugpy",
+				"isort",
+				"jq",
+				"lua-language-server",
+				"markdownlint",
+				"marksman",
+				"proselint",
+				"python-lsp-server",
+				"ruff",
+				"shellcheck",
+				"shfmt",
+				"stylua",
+				"yamllint",
+			},
 		},
 	},
 }

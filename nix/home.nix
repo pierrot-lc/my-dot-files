@@ -27,45 +27,53 @@
   # environment.
   home.packages = with pkgs; [
     # TUI
+    bat
+    bottom
+    exa
+    fd
+    gnutar
     kitty
-    starship
     ranger
     ripgrep
-    fd
-    bottom
-    bat
-    exa
-    zip
+    starship
     unzip
-    gnutar
+    zip
 
     # Development tools.
-    python3Full
-    python310Packages.pynvim
-    python310Packages.pip
-    nodejs_20
+    cmake
     gcc
     gnumake
-    cmake
-    pdm
     just
+    nodejs_20
+    pdm
+    python310Packages.pip
+    python310Packages.pynvim
+    python3Full
 
     # GUI.
-    firefox
-    thunderbird
-    vlc
+    blanket
+    calibre
     caprine-bin
     discord
-    keepassxc
-    newsflash
-    qbittorrent
-    zotero
     drawio
-    blanket
+    firefox
     foliate
-    popcorntime
+    keepassxc
     mullvad-vpn
+    newsflash
     pandoc
+    popcorntime
+    popsicle
+    qbittorrent
+    thunderbird
+    vlc
+    zotero
+
+    # Office suite.
+    libreoffice-fresh
+    hunspell
+    hunspellDicts.fr-any
+    hunspellDicts.en-us
 
     # Installers.
     rustup
@@ -75,21 +83,22 @@
     gnome-extension-manager
     gnomeExtensions.blur-my-shell
     gnomeExtensions.caffeine
-    gnomeExtensions.weather-oclock
-    gnomeExtensions.workspace-indicator
-    gnomeExtensions.places-status-indicator
-    gnomeExtensions.tray-icons-reloaded
-    gnomeExtensions.vitals
+    gnomeExtensions.just-perfection
     gnomeExtensions.material-you-color-theming
+    gnomeExtensions.no-activities-button
+    gnomeExtensions.places-status-indicator
     gnomeExtensions.rounded-window-corners
     gnomeExtensions.runcat
-    gnomeExtensions.no-activities-button
+    gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.vitals
+    gnomeExtensions.weather-oclock
+    gnomeExtensions.workspace-indicator
 
     # Fonts.
     (nerdfonts.override { fonts = [ "FiraCode" "NerdFontsSymbolsOnly" ]; })
     emojione
-    twitter-color-emoji
     twemoji-color-font
+    twitter-color-emoji
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -123,30 +132,32 @@
     defaultEditor = true;
     extraPackages = with pkgs; [
       # Dependencies.
-      git  # lazy.nvim
-      gcc  # treesitter
-      gnumake  # telescope-fzf-native.nvim
       fd  # telescope-repo.nvim
+      gcc  # treesitter
+      git  # lazy.nvim
+      gnumake  # telescope-fzf-native.nvim
       mlocate  # telescope-repo.nvim
       ranger  # ranger.nvim
       ripgrep  # telescope.nvim
 
       # Formatters, linters and other LSP's related packages.
-      ruff
+      # Everything that `Mason` usually handle itself.
       black
-      isort
-      stylua
       codespell
-      proselint
-      shellcheck
-      beautysh
-      nodePackages_latest.markdownlint-cli
+      isort
       jq
-      yamllint
-      python310Packages.python-lsp-server
-      python310Packages.debugpy
-      marksman
       lua-language-server
+      marksman
+      nodePackages_latest.bash-language-server
+      nodePackages_latest.markdownlint-cli
+      proselint
+      python310Packages.debugpy
+      python310Packages.python-lsp-server
+      ruff
+      shellcheck
+      shfmt
+      stylua
+      yamllint
     ];
   };
 
