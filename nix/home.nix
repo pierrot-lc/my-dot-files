@@ -107,6 +107,7 @@
     ".config/kitty".source = ./kitty;
     ".config/nvim".source = ./nvim;
     ".bashrc.d".source = ./.bashrc.d;
+    ".config/starship.toml".text = "add_newline = false";
   };
 
   # You can also manage environment variables but you will have to manually
