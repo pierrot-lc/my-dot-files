@@ -29,7 +29,7 @@
     # TUI
     bat
     bottom
-    exa
+    eza
     fd
     gnutar
     kitty

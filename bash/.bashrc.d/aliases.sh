@@ -53,10 +53,10 @@ fi
 if command -v htop > /dev/null 2>&1; then
     alias top=htop
 fi
-if command -v exa > /dev/null 2>&1; then
-    alias ls=exa
-    alias exa="exa --icons --git --color-scale --time-style=long-iso --group-directories-first"
-    # cargo install exa
+if command -v eza > /dev/null 2>&1; then
+    alias ls=eza
+    alias eza="eza --icons --git --color-scale --group-directories-first"
+    # cargo install eza
 fi
 if command -v bat > /dev/null 2>&1; then
     alias cat=bat
