@@ -48,7 +48,8 @@
     pdm
     python310Packages.pip
     python310Packages.pynvim
-    python3Full
+    python310Full
+    texlive.combined.scheme-full
 
     # GUI.
     blanket
@@ -147,6 +148,7 @@
       codespell
       isort
       jq
+      ltex-ls
       lua-language-server
       marksman
       nodePackages_latest.bash-language-server

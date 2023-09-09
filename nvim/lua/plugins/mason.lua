@@ -13,7 +13,7 @@ return {
 	-- Package manager for LSP servers, DAP, linters and formatters.
 	{
 		"williamboman/mason.nvim",
-		lazy = false,  -- Need to be load at launch so that the Mason's path is added to PATH.
+		lazy = false, -- Need to be load at launch so that the Mason's path is added to PATH.
 		cmd = "Mason",
 		keys = {
 			{ "<Leader>pm", "<CMD>Mason<CR>", desc = "Mason" },
@@ -34,6 +34,8 @@ return {
 				"debugpy",
 				"isort",
 				"jq",
+				"latexindent",
+				"ltex-ls",
 				"lua-language-server",
 				"markdownlint",
 				"marksman",

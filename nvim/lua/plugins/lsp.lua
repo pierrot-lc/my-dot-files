@@ -61,6 +61,7 @@ return {
 			})
 			lspconfig["bashls"].setup({})
 			lspconfig["marksman"].setup({})
+			lspconfig["ltex"].setup({})
 
 			-- Bind the `lsp_signature` to those LSP servers.
 			local signature_opts = {
@@ -114,11 +115,11 @@ return {
 		event = "BufReadPre",
 		config = function()
 			require("lint").linters_by_ft = {
-				python = { "ruff" },
-				yaml = { "yamllint" },
 				markdown = { "markdownlint", "codespell", "proselint" },
-				sh = { "shellcheck" },
 				norg = { "codespell", "proselint" },
+				python = { "ruff" },
+				sh = { "shellcheck" },
+				yaml = { "yamllint" },
 			}
 
 			local ruff = require("lint").linters.ruff
@@ -144,6 +145,7 @@ return {
 			local black = require("formatter.filetypes.python").black
 			local jq = require("formatter.filetypes.json").jq
 			local shfmt = require("formatter.filetypes.sh").shfmt
+			local latexindent = require("formatter.filetypes.latex").latexindent
 			local isort_black = function()
 				local config = require("formatter.filetypes.python").isort()
 				vim.list_extend(config.args, { "--profile=black" })
@@ -169,6 +171,9 @@ return {
 					},
 					json = {
 						jq,
+					},
+					latex = {
+						latexindent,
 					},
 					-- Use the special "*" filetype for defining formatter configurations on
 					-- any filetype
