@@ -18,15 +18,16 @@ return {
 			require("nvim-treesitter.configs").setup({
 				-- Parsers to install by defaults.
 				ensure_installed = {
-					"lua",
-					"python",
-					"markdown",
-					"json",
-					"yaml",
 					"bash",
-					"vimdoc",
-					"norg",
+					"json",
+					"latex",
+					"lua",
+					"markdown",
 					"nix",
+					"norg",
+					"python",
+					"vimdoc",
+					"yaml",
 				},
 				-- Highlight based on treesitter.
 				highlight = { enable = true },
