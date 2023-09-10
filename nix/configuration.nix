@@ -8,11 +8,13 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -49,41 +51,13 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  # Allow unfree packages (NVIDIA).
-  nixpkgs.config.allowUnfree = true;
-
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
-  
-  # Tell Xorg to use the nvidia driver.
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-    # Modesetting is needed for most wayland compositors.
-    modesetting.enable = true;
-
-    # Use the open source version of the kernel module.
-    # Only available on driver 515.43.04+
-    open = true;
-
-    # Enable the nvidia settings menu.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-  nixpkgs.config.CudaSupport = true;
-
-  # Configure keymap in X11.
+  # Configure keymap in X11
   services.xserver = {
     layout = "fr";
     xkbVariant = "";
   };
 
-  # Configure console keymap.
+  # Configure console keymap
   console.keyMap = "fr";
 
   # Enable CUPS to print documents.
@@ -109,102 +83,32 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
-
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pierrot-lc = {
     isNormalUser = true;
     description = "Pierrot LC";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      # TUI.
-      kitty
-      starship
-      vim
-      ranger
-      ripgrep
-      fd
-      bottom
-      bat
-      exa
-      mlocate
-      wget
-      curl
-
-      # Development tools.
-      neovim-nightly  # Using dedicated overlay.
-      python3Full
-      nodejs_20
-      git
-      gcc
-      gnumake
-      cmake
-      pdm
-      just
-
-      # GUI.
+      home-manager
       firefox
-      thunderbird
-      vlc
-      caprine-bin
-      discord
-      keepassxc
-      newsflash
-      qbittorrent
-      zotero
-      drawio
-      blanket
-      foliate
-
-      # Installers.
-      rustup
-      pipx
-
-      # Gnome extensions.
-      gnome-extension-manager
-      gnomeExtensions.blur-my-shell
-      gnomeExtensions.caffeine
-      gnomeExtensions.weather-oclock
-      gnomeExtensions.workspace-indicator
-      gnomeExtensions.places-status-indicator
-      gnomeExtensions.tray-icons-reloaded
-      gnomeExtensions.vitals
-      gnomeExtensions.material-you-color-theming
-      gnomeExtensions.rounded-window-corners
-
-      # Cuda.
-      cudaPackages.cudatoolkit
+      vim
+      git
     ];
   };
 
-  # Install Flatpak.
-  services.flatpak.enable = true;
-  services.dbus.enable = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "pierrot-lc";
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  ];
-
-  # Fonts.
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "NerdFontsSymbolsOnly" ]; })
-    emojione
-    twitter-color-emoji
-    twemoji-color-font
+    vim
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -216,6 +120,9 @@
   # };
 
   # List services that you want to enable:
+  services.flatpak.enable = true;
+  services.dbus.enable = true;
+  # services.mullvad-vpn.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -233,5 +140,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }

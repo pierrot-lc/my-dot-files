@@ -32,6 +32,7 @@
     eza
     fd
     gnutar
+    inkscape
     kitty
     ranger
     ripgrep
@@ -71,14 +72,14 @@
     zotero
 
     # Office suite.
-    libreoffice-fresh
     hunspell
-    hunspellDicts.fr-any
     hunspellDicts.en-us
+    hunspellDicts.fr-any
+    libreoffice-fresh
 
     # Installers.
-    rustup
     pipx
+    rustup
 
     # Gnome extensions.
     gnome-extension-manager
