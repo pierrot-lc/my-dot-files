@@ -74,26 +74,6 @@ return {
 			}
 			require("lsp_signature").setup(signature_opts)
 
-			-- Deactivate all LSP clients.
-			local deactivate_lsp = function()
-				vim.lsp.stop_client(vim.lsp.get_active_clients())
-				print("LSP clients deactivated.")
-			end
-			vim.keymap.set("n", "<Leader>ll", deactivate_lsp, { desc = "Deactivate LSP" })
-
-			-- Toggle signatures.
-			local show_signatures = signature_opts.floating_window
-			local toggle_signatures = function()
-				show_signatures = not show_signatures
-				require("lsp_signature").toggle_float_win()
-				if show_signatures then
-					print("Signatures activated.")
-				else
-					print("Signatures hidden.")
-				end
-			end
-			vim.keymap.set("n", "<Leader>lp", toggle_signatures, { desc = "Toggle signature hints" })
-
 			-- Toggle diagnostics.
 			local show_diagnostics = true
 			local toggle_diagnostics = function()
