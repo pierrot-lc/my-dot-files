@@ -157,7 +157,7 @@
       proselint
       python310Packages.debugpy
       python310Packages.python-lsp-server
-      ruff
+      ruff-lsp
       shellcheck
       shfmt
       stylua

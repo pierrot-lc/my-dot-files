@@ -41,7 +41,7 @@ return {
 				"marksman",
 				"proselint",
 				"python-lsp-server",
-				"ruff",
+				"ruff-lsp",
 				"shellcheck",
 				"shfmt",
 				"stylua",

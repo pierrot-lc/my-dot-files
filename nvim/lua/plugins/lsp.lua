@@ -35,6 +35,13 @@ return {
 					},
 				},
 			})
+			lspconfig["ruff_lsp"].setup({
+				init_options = {
+					settings = {
+						args = { "--ignore", "E501" },
+					},
+				},
+			})
 			lspconfig["lua_ls"].setup({
 				settings = {
 					Lua = {
@@ -97,13 +104,9 @@ return {
 			require("lint").linters_by_ft = {
 				markdown = { "markdownlint", "codespell", "proselint" },
 				norg = { "codespell", "proselint" },
-				python = { "ruff" },
 				sh = { "shellcheck" },
 				yaml = { "yamllint" },
 			}
-
-			local ruff = require("lint").linters.ruff
-			vim.list_extend(ruff.args, { "--ignore", "E501" }) -- Ignore line length.
 
 			vim.diagnostic.config({ update_in_insert = false })
 
