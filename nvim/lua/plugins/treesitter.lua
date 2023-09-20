@@ -11,7 +11,6 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-refactor", -- Refactor modules.
 			"nvim-treesitter/nvim-treesitter-textobjects", -- Syntax aware text-objects.
-			"HiPhish/rainbow-delimiters.nvim", -- Switch delimiters colors to better distinguish them.
 			"calops/hmts.nvim", -- Highlight languages contained in nix strings.
 		},
 		config = function()
@@ -136,31 +135,6 @@ return {
 					return { "treesitter", "indent" }
 				end,
 			})
-		end,
-	},
-	-- Switch delimiters colors to better distinguish them.
-	{
-		"HiPhish/rainbow-delimiters.nvim",
-		config = function()
-			local rainbow_delimiters = require("rainbow-delimiters")
-			vim.g.rainbow_delimiters = {
-				strategy = {
-					[""] = rainbow_delimiters.strategy["local"],
-				},
-				query = {
-					[""] = "rainbow-delimiters",
-					lua = "rainbow-blocks",
-				},
-				highlight = {
-					"RainbowDelimiterRed",
-					"RainbowDelimiterYellow",
-					"RainbowDelimiterBlue",
-					"RainbowDelimiterOrange",
-					"RainbowDelimiterGreen",
-					"RainbowDelimiterViolet",
-					"RainbowDelimiterCyan",
-				},
-			}
 		end,
 	},
 }
