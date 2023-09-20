@@ -11,6 +11,9 @@
       <home-manager/nixos>
     ];
 
+  # Select kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";

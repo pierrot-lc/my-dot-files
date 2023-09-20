@@ -34,6 +34,7 @@
     gnutar
     inkscape
     kitty
+    neofetch
     ranger
     ripgrep
     starship
