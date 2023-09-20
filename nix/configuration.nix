@@ -105,6 +105,10 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # fonts.fontconfig.defaultFonts.emoji = [
+  #   "Noto Color Emoji"
+  # ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

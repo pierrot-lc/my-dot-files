@@ -98,9 +98,19 @@
 
     # Fonts.
     (nerdfonts.override { fonts = [ "FiraCode" "NerdFontsSymbolsOnly" ]; })
+    cantarell-fonts
+    dejavu_fonts
     emojione
+    freefont_ttf
+    gyre-fonts
+    liberation_ttf
+    noto-fonts
+    source-code-pro
+    source-sans
+    source-sans-pro
     twemoji-color-font
     twitter-color-emoji
+    unifont
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -173,5 +183,5 @@
 
   # Discover installed fonts by home-manager and enable them.
   # But it masks already installed fonts :(.
-  fonts.fontconfig.enable = false;
+  fonts.fontconfig.enable = true;
 }
