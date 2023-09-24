@@ -86,8 +86,8 @@ return {
 				on_attach = on_attach,
 				update_cwd = true,
 				update_focused_file = {
-					enable = true,
-					update_cwd = true,
+					enable = false,
+					update_cwd = false,
 				},
 			})
 		end,
@@ -114,6 +114,12 @@ return {
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
+	-- Quickly add/change/remove surrounding pairs of textobjects.
+	{
+		"kylechui/nvim-surround",
+		event = "VeryLazy",
+		opts = {},
+	},
 	-- Easy splits and joins.
 	{
 		"echasnovski/mini.splitjoin",
@@ -138,7 +144,10 @@ return {
 		"folke/todo-comments.nvim",
 		cmd = { "TodoTelescope" },
 		event = "BufReadPre",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
 		config = true,
 	},
 }
