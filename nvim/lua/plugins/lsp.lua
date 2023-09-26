@@ -117,55 +117,21 @@ return {
 			})
 		end,
 	},
-	-- Implement formatters, not LSP-native.
+	-- Implement formatters.
 	{
-		"mhartington/formatter.nvim",
+		"stevearc/conform.nvim",
 		keys = {
-			{ "<Leader>F", "<CMD>FormatLock<CR>", desc = "Format" },
+			{ "<Leader>F", "<CMD>lua require('conform').format()<CR>", desc = "Format whole buffer" },
 		},
-		config = function()
-			local stylua = require("formatter.filetypes.lua").stylua
-			local black = require("formatter.filetypes.python").black
-			local jq = require("formatter.filetypes.json").jq
-			local shfmt = require("formatter.filetypes.sh").shfmt
-			local latexindent = require("formatter.filetypes.latex").latexindent
-			local isort_black = function()
-				local config = require("formatter.filetypes.python").isort()
-				vim.list_extend(config.args, { "--profile=black" })
-				return config
-			end
-
-			require("formatter").setup({
-				-- Enable or disable logging
-				logging = true,
-				-- Set the log level
-				log_level = vim.log.levels.WARN,
-				-- All formatter configurations are opt-in
-				filetype = {
-					lua = {
-						stylua,
-					},
-					python = {
-						black,
-						isort_black,
-					},
-					sh = {
-						shfmt,
-					},
-					json = {
-						jq,
-					},
-					latex = {
-						latexindent,
-					},
-					-- Use the special "*" filetype for defining formatter configurations on
-					-- any filetype
-					["*"] = {
-						require("formatter.filetypes.any").remove_trailing_whitespace,
-					},
-				},
-			})
-		end,
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+				python = { "isort", "black" },
+				sh = { "shfmt" },
+				json = { "jq" },
+				latex = { "latexindent" },
+			},
+		},
 	},
 	-- Eye candy nvim-lsp progress.
 	{
