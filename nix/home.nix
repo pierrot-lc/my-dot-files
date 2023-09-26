@@ -49,7 +49,6 @@
     nodejs_20
     pdm
     python310Packages.pip
-    python310Packages.pynvim
     python310Full
     texlive.combined.scheme-full
 
@@ -145,6 +144,8 @@
     package = pkgs.neovim-nightly;  # Using dedicated overlay.
     defaultEditor = true;
     extraPackages = with pkgs; [
+      python310Packages.pynvim
+
       # Dependencies.
       fd  # telescope-repo.nvim
       gcc  # treesitter
