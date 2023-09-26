@@ -1,4 +1,15 @@
 return {
+	--
+	{
+		"NeogitOrg/neogit",
+		cmd = "Neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"sindrets/diffview.nvim",
+		},
+		config = true,
+	},
 	-- Show git signs.
 	{
 		"lewis6991/gitsigns.nvim",
