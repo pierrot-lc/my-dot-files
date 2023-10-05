@@ -183,6 +183,13 @@
     userName = "Pierrot LC";
   };
 
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["quemu:///system"];
+      uris = ["quemu:///system"];
+    };
+  };
+
   # Discover installed fonts by home-manager and enable them.
   # But it masks already installed fonts :(.
   fonts.fontconfig.enable = false;
