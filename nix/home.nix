@@ -31,6 +31,7 @@
     bottom
     eza
     fd
+    file
     gnutar
     inkscape
     kitty
