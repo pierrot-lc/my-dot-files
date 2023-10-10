@@ -81,6 +81,12 @@ return {
 			}
 			require("lsp_signature").setup(signature_opts)
 
+			vim.api.nvim_create_user_command(
+				"LspSignatureFloatingWindow",
+				require("lsp_signature").toggle_float_win,
+				{ desc = "Toggle floating window" }
+			)
+
 			-- Toggle diagnostics.
 			local show_diagnostics = true
 			local toggle_diagnostics = function()
