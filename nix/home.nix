@@ -31,6 +31,7 @@
     bottom
     eza
     fd
+    file
     gnutar
     inkscape
     kitty
@@ -181,6 +182,13 @@
     enable = true;
     userEmail = "pstmrtem@outlook.com";
     userName = "Pierrot LC";
+  };
+
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["quemu:///system"];
+      uris = ["quemu:///system"];
+    };
   };
 
   # Discover installed fonts by home-manager and enable them.

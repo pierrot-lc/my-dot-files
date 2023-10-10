@@ -90,12 +90,13 @@
   users.users.pierrot-lc = {
     isNormalUser = true;
     description = "Pierrot LC";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
     packages = with pkgs; [
-      home-manager
       firefox
-      vim
       git
+      home-manager
+      stdenv
+      vim
     ];
   };
 
@@ -116,6 +117,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
+    virt-manager
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -125,6 +127,10 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  # Enable virtualisation support.
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
 
   # List services that you want to enable:
   services.flatpak.enable = true;
