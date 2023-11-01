@@ -29,6 +29,7 @@
     # TUI
     bat
     bottom
+    cachix
     eza
     fd
     file
