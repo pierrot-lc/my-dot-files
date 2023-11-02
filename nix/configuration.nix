@@ -100,6 +100,8 @@
     ];
   };
 
+  nix.settings.trusted-users = [ "root" "pierrot-lc" ];
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

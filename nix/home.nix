@@ -15,6 +15,12 @@
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
+
+
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
@@ -50,8 +56,7 @@
     just
     nodejs_20
     pdm
-    python310Packages.pip
-    python310Full
+    python3Full
     texlive.combined.scheme-full
 
     # GUI.
@@ -169,8 +174,8 @@
       nodePackages_latest.bash-language-server
       nodePackages_latest.markdownlint-cli
       proselint
-      python310Packages.debugpy
-      python310Packages.python-lsp-server
+      python311Packages.debugpy
+      python311Packages.python-lsp-server
       ruff-lsp
       shellcheck
       shfmt
