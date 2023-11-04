@@ -4,6 +4,7 @@ HOME_MANAGER_PATH="$HOME/.config/home-manager"
 rm -rf "$HOME_MANAGER_PATH"
 mkdir -p "$HOME_MANAGER_PATH"
 cp ./home.nix "$HOME_MANAGER_PATH/"
+cp -r ./modules "$HOME_MANAGER_PATH/"
 
 mkdir -p "$HOME_MANAGER_PATH/nvim"
 cp ../nvim/init.lua "$HOME_MANAGER_PATH/nvim/"

@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports =
+    [
+      ./modules/nvim.nix
+    ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pierrot-lc";
@@ -131,7 +135,7 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/kitty".source = ./kitty;
-    ".config/nvim".source = ./nvim;
+    # ".config/nvim".source = ./nvim;
     ".bashrc.d".source = ./.bashrc.d;
     ".config/starship.toml".text = "add_newline = false";
   };
@@ -152,44 +156,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  programs.neovim = {
-    enable = true;
-    package = pkgs.neovim-nightly;  # Using dedicated overlay.
-    defaultEditor = true;
-    extraPackages = with pkgs; [
-      python310Packages.pynvim
-
-      # Dependencies.
-      fd  # telescope-repo.nvim
-      gcc  # treesitter
-      git  # lazy.nvim
-      gnumake  # telescope-fzf-native.nvim
-      mlocate  # telescope-repo.nvim
-      ranger  # ranger.nvim
-      ripgrep  # telescope.nvim
-
-      # Formatters, linters and other LSP's related packages.
-      # Everything that `Mason` usually handle itself.
-      black
-      codespell
-      isort
-      jq
-      ltex-ls
-      lua-language-server
-      marksman
-      nodePackages_latest.bash-language-server
-      nodePackages_latest.markdownlint-cli
-      proselint
-      python311Packages.debugpy
-      python311Packages.python-lsp-server
-      ruff-lsp
-      shellcheck
-      shfmt
-      stylua
-      yamllint
-    ];
-  };
 
   programs.git = {
     enable = true;
