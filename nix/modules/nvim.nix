@@ -1,23 +1,22 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+
+let
+  # Thanks to https://github.com/vimjoyer/nvim-nix-video/blob/main/home.nix
+  # and https://gist.github.com/nat-418/493d40b807132d2643a7058188bff1ca.
+  fromGitHub = repo: pkgs.vimUtils.buildVimPlugin {
+    name = "${lib.strings.sanitizeDerivationName repo}";
+    src = builtins.fetchGit {
+      url = "https://github.com/${repo}.git";
+    };
+  };
+in
 
 {
-
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        vimPlugins = prev.vimPlugins // {
-          own-onedark-nvim = prev.vimUtils.buildVimPlugin {
-            name = "onedark";
-            src = inputs.plugin-onedark;
-          };
-        };
-      })
-    ];
-  };
-
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-nightly;  # Using dedicated overlay.
+    package = (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    });  # Directly fetch neovim nightly.
 
     defaultEditor = true;
 
@@ -26,8 +25,9 @@
     vimdiffAlias = true;
   };
 
-  programs.neovim.plugins = with pkgs; [
-    pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+  programs.neovim.plugins = with pkgs.vimPlugins; [
+    nvim-treesitter.withAllGrammars
+    (fromGitHub "fladson/vim-kitty")
   ];
 
   programs.neovim.extraPackages = with pkgs; [
