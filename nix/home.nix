@@ -17,7 +17,15 @@
 
   nix = {
     package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings = {
+      # Make sure these subtituters and their public keys are defined
+      # in the `trusted-substituters` and `trusted-public-keys` nix options.
+      # See https://nixos.wiki/wiki/Binary_Cache.
+      substituters = [
+        "https://cache.nixos.org/"
+        "https://nix-community.cachix.org"
+      ];
+    };
   };
 
 
@@ -35,7 +43,6 @@
     # TUI
     bat
     bottom
-    cachix
     eza
     fd
     file
