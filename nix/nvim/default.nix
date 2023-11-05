@@ -9,24 +9,32 @@ let
       url = "https://github.com/${repo}.git";
     };
   };
-in
+in {
+  # Add neovim-nightly to the packages.
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
 
-{
   programs.neovim = {
     enable = true;
-    package = (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    });  # Directly fetch neovim nightly.
+    package = pkgs.neovim-nightly;
 
     defaultEditor = true;
 
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+
+    withPython3 = true;
   };
 
+  programs.neovim.extraLuaConfig = builtins.concatStringsSep "\n" [
+    (builtins.readFile ./init.lua)
+  ];
+
   programs.neovim.plugins = with pkgs.vimPlugins; [
-    nvim-treesitter.withAllGrammars
     (fromGitHub "fladson/vim-kitty")
   ];
 
@@ -60,4 +68,12 @@ in
       stylua
       yamllint
   ];
+
+  # TODO: Find a way to import all files inside the `plugins` directory.
+  # Maybe combine `builtins.readDir` and `builtins.map`?
+  imports =
+    [
+      ./plugins/treesitter.nix
+      ./plugins/dial.nix
+    ];
 }

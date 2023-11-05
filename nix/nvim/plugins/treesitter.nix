@@ -1,19 +1,19 @@
-return {
-	-- Efficient parser, building a syntax tree for a source file.
-	-- Provides some basic functionalities such as better highlighting.
-	{
-		"nvim-treesitter/nvim-treesitter",
-		event = "BufReadPost",
-		keys = {
-			{ "gR", desc = "Smart rename" },
-		},
-		build = ":TSUpdate",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-refactor", -- Refactor modules.
-			"nvim-treesitter/nvim-treesitter-textobjects", -- Syntax aware text-objects.
-			"calops/hmts.nvim", -- Highlight languages contained in nix strings.
-		},
-		config = function()
+{ config, pkgs, lib, ... }:
+
+let
+  # Thanks to https://github.com/vimjoyer/nvim-nix-video/blob/main/home.nix
+  # and https://gist.github.com/nat-418/493d40b807132d2643a7058188bff1ca.
+  fromGitHub = repo: pkgs.vimUtils.buildVimPlugin {
+    name = "${lib.strings.sanitizeDerivationName repo}";
+    src = builtins.fetchGit {
+      url = "https://github.com/${repo}.git";
+    };
+  };
+{
+  programs.neovim.plugins = with pkgs.vimPlugins; [
+    {
+      plugin = nvim-treesitter.withAllGrammars;
+      config = ''
 			require("nvim-treesitter.configs").setup({
 				-- Highlight based on treesitter.
 				highlight = { enable = true },
@@ -101,17 +101,19 @@ return {
 			-- Use treesitter expressions for folds.
 			vim.opt.foldmethod = "expr"
 			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-		end,
-	},
-	-- Enhanced folding.
-	{
-		"kevinhwang91/nvim-ufo",
-		event = "BufReadPost",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"kevinhwang91/promise-async",
-		},
-		config = function()
+      '';
+      type = "lua";
+    }
+
+    # Extensions used above.
+    nvim-treesitter-refactor
+    nvim-treesitter-textobjects
+    (fromGitHub "calops/hmts.nvim")
+
+    # Enhanced folding.
+    {
+      plugin = nvim-ufo;
+      config = ''
 			vim.opt.foldcolumn = "0"
 			vim.opt.foldlevel = 99
 			vim.opt.foldlevelstart = 99
@@ -122,6 +124,8 @@ return {
 					return { "treesitter", "indent" }
 				end,
 			})
-		end,
-	},
+      '';
+      type = "lua";
+    }
+  ];
 }
