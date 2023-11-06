@@ -21,5 +21,10 @@
     ./treesitter.nix
     ./vim-characterize.nix
     ./which-key.nix
+    ./neorg.nix
+    ./vim-kitty.nix
+    ./data-viewer.nix
+    ./neogit.nix
+    ./gitsigns.nix
   ];
 }
