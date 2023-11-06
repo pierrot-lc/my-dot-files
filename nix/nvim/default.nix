@@ -25,6 +25,11 @@
     (builtins.readFile ./options.lua)
     (builtins.readFile ./commands.lua)
     (builtins.readFile ./keybindings.lua)
+    ''
+-- ========================================================================== --
+-- ==                             PLUGINS                                  == --
+-- ========================================================================== --
+    ''
   ];
 
   programs.neovim.extraPackages = with pkgs; [
@@ -33,7 +38,6 @@
       git  # lazy.nvim
       gnumake  # telescope-fzf-native.nvim
       mlocate  # telescope-repo.nvim
-      ranger  # ranger.nvim
       ripgrep  # telescope.nvim
 
       # Formatters, linters and other LSP's related packages.
