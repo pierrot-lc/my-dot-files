@@ -6,10 +6,6 @@ mkdir -p "$HOME_MANAGER_PATH"
 cp ./home.nix "$HOME_MANAGER_PATH/"
 cp -r ./nvim "$HOME_MANAGER_PATH/"
 
-cp ../nvim/init.lua "$HOME_MANAGER_PATH/nvim/"
-cp -r ../nvim/lua "$HOME_MANAGER_PATH/nvim/"
-cp -r ../nvim/ftplugin "$HOME_MANAGER_PATH/nvim/"
-
 mkdir -p "$HOME_MANAGER_PATH/kitty"
 cp ../kitty/*.conf "$HOME_MANAGER_PATH/kitty/"
 

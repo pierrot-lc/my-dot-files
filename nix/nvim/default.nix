@@ -22,7 +22,9 @@
   };
 
   programs.neovim.extraLuaConfig = builtins.concatStringsSep "\n" [
-    (builtins.readFile ./init.lua)
+    (builtins.readFile ./options.lua)
+    (builtins.readFile ./commands.lua)
+    (builtins.readFile ./keybindings.lua)
   ];
 
   programs.neovim.extraPackages = with pkgs; [
