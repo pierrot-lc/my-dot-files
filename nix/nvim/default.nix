@@ -1,15 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let
-  # Thanks to https://github.com/vimjoyer/nvim-nix-video/blob/main/home.nix
-  # and https://gist.github.com/nat-418/493d40b807132d2643a7058188bff1ca.
-  fromGitHub = repo: pkgs.vimUtils.buildVimPlugin {
-    name = "${lib.strings.sanitizeDerivationName repo}";
-    src = builtins.fetchGit {
-      url = "https://github.com/${repo}.git";
-    };
-  };
-in {
+{
   # Add neovim-nightly to the packages.
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
@@ -34,14 +25,9 @@ in {
     (builtins.readFile ./init.lua)
   ];
 
-  programs.neovim.plugins = with pkgs.vimPlugins; [
-    (fromGitHub "fladson/vim-kitty")
-  ];
-
   programs.neovim.extraPackages = with pkgs; [
       # Dependencies.
       fd  # telescope-repo.nvim
-      gcc  # treesitter
       git  # lazy.nvim
       gnumake  # telescope-fzf-native.nvim
       mlocate  # telescope-repo.nvim
@@ -69,11 +55,7 @@ in {
       yamllint
   ];
 
-  # TODO: Find a way to import all files inside the `plugins` directory.
-  # Maybe combine `builtins.readDir` and `builtins.map`?
-  imports =
-    [
-      ./plugins/treesitter.nix
-      ./plugins/dial.nix
-    ];
+  imports = [
+    ./plugins
+  ];
 }
