@@ -33,13 +33,6 @@
   ];
 
   programs.neovim.extraPackages = with pkgs; [
-      # Dependencies.
-      fd  # telescope-repo.nvim
-      git  # lazy.nvim
-      gnumake  # telescope-fzf-native.nvim
-      mlocate  # telescope-repo.nvim
-      ripgrep  # telescope.nvim
-
       # Formatters, linters and other LSP's related packages.
       # Everything that `Mason` usually handle itself.
       black

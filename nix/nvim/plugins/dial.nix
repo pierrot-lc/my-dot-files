@@ -1,9 +1,11 @@
 { config, pkgs, lib, ... }:
 
-{
+let
+  fromGitHub = import ./build-plugin.nix {inherit pkgs; inherit lib;};
+in {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
-      plugin = dial-nvim;
+      plugin = fromGitHub "monaqa/dial.nvim";
       config = ''
         local augend = require("dial.augend")
         require("dial.config").augends:register_group({
