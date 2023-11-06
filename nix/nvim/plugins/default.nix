@@ -5,5 +5,6 @@
     ./dial.nix
     ./treesitter.nix
     ./nvim-ufo.nix
+    ./nvim-tree.nix
   ];
 }
