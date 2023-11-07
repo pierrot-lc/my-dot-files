@@ -43,28 +43,6 @@
     ".config/nvim/ftplugin/tex.lua".source = ./ftplugin/tex.lua;
   };
 
-  programs.neovim.extraPackages = with pkgs; [
-      # Formatters, linters and other LSP's related packages.
-      # Everything that `Mason` usually handle itself.
-      black
-      codespell
-      isort
-      jq
-      ltex-ls
-      lua-language-server
-      marksman
-      nodePackages_latest.bash-language-server
-      nodePackages_latest.markdownlint-cli
-      proselint
-      python311Packages.debugpy
-      python311Packages.python-lsp-server
-      ruff-lsp
-      shellcheck
-      shfmt
-      stylua
-      yamllint
-  ];
-
   imports = [
     ./plugins
   ];

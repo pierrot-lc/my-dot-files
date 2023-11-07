@@ -4,19 +4,26 @@
   imports = [
     ./alpha-nvim.nix
     ./autopairs.nix
+    ./cmp.nix
+    ./conform.nix
     ./copilot.nix
+    ./dap.nix
     ./data-viewer.nix
     ./dial.nix
     ./dressing.nix
     ./gitsigns.nix
     ./leap.nix
+    ./lsp.nix
     ./mini-comment.nix
     ./mini-indentscope.nix
     ./mini-splitjoin.nix
     ./neogit.nix
     ./neorg.nix
     ./nordic.nix
+    ./neodev.nix
     ./nvim-linefly.nix
+    ./nvim-lint.nix
+    ./nvim-puppeteer.nix
     ./nvim-rooter.nix
     ./nvim-spider.nix
     ./nvim-surround.nix
@@ -31,7 +38,6 @@
     ./vim-kitty.nix
     ./vim-lastplace.nix
     ./which-key.nix
-    ./nvim-puppeteer.nix
     ./zen-mode.nix
   ];
 }
