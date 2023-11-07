@@ -31,5 +31,7 @@
     ./vim-kitty.nix
     ./vim-lastplace.nix
     ./which-key.nix
+    ./nvim-puppeteer.nix
+    ./zen-mode.nix
   ];
 }

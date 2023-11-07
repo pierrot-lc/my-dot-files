@@ -129,7 +129,6 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/kitty".source = ./kitty;
-    # ".config/nvim".source = ./nvim;
     ".bashrc.d".source = ./.bashrc.d;
     ".config/starship.toml".text = "add_newline = false";
   };
