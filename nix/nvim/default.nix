@@ -36,11 +36,7 @@
   # But `home-manager` does not so we fall back to this `home.file` solution.
   # Ideally, the config path should not be hardcoded.
   home.file = {
-    ".config/nvim/ftplugin/lua.lua".source = ./ftplugin/lua.lua;
-    ".config/nvim/ftplugin/markdown.lua".source = ./ftplugin/markdown.lua;
-    ".config/nvim/ftplugin/nix.lua".source = ./ftplugin/nix.lua;
-    ".config/nvim/ftplugin/norg.lua".source = ./ftplugin/norg.lua;
-    ".config/nvim/ftplugin/tex.lua".source = ./ftplugin/tex.lua;
+    ".config/nvim/ftplugin".source = ./ftplugin;
   };
 
   imports = [

@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./nvim
-    ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pierrot-lc";
@@ -34,6 +30,11 @@
 
 
   nixpkgs.config.allowUnfree = true;
+
+  imports = [
+    ./nvim
+  ];
+
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
