@@ -4,7 +4,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local cmp = require("cmp")
 
 require("gitmoji").setup({
-	filetypes = {"gitcommit", "gitrebase"},
+	filetypes = { "gitcommit", "gitrebase", "NeogitCommitMessage" },
 })
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
