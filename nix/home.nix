@@ -82,7 +82,6 @@
     qbittorrent
     thunderbird
     vlc
-    zotero
 
     # Office suite.
     hunspell
