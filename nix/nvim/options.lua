@@ -14,7 +14,14 @@ vim.opt.hlsearch = true -- Set highlight on search.
 vim.opt.ignorecase = true -- Case insensitive searching...
 vim.opt.inccommand = "split"
 vim.opt.list = true -- Show invisible spaces.
-vim.opt.listchars:append({tab = "» ", extends = "›", precedes = "‹", trail = "·", nbsp = "·", eol = "↵"})
+vim.opt.listchars:append({
+	tab = "» ",
+	extends = "›",
+	precedes = "‹",
+	trail = "·",
+	nbsp = "·",
+	-- eol = "↵"
+})
 vim.opt.mouse = "a" -- Enable mouse for all modes.
 vim.opt.scrolloff = 5 -- Offset before scrolling.
 vim.opt.shiftwidth = 4 -- Amount of spaces are used to indent a line.

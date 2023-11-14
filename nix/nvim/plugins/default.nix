@@ -12,6 +12,7 @@
     ./dial
     ./dressing
     ./gitsigns
+    ./icon-picker
     ./leap
     ./lsp
     ./mini-comment

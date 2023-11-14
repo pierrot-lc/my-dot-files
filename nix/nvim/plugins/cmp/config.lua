@@ -3,6 +3,10 @@ local lspdefaults = lspconfig.util.default_config
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local cmp = require("cmp")
 
+require("gitmoji").setup({
+	filetypes = {"gitcommit", "gitrebase"},
+})
+
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Add completion capabilities to default LSP capabilities.

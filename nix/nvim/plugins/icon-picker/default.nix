@@ -5,13 +5,9 @@ let
 in {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
-      plugin = fromGitHub "NeogitOrg/neogit";
-      config = "require('neogit').setup()";
+      plugin = fromGitHub "ziontee113/icon-picker.nvim";
+      config = "require('icon-picker').setup({ disable_legacy_commands = true })";
       type = "lua";
     }
-
-    # Dependencies
-    plenary-nvim
-    diffview-nvim
   ];
 }
