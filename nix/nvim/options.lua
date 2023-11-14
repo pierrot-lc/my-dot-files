@@ -12,15 +12,9 @@ vim.opt.expandtab = true -- Whether or not we want to transform tabs to spaces.
 vim.opt.foldlevelstart = 99 -- Do not fold by default when opening a file.
 vim.opt.hlsearch = true -- Set highlight on search.
 vim.opt.ignorecase = true -- Case insensitive searching...
+vim.opt.inccommand = "split"
 vim.opt.list = true -- Show invisible spaces.
-vim.opt.listchars:append({
-	tab = "» ",
-	extends = "›",
-	precedes = "‹",
-	trail = "·",
-	nbsp = "·",
-	-- eol = "↵"
-})
+vim.opt.listchars:append({tab = "» ", extends = "›", precedes = "‹", trail = "·", nbsp = "·", eol = "↵"})
 vim.opt.mouse = "a" -- Enable mouse for all modes.
 vim.opt.scrolloff = 5 -- Offset before scrolling.
 vim.opt.shiftwidth = 4 -- Amount of spaces are used to indent a line.
@@ -33,6 +27,7 @@ vim.opt.tabstop = 4 -- Amount of spaces a 'tab' character occupy.
 vim.opt.termguicolors = true -- Enable 24-bit RGB color in the TUI.
 vim.opt.undofile = true -- Save undo history.
 vim.opt.updatetime = 1000 -- Decrease update time (default is 4000).
+vim.opt.virtualedit = "block"
 vim.opt.wrap = false -- Whether or not we want to wrap long lines.
 vim.wo.number = true -- Show line numbers default.
 vim.wo.relativenumber = false
