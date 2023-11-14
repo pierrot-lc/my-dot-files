@@ -5,16 +5,18 @@ let
 in {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
-      plugin = nvim-cmp;
+      plugin = fromGitHub "hrsh7th/nvim-cmp";
       config = builtins.readFile ./config.lua;
       type = "lua";
     }
 
     nvim-lspconfig
-    cmp-nvim-lsp
-    cmp-path
-    cmp-calc
+    (fromGitHub "hrsh7th/cmp-nvim-lsp")
+    (fromGitHub "hrsh7th/cmp-nvim-lsp-signature-help")
+    (fromGitHub "hrsh7th/cmp-path")
+    (fromGitHub "hrsh7th/cmp-calc")
     (fromGitHub "lukas-reineke/cmp-rg")
+    (fromGitHub "Dynge/gitmoji.nvim")
   ];
 
   programs.neovim.extraPackages = with pkgs; [
